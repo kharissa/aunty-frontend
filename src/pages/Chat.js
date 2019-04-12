@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
+import { Container, Row, Col } from 'reactstrap';
 
 const theme = {
     background: '#f5f8fb',
@@ -128,14 +129,20 @@ export default class Chat extends React.Component {
 
     render() {
         return (
-            <ThemeProvider theme={theme}>
-                <ChatBot
-                    headerTitle="Chat with Aunty"
-                    recognitionEnable={true}
-                    speechSynthesis={{ enable: true, lang: 'en' }}
-                    steps={steps}
-                />
-            </ThemeProvider>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col md="auto">
+                        <ThemeProvider theme={theme}>
+                            <ChatBot
+                                headerTitle="Chat with Aunty"
+                                recognitionEnable={true}
+                                speechSynthesis={{ enable: true, lang: 'en' }}
+                                steps={steps}
+                            />
+                        </ThemeProvider>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
