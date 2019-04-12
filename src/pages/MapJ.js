@@ -1,12 +1,33 @@
 // Jade's map main page goes here
 
-import React from "react"
+import React from 'react';
+import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class MapJ extends React.Component {
     render() {
         return (
-            <p>doot doot?</p>
-        )
+            <LeafletMap
+                center={[3.134526, 101.630016]}
+                zoom={6}
+                maxZoom={10}
+                attributionControl={true}
+                zoomControl={true}
+                doubleClickZoom={true}
+                scrollWheelZoom={true}
+                dragging={true}
+                animate={true}
+                easeLinearity={0.35}
+            >
+                <TileLayer
+                    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                />
+                <Marker position={[50, 10]}>
+                    <Popup>
+                        Popup for any custom information.
+          </Popup>
+                </Marker>
+            </LeafletMap>
+        );
     }
 }
 
