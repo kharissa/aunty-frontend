@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Chat from './containers/Chat'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { Container, Row, Col } from 'reactstrap'
 
 class App extends Component {
   render() {
