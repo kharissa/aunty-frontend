@@ -6,6 +6,7 @@ import Chat from './pages/Chat.js'
 import MapY from './pages/MapY.js'
 import MapJ from './pages/MapJ.js'
 import aunty from './images/aunty.jpg'
+import { ToastProvider } from 'react-toast-notifications';
 
 class App extends Component {
   state = {
@@ -13,17 +14,16 @@ class App extends Component {
 
   render() {
     return (
+      <ToastProvider>
       <div align="center">
         <img src={aunty} alt="aunty" width="250px" /><br /><br />
         <Link to="/">Home</Link><br /><br />
-
-
         <Route exact path="/" component={Home} />
         <Route exact path="/chat" component={Chat} />
         <Route exact path="/mapy" component={MapY} />
         <Route exact path="/mapj" component={MapJ} />
-
       </div>
+      </ToastProvider>
     )
   }
 }
