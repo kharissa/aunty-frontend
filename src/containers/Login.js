@@ -1,14 +1,12 @@
 import React from 'react'
 import { Button, Row, Col, Label, ModalBody, ModalFooter } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 import axios from 'axios'
 
 export default class Login extends React.Component{
     state = {
-        email: '',
-        password: '',
-        variant: '',
-        showAlert: false,
+        loginEmail: '',
+        loginPassword: ''
     };
 
     handleInput = (event) => {
@@ -18,42 +16,49 @@ export default class Login extends React.Component{
     }
 
     handleSubmit = (event) => {
+        const { toastManager } = this.props;
         axios({
-            // Send POST request with registration information
+            // Send POST request with login information
             // In production build, remove localhost 
             method: 'POST',
             url: 'http://localhost:5000/api/v1/sessions/',
             data: {
-                email: this.state.email,
-                password: this.state.password
+                email: this.state.loginEmail,
+                password: this.state.loginPassword
             }
         })
         .then(response => {
-            console.log(response)
-            // On success, display success message, 
-
-            // Add JWT, userId and username to local storage
-            localStorage.setItem('token', response.data['auth_token']);
-            localStorage.setItem('userId', response.data.user['id']);
-            localStorage.setItem('username', response.data.user['username']);
-            localStorage.setItem('userPhoto', response.data.user['profile_picture']);
-            this.setState({
-                showAlert: true,
-                variant: 'success',
-                message: 'You have successfully logged in. Welcome back!'
-            });
+            if (response.data.status === "success") {
+                // On success, display success toast
+                toastManager.add('Welcome back! You are now logged in.', {
+                    appearance: 'success',
+                    autoDismiss: true,
+                });
+                
+                // Save auth token and user details into local storage
+                localStorage.setItem('token', response.data['auth_token']);
+                localStorage.setItem('userId', response.data.user['id']);
+                localStorage.setItem('firstName', response.data.user['first_name']);
+                localStorage.setItem('lastName', response.data.user['last_name']);
+                localStorage.setItem('email', response.data.user['email']);
+            } else {
+                // On response but password validation failure, display error toast
+                toastManager.add(`Uh oh! We were unable to match your email with the password provided.`, {
+                    appearance: 'error',
+                    autoDismiss: true,
+                });
+            }
+            // Close Login modal
+            this.props.toggle();
         })
         .catch(error => {
-            // On failure, display failed message and keep Register modal open
+            // On failed API call, display error toast and keep Login modal open
             console.log(error);
-            const message = error.response.data.message;
-            this.setState({
-                showAlert: true,
-                variant: 'danger',
-                message: 'There was an error with your login:\n' + message
-            })
+            const message = error.data.message;
+            toastManager.add(`Something went wrong: "${message}"`, {
+                appearance: 'error',
+            });
         })
-        this.props.toggle();
     }
 
     render() {
@@ -65,7 +70,7 @@ export default class Login extends React.Component{
                         <Col>
                             <AvGroup>
                                 <Label>Email</Label>
-                                <AvInput name="email" type="email" placeholder="Email Address" value={this.state.email} onChange={this.handleInput} id="email" required />
+                                <AvInput name="loginEmail" type="email" placeholder="Email Address" value={this.state.loginEmail} onChange={this.handleInput} id="loginEmail" required />
                                 <AvFeedback>
                                     Please provide a valid email address.
                                 </AvFeedback>
@@ -74,7 +79,7 @@ export default class Login extends React.Component{
                         <Col>
                             <AvGroup>
                                 <Label>Password</Label>
-                                <AvInput name="password" type="password" placeholder="Password" value={this.state.password} id="password" onChange={this.handleInput} required />
+                                <AvInput name="loginPassword" type="password" placeholder="Password" value={this.state.loginPassword} id="loginPassword" onChange={this.handleInput}autoComplete="off"  required />
                                 <AvFeedback>
                                     Please provide a valid password.
                                 </AvFeedback>

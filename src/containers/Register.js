@@ -10,10 +10,7 @@ export default class Register extends React.Component{
         email: '',
         password: '',
         dateOfBirth: '',
-        nationality: '',
-        message: '',
-        variant: '',
-        showAlert: false,
+        nationality: ''
     };
 
     handleInput = (event) => {
@@ -39,10 +36,11 @@ export default class Register extends React.Component{
             }
         })
         .then(response => {
-            if (response.data.status == "success") {
+            if (response.data.status === "success") {
                 // On success, display success toast
                 toastManager.add('Thank you for creating an account! You are now logged in.', {
-                    appearance: 'success'
+                    appearance: 'success',
+                    autoDismiss: true,
                 });
                 
                 // Save auth token and user details into local storage
@@ -55,6 +53,7 @@ export default class Register extends React.Component{
                 // On response but email validation failure, display error toast
                 toastManager.add(`Uh oh! We already have an account with that email. `, {
                     appearance: 'error',
+                    autoDismiss: true,
                 });
             }
             // Close Register modal
@@ -124,7 +123,7 @@ export default class Register extends React.Component{
                         <Col>
                             <AvGroup>
                                 <Label>Password</Label>
-                                <AvInput name="password" type="password" placeholder="Password" value={this.state.password} id="password" onChange={this.handleInput} required />
+                                <AvInput name="password" type="password" placeholder="Password" value={this.state.password} id="password" autoComplete="off" onChange={this.handleInput} required />
                                 <AvFeedback>
                                     Please provide a valid password.
                                 </AvFeedback>
