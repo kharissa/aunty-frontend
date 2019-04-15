@@ -3,8 +3,8 @@ import './App.css';
 import { Route, Link } from 'react-router-dom';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
-import MapY from './pages/MapY.js'
-import Geolocation from './pages/Show_Geoloc'
+import Geolocation from './pages/Show_Geoloc.js'
+import Sos from './containers/SOS'
 import MapJ from './pages/MapJ.js'
 import aunty from './images/aunty.jpg'
 import { ToastProvider } from 'react-toast-notifications';
@@ -23,6 +23,7 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/mapy" component={Geolocation} />
           <Route exact path="/mapj" component={MapJ} />
+          <Route exact path="/sos" component={Sos} />
         </div>
       </ToastProvider>
     )

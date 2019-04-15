@@ -1,6 +1,16 @@
 import React from 'react'
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
-import Geoloc from '../containers/Geoloc'
+import { Map as LeafletMap, TileLayer, Marker, Popup, withLeaflet, MapControl } from 'react-leaflet';
+import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch"
+import Sos from '../pages/SOS'
+
+class AddressControl extends MapControl {
+    createLeafletElement() {
+        const provider = new OpenStreetMapProvider()
+        return GeoSearchControl({ provider: provider, style: 'bar' })
+    }
+}
+
+
 
 class Map extends React.Component {
     state = {
@@ -12,8 +22,8 @@ class Map extends React.Component {
     // API Called to Database
 
 
-
     render() {
+        const AddressSearch = withLeaflet(AddressControl)
         return (
 
             <LeafletMap
@@ -28,9 +38,12 @@ class Map extends React.Component {
                 animate={true}
                 easeLinearity={0.35}
             >
+
                 <TileLayer
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
+
+                <AddressSearch />
 
                 {this.state.markers.map(marker =>
                     <Marker position={[marker.lat, marker.lng]}>
@@ -39,6 +52,7 @@ class Map extends React.Component {
                         </Popup>
                     </Marker>
                 )}
+
             </LeafletMap>
         );
     }

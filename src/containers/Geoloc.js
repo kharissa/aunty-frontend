@@ -2,7 +2,7 @@ import React from 'react';
 import { geolocated } from 'react-geolocated';
 
 import Map from './Map'
-
+import Sos from './SOS'
 
 class Geoloc extends React.Component {
     render() {
@@ -13,6 +13,7 @@ class Geoloc extends React.Component {
                 : this.props.coords
                     ? <div>
                         <Map my_lat={this.props.coords.latitude} my_lng={this.props.coords.longitude} />
+                        <Sos my_lat={this.props.coords.latitude} my_lng={this.props.coords.longitude} />
                     </div>
                     : <div>Getting the location data&hellip; </div>;
     }
