@@ -12,10 +12,11 @@ class MapJ extends React.Component {
             mapZoom: 15,
             mapTilesStamen: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
             mapOverlayStamen: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png',
-            marker: [3.134526, 101.530016],
+            marker: [3.134526, 101.670016],
             markers: [
                 { id: "1", lat: 3.134526, lng: 101.630016, name: "Test Marker 01" },
-                { id: "2", lat: 3.154526, lng: 101.730016, name: "Test Marker 02" },
+                { id: "2", lat: 3.154526, lng: 101.650016, name: "Test Marker 02" },
+                // to GET from API
             ],
             clickedMarker : [],
         }
