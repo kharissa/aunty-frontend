@@ -3,7 +3,7 @@ import { Button, Row, Col, Label, ModalBody, ModalFooter } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 import axios from 'axios'
 
-export default class Register extends React.Component{
+export default class Register extends React.Component {
     state = {
         firstName: '',
         lastName: '',
@@ -34,138 +34,138 @@ export default class Register extends React.Component{
                 nationality: this.state.nationality,
             }
         })
-        .then(response => {
-            if (response.data.status === "success") {
-                // On success, display success toast
-                toastManager.add('Thank you for creating an account! You are now logged in.', {
-                    appearance: 'success',
-                    autoDismiss: true,
-                });
-                
-                // Save auth token and user details into local storage
-                localStorage.setItem('token', response.data['auth_token']);
-                localStorage.setItem('userId', response.data.user['id']);
-                localStorage.setItem('firstName', response.data.user['first_name']);
-                localStorage.setItem('lastName', response.data.user['last_name']);
-                localStorage.setItem('email', response.data.user['email']);
-            } else {
-                // On response but email validation failure, display error toast
-                toastManager.add(`Uh oh! We already have an account with that email. `, {
+            .then(response => {
+                if (response.data.status === "success") {
+                    // On success, display success toast
+                    toastManager.add('Thank you for creating an account! You are now logged in.', {
+                        appearance: 'success',
+                        autoDismiss: true,
+                    });
+
+                    // Save auth token and user details into local storage
+                    localStorage.setItem('token', response.data['auth_token']);
+                    localStorage.setItem('userId', response.data.user['id']);
+                    localStorage.setItem('firstName', response.data.user['first_name']);
+                    localStorage.setItem('lastName', response.data.user['last_name']);
+                    localStorage.setItem('email', response.data.user['email']);
+                } else {
+                    // On response but email validation failure, display error toast
+                    toastManager.add(`Uh oh! We already have an account with that email. `, {
+                        appearance: 'error',
+                        autoDismiss: true,
+                    });
+                }
+                // Close Register modal
+                this.props.toggle();
+            })
+            .catch(error => {
+                // On failed API call, display error toast and keep Register modal open
+                console.log(error);
+                const message = error.data.message;
+                toastManager.add(`Something went wrong: "${message}"`, {
                     appearance: 'error',
-                    autoDismiss: true,
                 });
-            }
-            // Close Register modal
-            this.props.toggle();
-        })
-        .catch(error => {
-            // On failed API call, display error toast and keep Register modal open
-            console.log(error);
-            const message = error.data.message;
-            toastManager.add(`Something went wrong: "${message}"`, {
-                appearance: 'error',
-            });
-        })
+            })
     }
 
     render() {
-        return(
+        return (
             <>
-            <ModalBody>
-                <AvForm onValidSubmit={this.handleSubmit} id="register">
-                    <Row>
-                        <Col>
-                            <AvGroup>
-                                <Label>First Name</Label>
-                                <AvInput
-                                    name="firstName"
-                                    type="text"
-                                    placeholder="First Name"
-                                    aria-describedby="inputGroupPrepend"
-                                    value={this.state.firstName} onChange={this.handleInput}
-                                    id="firstName"
-                                    required
-                                />
-                                <AvFeedback>
-                                    Please enter a first name.
+                <ModalBody>
+                    <AvForm onValidSubmit={this.handleSubmit} id="register">
+                        <Row>
+                            <Col>
+                                <AvGroup>
+                                    <Label>First Name</Label>
+                                    <AvInput
+                                        name="firstName"
+                                        type="text"
+                                        placeholder="First Name"
+                                        aria-describedby="inputGroupPrepend"
+                                        value={this.state.firstName} onChange={this.handleInput}
+                                        id="firstName"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please enter a first name.
                                 </AvFeedback>
-                            </AvGroup>
-                        </Col>
-                        <Col>
-                            <AvGroup>
-                                <Label>Last Name</Label>
-                                <AvInput
-                                    name="lastName"
-                                    type="text"
-                                    placeholder="Last Name"
-                                    aria-describedby="inputGroupPrepend"
-                                    value={this.state.lastName} onChange={this.handleInput}
-                                    id="lastName"
-                                    required
-                                />
-                                <AvFeedback>
-                                    Please enter a last name.
+                                </AvGroup>
+                            </Col>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Last Name</Label>
+                                    <AvInput
+                                        name="lastName"
+                                        type="text"
+                                        placeholder="Last Name"
+                                        aria-describedby="inputGroupPrepend"
+                                        value={this.state.lastName} onChange={this.handleInput}
+                                        id="lastName"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please enter a last name.
                                 </AvFeedback>
-                            </AvGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <AvGroup>
-                                <Label>Email</Label>
-                                <AvInput name="email" type="email" placeholder="Email Address" value={this.state.email} onChange={this.handleInput} id="email" required />
-                                <AvFeedback>
-                                    Please provide a valid email address.
+                                </AvGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Email</Label>
+                                    <AvInput name="email" type="email" placeholder="Email Address" value={this.state.email} onChange={this.handleInput} id="email" required />
+                                    <AvFeedback>
+                                        Please provide a valid email address.
                                 </AvFeedback>
-                            </AvGroup>
-                        </Col>
-                        <Col>
-                            <AvGroup>
-                                <Label>Password</Label>
-                                <AvInput name="password" type="password" placeholder="Password" value={this.state.password} id="password" autoComplete="off" onChange={this.handleInput} required />
-                                <AvFeedback>
-                                    Please provide a valid password.
+                                </AvGroup>
+                            </Col>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Password</Label>
+                                    <AvInput name="password" type="password" placeholder="Password" value={this.state.password} id="password" autoComplete="off" onChange={this.handleInput} required />
+                                    <AvFeedback>
+                                        Please provide a valid password.
                                 </AvFeedback>
-                            </AvGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <AvGroup>
-                                <Label>Date of Birth</Label>
-                                <AvInput name="dateOfBirth" type="date"
-                                placeholder="2000-01-01"
-                                value={this.state.dateOfBirth}
-                                onChange={this.handleInput}
-                                id="dateOfBirth"
-                                required />
-                                <AvFeedback>
-                                    Please provide a valid date of birth.
+                                </AvGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Date of Birth</Label>
+                                    <AvInput name="dateOfBirth" type="date"
+                                        placeholder="2000-01-01"
+                                        value={this.state.dateOfBirth}
+                                        onChange={this.handleInput}
+                                        id="dateOfBirth"
+                                        required />
+                                    <AvFeedback>
+                                        Please provide a valid date of birth.
                                 </AvFeedback>
-                            </AvGroup>
-                        </Col>
-                        <Col>
-                            <AvGroup>
-                                <Label>Nationality</Label>
-                                <AvField name="nationality" type="select" 
-                                value={this.state.nationality}
-                                onChange={this.handleInput}
-                                id="nationality"
-                                required>
-                                { nationalities }
-                                </AvField>
-                                <AvFeedback>
-                                    Please provide a nationality.
+                                </AvGroup>
+                            </Col>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Nationality</Label>
+                                    <AvField name="nationality" type="select"
+                                        value={this.state.nationality}
+                                        onChange={this.handleInput}
+                                        id="nationality"
+                                        required>
+                                        {nationalities}
+                                    </AvField>
+                                    <AvFeedback>
+                                        Please provide a nationality.
                                 </AvFeedback>
-                            </AvGroup>
-                        </Col>
-                    </Row>
-                </AvForm>
-            </ModalBody>
-            <ModalFooter>
-                <Button form="register" color="primary" type="submit">Register</Button>
-            </ModalFooter>
-        </>
+                                </AvGroup>
+                            </Col>
+                        </Row>
+                    </AvForm>
+                </ModalBody>
+                <ModalFooter>
+                    <Button form="register" color="primary" type="submit">Register</Button>
+                </ModalFooter>
+            </>
         )
     }
 }
