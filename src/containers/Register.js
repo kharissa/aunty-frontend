@@ -23,7 +23,7 @@ export default class Register extends React.Component{
         const { toastManager } = this.props;
         axios({
             // Send POST request with registration information
-            // In production build, remove localhost 
+            // In production build, remove localhost
             method: 'POST',
             url: 'http://localhost:5000/api/v1/users/',
             data: {
@@ -42,7 +42,7 @@ export default class Register extends React.Component{
                     appearance: 'success',
                     autoDismiss: true,
                 });
-                
+
                 // Save auth token and user details into local storage
                 localStorage.setItem('token', response.data['auth_token']);
                 localStorage.setItem('userId', response.data.user['id']);
@@ -148,7 +148,7 @@ export default class Register extends React.Component{
                         <Col>
                             <AvGroup>
                                 <Label>Nationality</Label>
-                                <AvField name="nationality" type="select" 
+                                <AvField name="nationality" type="select"
                                 value={this.state.nationality}
                                 onChange={this.handleInput}
                                 id="nationality"

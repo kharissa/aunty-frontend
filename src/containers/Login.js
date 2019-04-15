@@ -19,7 +19,7 @@ export default class Login extends React.Component{
         const { toastManager } = this.props;
         axios({
             // Send POST request with login information
-            // In production build, remove localhost 
+            // In production build, remove localhost
             method: 'POST',
             url: 'http://localhost:5000/api/v1/sessions/',
             data: {
@@ -34,7 +34,7 @@ export default class Login extends React.Component{
                     appearance: 'success',
                     autoDismiss: true,
                 });
-                
+
                 // Save auth token and user details into local storage
                 localStorage.setItem('token', response.data['auth_token']);
                 localStorage.setItem('userId', response.data.user['id']);

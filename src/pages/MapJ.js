@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import CreatePinModal from '../containers/CreatePinModal';
 
 
 class MapJ extends React.Component {
@@ -20,6 +21,8 @@ class MapJ extends React.Component {
                 // to GET data from API
             ],
             clickedMarker : [],
+            modal: false,
+            isOpen: false,
         }
     }
 
@@ -39,6 +42,11 @@ class MapJ extends React.Component {
         console.log('clicked on this marker')
     }
 
+    toggleModal = () => {
+        this.setState(prevState => ({
+            modal: !prevState.modal
+        }))
+    }
 
     render() {
         return (
@@ -76,11 +84,12 @@ class MapJ extends React.Component {
                 )}
 
                 {this.state.clickedMarker.length > 0
-                    ? <Marker position = {this.state.clickedMarker} onclick={this.handleMarkerClick}> <Popup> hewwo </Popup></Marker>
+                    ? <Marker position = {this.state.clickedMarker} onclick={this.toggleModal}></Marker>
                     : null
                     // create a marker onclick with a modal pop-up to create a new marker.
                 }
 
+                <CreatePinModal modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
 
             </LeafletMap>
         );
