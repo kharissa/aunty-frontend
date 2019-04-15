@@ -6,8 +6,9 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class MapJ extends React.Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state={
+            clickTime: 0,
             mapCenter: [3.134526, 101.63006],
             mapZoom: 15,
             mapTilesStamen: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
@@ -16,14 +17,14 @@ class MapJ extends React.Component {
             markers: [
                 { id: "1", lat: 3.134526, lng: 101.630016, name: "Test Marker 01" },
                 { id: "2", lat: 3.154526, lng: 101.650016, name: "Test Marker 02" },
-                // to GET from API
+                // to GET data from API
             ],
             clickedMarker : [],
         }
     }
 
     componentDidMount() {
-        // get markers from api
+        // get markers from API this.setState({ markers })
         // for each marker, show on map
     }
 
@@ -33,6 +34,11 @@ class MapJ extends React.Component {
         this.setState({ clickedMarker: [lat, lng] })
         console.log(this.state.clickedMarker)
     }
+
+    handleMarkerClick = (e) => {
+        console.log('clicked on this marker')
+    }
+
 
     render() {
         return (
@@ -68,6 +74,13 @@ class MapJ extends React.Component {
                         </Popup>
                     </Marker>
                 )}
+
+                {this.state.clickedMarker.length > 0
+                    ? <Marker position = {this.state.clickedMarker} onclick={this.handleMarkerClick}> <Popup> hewwo </Popup></Marker>
+                    : null
+                    // create a marker onclick with a modal pop-up to create a new marker.
+                }
+
 
             </LeafletMap>
         );
