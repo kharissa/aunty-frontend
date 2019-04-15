@@ -21,6 +21,10 @@ class MapJ extends React.Component {
         // for each marker, show on map
     }
 
+    handleClick = (e) => {
+        const { lat, lng } = e.latlng;
+        console.log(lat, lng);
+    }
 
     render() {
         return (
@@ -35,6 +39,7 @@ class MapJ extends React.Component {
                 dragging={true}
                 animate={true}
                 easeLinearity={0.35}
+                onclick={this.handleClick}
             >
                 <TileLayer
                     url={this.state.mapTilesStamen}
