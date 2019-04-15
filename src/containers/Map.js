@@ -24,9 +24,9 @@ export default class Map extends React.Component {
                 <TileLayer
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
-                {this.state.markers.map(marker =>
-                    <Marker position={[marker.lat, marker.lng]}>
-                        <Popup>
+                {this.state.markers.map((marker, index) =>
+                    <Marker key={index} position={[marker.lat, marker.lng]}>
+                        <Popup key={index}>
                             {marker.category}
                         </Popup>
                     </Marker>
