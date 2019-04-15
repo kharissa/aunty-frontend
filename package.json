@@ -4,9 +4,13 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "leaflet": "^1.4.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.6",
+    "react-geolocated": "^2.4.1",
+    "react-geolocation": "^1.0.4",
+    "react-leaflet": "^2.2.1",
     "react-scripts": "2.1.8",
     "react-simple-chatbot": "^0.5.3",
     "styled-components": "^4.2.0"
