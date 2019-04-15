@@ -23,9 +23,8 @@ export default class Register extends React.Component{
         const { toastManager } = this.props;
         axios({
             // Send POST request with registration information
-            // In production build, remove localhost 
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/users/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/users/',
             data: {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
