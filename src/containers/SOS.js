@@ -13,8 +13,6 @@ class Sos extends React.Component {
     }
 
     render() {
-        console.log(this.props.my_lat)
-
         return (
             <Form onSubmit={this.handleSubmit}>
                 <p>{this.props.my_lat}</p>

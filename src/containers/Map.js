@@ -1,7 +1,6 @@
 import React from 'react'
 import { Map as LeafletMap, TileLayer, Marker, Popup, withLeaflet, MapControl } from 'react-leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch"
-import Sos from '../pages/SOS'
 
 class AddressControl extends MapControl {
     createLeafletElement() {
