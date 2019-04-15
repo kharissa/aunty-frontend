@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-import Chat from './containers/Chat'
-import Map from './containers/Map'
-import Geolocation from './containers/Show_Geoloc'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { Route, Link } from 'react-router-dom';
+import Home from './pages/Home.js'
+import Chat from './pages/Chat.js'
+import MapY from './pages/MapY.js'
+import MapJ from './pages/MapJ.js'
+import aunty from './images/aunty.jpg'
+import { ToastProvider } from 'react-toast-notifications';
 
 class App extends Component {
+  state = {
+  }
+
   render() {
     return (
-      <Container>
-        <Map />
-      </Container>
-    );
+      <ToastProvider>
+        <div align="center">
+          <img src={aunty} alt="aunty" width="250px" /><br /><br />
+          <Link to="/">Home</Link><br /><br />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/chat" component={Chat} />
+          <Route exact path="/mapy" component={MapY} />
+          <Route exact path="/mapj" component={MapJ} />
+        </div>
+      </ToastProvider>
+    )
   }
 }
 
