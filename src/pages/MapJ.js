@@ -49,6 +49,14 @@ class MapJ extends React.Component {
 
     render() {
         return (
+
+        const iconMarkup = renderToStaticMarkup(
+            <i className=" fa fa-cannabis fa-3x" />
+        );
+        const customMarkerIcon = divIcon({
+                html: iconMarkup
+            });
+
             <LeafletMap
                 center={this.state.mapCenter}
                 zoom={this.state.mapZoom}
@@ -67,7 +75,7 @@ class MapJ extends React.Component {
                 <TileLayer url={this.state.mapTilesStamen} />
                 <TileLayer url={this.state.mapOverlayStamen} />
 
-                <Marker position={this.state.marker}>
+                <Marker position={this.state.marker} icon={customMarkerIcon}>
                     <Popup>
                         <p>Hardcoded Marker</p>
                         {this.state.marker.join(", ")}
