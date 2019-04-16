@@ -101,13 +101,14 @@ export default class Chat extends React.Component {
         }, {
             id: 'itineraryLocation',
             user: true,
-            trigger: '7', // Feature to trigger for search functionality blocked
+            trigger: 'itineraryLocationSearch', 
         }, {
-            id: '7',
-            message: (({previousValue}) => {
-                localStorage.setItem('itineraryLocation', previousValue); 
-                return `Is it this one ah? ${previousValue}`}),
-            trigger: '8',
+            id: 'itineraryLocationSearch',
+            component: (
+                <SearchItineraryLocation />
+            ),
+            waitAction: true,
+            asMessage: true,
         }, {
             id: '8',
             options: [{
@@ -265,6 +266,8 @@ class ReviewItineraryPin extends React.Component {
         const location = localStorage.getItem('itineraryLocation');
         const time = localStorage.getItem('itineraryTime');
         const description = localStorage.getItem('itineraryDetails');
+        const latitude = localStorage.getItem('itineraryLatitude');
+        const longitude = localStorage.getItem('itineraryLongitude');
         
         axios({
             method: 'POST',
@@ -272,8 +275,8 @@ class ReviewItineraryPin extends React.Component {
             data: {
                 pinName: location,
                 userId: userId,
-                longitude: 37.0364, // dummy data
-                latitude: 28.8951, // dummy data
+                longitude: latitude,
+                latitude: longitude,
                 startTime: time,
                 description: description
             }
@@ -294,7 +297,85 @@ class ReviewItineraryPin extends React.Component {
   render() {
     return (
       <div>
-        Ok so you are going to {this.state.location} {this.state.description} at {this.state.time}? Aunty will check in then, lah!
+        Ok so you are going to {this.state.location} {this.state.description} at {this.state.time}? 
+        <br />
+        Aunty will check in then, lah!
+      </div>
+    );
+  }
+}
+
+class SearchItineraryLocation extends React.Component {
+    state = {
+        error: false,
+        name: '',
+        address: '',
+        loading: true
+    };
+        
+    componentWillMount() {
+        const googleKey = process.env.REACT_APP_GOOGLE_KEY;
+        const input = encodeURIComponent(this.props.steps.itineraryLocation.value.trim())
+        const radius = 200000
+        const userLat = localStorage.getItem('latitude')
+        const userLong = localStorage.getItem('longitude')
+        const userLocation = `circle:${radius}@${userLat},${userLong}`
+        
+        axios({
+            method: 'GET',
+            url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${input}&inputtype=textquery&fields=formatted_address,name,geometry&locationbias=${userLocation}&key=${googleKey}`,
+            withCredentials: false,
+            headers: {'Access-Control-Allow-Origin': '*'}
+        })
+        .then(response => {
+            console.log(response)
+            if (response.data.candidates) {
+                // this.setState({
+                //     name: response.data.candidates[0].name,
+                //     address: response.data.candidates[0]['formatted_address'],
+                //     loading: false
+                // })
+                // const lat = response.data.candidates[0]['geometry']['location']['lat']
+                // const lng = response.data.candidates[0]['geometry']['location']['lng']
+                // localStorage.setItem('itineraryLatitude', lat)
+                // localStorage.setItem('itineraryLongitude', lng)
+                // localStorage.setItem('itineraryLocation', this.state.name);
+                this.props.triggerNextStep({ trigger: '8' })
+            } else {
+                this.setState({
+                    error: true,
+                    loading: false,
+                })
+                this.props.triggerNextStep({ trigger: '5' })
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({
+                error: true,
+                loading: false
+            })
+            this.props.triggerNextStep({ trigger: '5' })
+        }) 
+  }
+
+  render() {
+    const { name, address, error, loading } = this.state;
+    return (
+      <div>
+          {
+            loading 
+            ? <p>Searching my phonebook...</p>
+            : error 
+                ? <p>
+                    I don't know where that is! Please try again.
+                  </p>
+                : <>
+                    <p>Is it this one ah?</p>
+                    <p><b>{ name }</b></p>
+                    <p>{ address }</p>
+                  </>
+          }
       </div>
     );
   }
