@@ -1,6 +1,5 @@
-// Jade's map main page goes here
-
 import React from 'react';
+import { renderToStaticMarkup } from "react-dom/server";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import CreatePinModal from '../containers/CreatePinModal';
 
@@ -38,7 +37,7 @@ class MapJ extends React.Component {
         console.log(this.state.clickedMarker)
     }
 
-    handleMarkerClick = (e) => {
+    handleMarkerClick = (e) => {s
         console.log('clicked on this marker')
     }
 
@@ -75,16 +74,9 @@ class MapJ extends React.Component {
                     </Popup>
                 </Marker>
 
-                {this.state.markers.map((marker, index) =>
-                    <Marker key={index} position={[marker.lat, marker.lng]}>
-                        <Popup>
-                            <p>{marker.name}</p>
-                        </Popup>
-                    </Marker>
-                )}
 
                 {this.state.clickedMarker.length > 0
-                    ? <Marker position = {this.state.clickedMarker} onclick={this.toggleModal}></Marker>
+                    ? <Marker className="new-marker" position = {this.state.clickedMarker} onclick={this.toggleModal}></Marker>
                     : null
                     // create a marker onclick with a modal pop-up to create a new marker.
                 }
