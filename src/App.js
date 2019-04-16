@@ -16,13 +16,10 @@ class App extends Component {
       <div align="center">
         <img src={aunty} alt="aunty" width="250px" /><br /><br />
         <Link to="/">Home</Link><br /><br />
-
-
         <Route exact path="/" component={Home} />
         <Route exact path="/chat" component={Chat} />
         <Route exact path="/mapy" component={MapY} />
         <Route exact path="/mapj" component={MapJ} />
-
       </div>
     )
   }
