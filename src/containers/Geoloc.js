@@ -6,6 +6,7 @@ import Map from './Map'
 
 class Geoloc extends React.Component {
     render() {
+        console.log(this.props)
         return !this.props.isGeolocationAvailable
             ? <div>Your browser does not support Geolocation</div>
             : !this.props.isGeolocationEnabled

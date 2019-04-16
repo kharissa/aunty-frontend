@@ -4,14 +4,21 @@ import { geolocated } from 'react-geolocated';
 
 import Geoloc from '../containers/Geoloc'
 
-class Geolocation extends React.Component {
+export default class Geolocation extends React.Component {
     render() {
         return (
             <div>
-                <Geoloc />
+                <Geoloc {...this.props} />
             </div>
         );
     }
 }
 
-export default Geolocation;
+const Main = geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})(Geoloc);
+
+ReactDOM.render(<Main />, document.getElementById('root'));
