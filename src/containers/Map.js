@@ -9,9 +9,7 @@ class AddressControl extends MapControl {
     }
 }
 
-
-
-class Map extends React.Component {
+export default class Map extends React.Component {
     state = {
         markers: [
             { "id": 1, "lat": 3.1348112113359, "lng": 101.62996282434, "category": "Snatch" },
@@ -19,12 +17,9 @@ class Map extends React.Component {
     }
 
     // API Called to Database
-
-
     render() {
         const AddressSearch = withLeaflet(AddressControl)
         return (
-
             <LeafletMap
                 center={[this.props.my_lat, this.props.my_lng]}
                 zoom={15}
@@ -44,9 +39,9 @@ class Map extends React.Component {
 
                 <AddressSearch />
 
-                {this.state.markers.map(marker =>
-                    <Marker position={[marker.lat, marker.lng]}>
-                        <Popup>
+                {this.state.markers.map((marker, index) =>
+                    <Marker key={index} position={[marker.lat, marker.lng]}>
+                        <Popup key={index}>
                             {marker.category}
                         </Popup>
                     </Marker>
@@ -56,5 +51,3 @@ class Map extends React.Component {
         );
     }
 }
-
-export default Map
