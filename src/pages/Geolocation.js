@@ -19,12 +19,12 @@ export default class Geolocation extends React.Component {
     render() {
         return (
             !this.state.isGeolocationAvailable
-            ? <div>Your browser does not support Geolocation</div>
-            : !this.state.isGeolocationEnabled
-                ? <div>Geolocation is not enabled</div>
-                : this.state.latitude
-                    ? <Map my_lat={this.state.latitude} my_lng={this.state.longitude} />
-                    : <div>Getting the location data&hellip;</div>
+                ? <div>Your browser does not support Geolocation</div>
+                : !this.state.isGeolocationEnabled
+                    ? <div>Geolocation is not enabled</div>
+                    : this.state.latitude
+                        ? <Map my_lat={this.state.latitude} my_lng={this.state.longitude} />
+                        : <div>Getting the location data&hellip;</div>
         )
     }
 }
