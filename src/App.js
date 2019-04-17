@@ -4,8 +4,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
-import Geolocation from './components/Geolocation'
-import MapJ from './pages/MapJ.js'
+import Map from './pages/Map.js'
 import aunty from './images/aunty.jpg'
 import './App.css';
 
@@ -25,8 +24,7 @@ class App extends Component {
           <Link to="/">Home</Link><br /><br />
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/geolocation" component={Geolocation} />
-          <Route exact path="/mapj" component={MapJ} />
+          <Route exact path="/map" component={Map} />
         </div>
       </ToastProvider>
     )

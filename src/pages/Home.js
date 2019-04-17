@@ -22,8 +22,7 @@ class Homepage extends React.Component {
         return (
             <div>
             <Link to="/chat">Chat with Aunty</Link> <br />
-            <Link to="/geolocation">Geolocation</Link> <br />
-            <Link to="/mapj">Jade's Map</Link> <br /> <br />
+            <Link to="/map">Map</Link> <br />
             <Button outline color="primary" onClick={this.showModal}>Register / Login</Button>
             <p>This is the home page. <br/>Wait ah, Aunty still building.</p>
             <Modal isOpen={this.state.modal} toggle={this.showModal}/>

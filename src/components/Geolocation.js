@@ -37,9 +37,9 @@ export default class Geolocation extends React.Component {
         else if (this.state.latitude){
             console.log(this.state.latitude)
             return (
-                    <Marker position={[this.state.latitude, this.state.longitude]} icon={geolocIcon}>
-                        <Popup>Geolocated Position</Popup>
-                    </Marker>
+                <Marker position={[this.state.latitude, this.state.longitude]} icon={geolocIcon}>
+                    <Popup>Geolocated Position</Popup>
+                </Marker>
             )
         }
         else {
