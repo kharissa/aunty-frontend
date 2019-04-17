@@ -236,3 +236,8 @@ code {
 .fa-cannabis {
   color: green;
 }
+
+.fa-circle {
+  color: orangered;
+  text-shadow: -1px 2.5px 2.5px gray
+}

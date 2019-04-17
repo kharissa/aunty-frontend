@@ -1,7 +1,7 @@
 import React from 'react'
 import { Map as LeafletMap, TileLayer, Marker, Popup, withLeaflet, MapControl } from 'react-leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch"
-import Geolocation from '../pages/Geolocation.js'
+import Geolocation from '../components/Geolocation.js/index.js'
 
 class AddressControl extends MapControl {
     createLeafletElement() {

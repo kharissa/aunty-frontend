@@ -4,7 +4,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
-import Geolocation from './pages/Geolocation'
+import Geolocation from './components/Geolocation'
 import MapJ from './pages/MapJ.js'
 import aunty from './images/aunty.jpg'
 import './App.css';

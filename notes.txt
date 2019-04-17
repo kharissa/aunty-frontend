@@ -4,7 +4,13 @@ git merge map-jn with master
 
 
 
+Map Tiles
 
+// url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+{/* <TileLayer url={this.state.mapOverlayStamen} /> */}
+mapTilesStamen: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+mapOverlayStamen: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png',
+mapTilesMapTiler: 'https://api.maptiler.com/maps/positron/{z}/{x}/{y}.png?key=QQTisrA3O6303lHbHZ4u',
 
 
 class App extends Component {
