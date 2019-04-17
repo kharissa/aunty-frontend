@@ -17,20 +17,31 @@
 //         })
 //     }
 //     render() {
-//         return (
-//             !this.state.isGeolocationAvailable
-//                 ? <div>Your browser does not support Geolocation</div>
-//                 : !this.state.isGeolocationEnabled
-//                     ? <div>Geolocation is not enabled</div>
-//                     : this.state.latitude
-//                         ? <Map my_lat={this.state.latitude} my_lng={this.state.longitude} />
-//                         : <div>Getting the location data&hellip;</div>
-//         )
+//         if (!this.state.isGeolocationAvailable) {
+//             return (
+//             <div>Your browser does not support Geolocation</div>
+//             )
+//         }
+//         else if (!this.state.isGeolocationEnabled){
+//             return (
+//             <div>Geolocation is not enabled</div>
+//             )
+//         }
+//         else if (this.state.latitude)
+//             return(
+//                 <Map my_lat={this.state.latitude} my_lng={this.state.longitude} />
+//             )
+//         else {
+//             return(
+//                 <div>Getting the location data&hellip;</div>
+//             )
+//         }
 //     }
 // }
 
+
 import React from 'react';
-import Map from '../containers/Map'
+import { Marker, Popup } from 'react-leaflet';
 
 export default class Geolocation extends React.Component {
     state = {
@@ -50,20 +61,25 @@ export default class Geolocation extends React.Component {
     render() {
         if (!this.state.isGeolocationAvailable) {
             return (
-            <div>Your browser does not support Geolocation</div>
+                <div>Your browser does not support Geolocation</div>
             )
         }
-        else if (!this.state.isGeolocationEnabled){
+        else if (!this.state.isGeolocationEnabled) {
             return (
-            <div>Geolocation is not enabled</div>
+                <div>Geolocation is not enabled</div>
             )
         }
-        else if (this.state.latitude)
-            return(
-                <Map my_lat={this.state.latitude} my_lng={this.state.longitude} />
+        else if (this.state.latitude){
+            console.log(this.state.latitude)
+            console.log(this.state.longitude);
+            return (
+                    <Marker position={[this.state.latitude, this.state.longitude]}>
+                        <Popup>Geolocated Position</Popup>
+                    </Marker>
             )
+        }
         else {
-            return(
+            return (
                 <div>Getting the location data&hellip;</div>
             )
         }

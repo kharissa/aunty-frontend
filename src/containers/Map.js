@@ -1,6 +1,7 @@
 import React from 'react'
 import { Map as LeafletMap, TileLayer, Marker, Popup, withLeaflet, MapControl } from 'react-leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch"
+import Geolocation from '../pages/Geolocation.js'
 
 class AddressControl extends MapControl {
     createLeafletElement() {
@@ -38,6 +39,7 @@ export default class Map extends React.Component {
                 />
 
                 <AddressSearch />
+
 
                 {this.state.markers.map((marker, index) =>
                     <Marker key={index} position={[marker.lat, marker.lng]}>

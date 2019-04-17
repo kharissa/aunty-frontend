@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
 import { divIcon } from 'leaflet';
+import Geolocation from '../pages/Geolocation.js'
 
 
 class MapJ extends React.Component {
@@ -25,6 +26,8 @@ class MapJ extends React.Component {
             clickedMarker : [],
             modal: false,
             isOpen: false,
+            geolocLat: 0,
+            geolocLng: 0,
         }
     }
 
@@ -75,12 +78,16 @@ class MapJ extends React.Component {
                 <TileLayer url={this.state.mapTilesCarto} />
                 {/* <TileLayer url={this.state.mapOverlayStamen} /> */}
 
+                <Geolocation />
+{/*
                 <Marker position={this.state.marker} icon={cannaIcon}>
                     <Popup>
                         <p>Hardcoded Marker</p>
                         {this.state.marker.join(", ")}
                     </Popup>
                 </Marker>
+
+
 
                 { this.state.markers.map((marker, index) =>
                         <Marker key={index} position={[marker.lat, marker.lng]}
@@ -96,7 +103,7 @@ class MapJ extends React.Component {
                     ? <Marker className="new-marker" position = {this.state.clickedMarker} onclick={this.toggleModal}></Marker>
                     : null
                     // create a marker onclick with a modal pop-up to create a new marker.
-                }
+                } */}
 
                 <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
 
