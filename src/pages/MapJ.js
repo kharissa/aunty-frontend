@@ -84,7 +84,7 @@ class MapJ extends React.Component {
 
                 { this.state.markers.map((marker, index) =>
                         <Marker key={index} position={[marker.lat, marker.lng]}
-                        icon={marker.category == "Theft" ? theftIcon : murderIcon}
+                        icon={marker.category === "Theft" ? theftIcon : murderIcon}
                         >
                             <Popup>
                                 <p>{marker.name}</p>
