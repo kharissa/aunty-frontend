@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class CreatePinModal extends React.Component {
+class CreatePin extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -33,4 +33,4 @@ class CreatePinModal extends React.Component {
     }
 }
 
-export default CreatePinModal;
+export default CreatePin;

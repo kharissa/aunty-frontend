@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderToStaticMarkup } from "react-dom/server";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
-import CreatePinModal from '../containers/CreatePinModal';
+import CreatePin from '../containers/CreatePin';
 import { divIcon } from 'leaflet';
 
 
@@ -98,7 +98,7 @@ class MapJ extends React.Component {
                     // create a marker onclick with a modal pop-up to create a new marker.
                 }
 
-                <CreatePinModal modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
+                <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
 
             </LeafletMap>
         );
