@@ -12,36 +12,3 @@ mapTilesStamen: 'http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 mapOverlayStamen: 'http://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.png',
 mapTilesMapTiler: 'https://api.maptiler.com/maps/positron/{z}/{x}/{y}.png?key=QQTisrA3O6303lHbHZ4u',
 
-
-class App extends Component {
-  constructor() {
-    super()
-    this.handleButtonPress = this.handleButtonPress.bind(this)
-    this.handleButtonRelease = this.handleButtonRelease.bind(this)
-  }
-  handleButtonPress () {
-    this.buttonPressTimer = setTimeout(() => alert('long press activated'), 1500);
-  }
-
-  handleButtonRelease () {
-    clearTimeout(this.buttonPressTimer);
-  }
-
-  render() {
-    return (
-      <div
-          onTouchStart={this.handleButtonPress}
-          onTouchEnd={this.handleButtonRelease}
-          onMouseDown={this.handleButtonPress}
-          onMouseUp={this.handleButtonRelease}
-          onMouseLeave={this.handleButtonRelease}>
-        Button
-      </div>
-    );
-  }
-}
-
-
-    // handleMapPress = (e) => {
-    //     this.setState({ clickTime })
-    // }

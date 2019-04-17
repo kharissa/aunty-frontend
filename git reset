@@ -1,0 +1,350 @@
+[33mcommit 96b3dac10b0fb33b06fa6da44edc45ee07e86c18[m[33m ([m[1;36mHEAD -> [m[1;32mmap-jn[m[33m)[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 16:32:12 2019 +0800
+
+    move Geolocation.js to components
+
+[33mcommit 3af558ab8db79eade1d9f6e5b1b78c33cdd78355[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 13:46:38 2019 +0800
+
+    give geolocation a marker
+
+[33mcommit f7ce6051555bd59baa0b2e32eb4652f10961f49a[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 13:43:25 2019 +0800
+
+    convert Geolocation.js to a component layer over base map
+
+[33mcommit c9b3fa06e1d42cc1afb046344464f4cfc81f8857[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 12:32:46 2019 +0800
+
+    update nested ternaries in Geolocation.js to if-else statement
+
+[33mcommit 6bea18ea163404c7d7680bdc7f0d8effd72177b8[m
+Merge: 84856a6 c75c217
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 11:22:20 2019 +0800
+
+    fixed conflicts from merge
+
+[33mcommit 84856a653eb07d6f6ba991a76b71b99cb0af95a9[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 11:12:07 2019 +0800
+
+    merge with master
+
+[33mcommit a9d99ca21c00a7db460dc4a1fee7b57348921c9e[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Wed Apr 17 10:52:10 2019 +0800
+
+    update map tiles to Carto Positron
+
+[33mcommit c75c2176eea99c5984da3899532130c19ed9017b[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: c7931cc 3f72a1b
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Tue Apr 16 21:26:33 2019 +0800
+
+    Merge pull request #10 from kharissa/bug/fix-missing-brace-in-package-json
+    
+    Fix missing curly brace in package-lock.json
+
+[33mcommit 3f72a1b1baa7df6764034e6a28007df592c7e9aa[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Tue Apr 16 20:13:55 2019 +0800
+
+    Fix missing end curly brace in package.json
+
+[33mcommit 4650f09e7a558ec5e5a57618e5631e604d1f01e0[m[33m ([m[1;31morigin/map-jn[m[33m)[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Tue Apr 16 15:31:56 2019 +0800
+
+    add changing icons based on pin categories
+
+[33mcommit c7931cc346437d56cb587e99219fdff3a70826c4[m
+Merge: 75e467b fb61b82
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Tue Apr 16 14:33:39 2019 +0800
+
+    Merge pull request #6 from kharissa/feat/chatbot-retrieve-info
+    
+    Create itinerary pin from chatbot conversation
+
+[33mcommit fb61b8249b710c47b7b1e02cde2f4f0d9fdfe5fa[m
+Merge: 2783316 75e467b
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Tue Apr 16 11:41:32 2019 +0800
+
+    Merge branch 'master' into feat/chatbot-retrieve-info
+
+[33mcommit 4d8d527d673c1a4dac071229cf81933a5ab84e9e[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Tue Apr 16 11:30:51 2019 +0800
+
+    add creating custom icons
+
+[33mcommit 6b9ad943ae6b25db6fa1907b59bccd74ff0c6dd0[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Tue Apr 16 11:27:53 2019 +0800
+
+    add fontawesome icons css & updated leaflet css on index.html
+
+[33mcommit b329613440f585763aff778ee9e1648d89a83688[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Tue Apr 16 11:26:35 2019 +0800
+
+    add base leaflet to create custom icons
+
+[33mcommit 75e467bbb8e07a3ae84c900af542f3c877c1c3cd[m
+Merge: d941af4 0fac242
+Author: Yong Ng <47735034+Yongggggg@users.noreply.github.com>
+Date:   Tue Apr 16 10:53:05 2019 +0800
+
+    Merge pull request #8 from kharissa/search
+    
+    Search Box
+
+[33mcommit 0fac2428a0e549c9ba96e1bb93ad8526bda21325[m
+Merge: 9a791cc d941af4
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Tue Apr 16 10:52:19 2019 +0800
+
+    Search Bar is IN
+
+[33mcommit 9a791cc9c8b86bd5c1bdc4d07e5c86a0d4bf9c31[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Tue Apr 16 09:53:03 2019 +0800
+
+    Search Box in Map
+
+[33mcommit 4fb443ac8daf23ed12adbbcbf11a1a49d8959b3b[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Tue Apr 16 09:44:52 2019 +0800
+
+    geolocation
+
+[33mcommit 2783316b2acd019286b8596e148b325ea569b88b[m
+Merge: 75334b8 d941af4
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Mon Apr 15 21:12:48 2019 +0800
+
+    Merge branch 'master' into feat/chatbot-retrieve-info
+
+[33mcommit d941af4b242c81f893584ee70d239af6d5e5ceba[m
+Merge: 89a6901 eee4266
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Mon Apr 15 21:10:23 2019 +0800
+
+    Merge pull request #7 from kharissa/MapY
+    
+    Geolocation
+
+[33mcommit eee42663dcb84ee7b19a313266a62cb933426c76[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Mon Apr 15 21:08:45 2019 +0800
+
+    Add key index to map of markers
+
+[33mcommit 6951b70b1242ed5df6f2a486259153ecf0954e40[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Mon Apr 15 21:00:31 2019 +0800
+
+    Condensed map files, moved geolocation to wrap App
+
+[33mcommit 2a7009492dbd28983df3f008a50ce9d9d3d47291[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Mon Apr 15 17:43:13 2019 +0800
+
+    search box
+
+[33mcommit 2317c7696bd89590361b76fb1e15a5aabffba8d2[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 17:41:59 2019 +0800
+
+    open modal when clicking on new marker
+
+[33mcommit 7d22cbcc67919b11676a2989129daab9c1fccb35[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Mon Apr 15 17:18:52 2019 +0800
+
+    search box
+
+[33mcommit e2695d3655d5c9534704e200a10dd5c12aab8b0a[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 17:11:55 2019 +0800
+
+    create marker when clicking on map
+
+[33mcommit 75334b8017b7ece3b9faa49ef92acc8bc82efd84[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Mon Apr 15 16:59:47 2019 +0800
+
+    Update chat component to save itinerary data
+
+[33mcommit d8b4ba9d101cd97cdcf20bb6cf842bf4d0029c9a[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 14:33:08 2019 +0800
+
+    move leaflet style from index.html to index.css
+
+[33mcommit 1508d62a2e8c02b17c167f0551bb32eeaa4b3ef9[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Mon Apr 15 13:13:58 2019 +0800
+
+    geolocation
+
+[33mcommit e68d7310cc6f7730d463a0745117637ba2a39062[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 12:29:48 2019 +0800
+
+    populate markers from list
+
+[33mcommit 9871f67bf4175a09b52afc20f9478fee944bfc77[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 11:08:39 2019 +0800
+
+    add getting coordinates by map onClick
+
+[33mcommit 040ef0075fd31dfbd206a8599f9dfd235b4ab06f[m
+Merge: 5680b10 89a6901
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Mon Apr 15 10:39:40 2019 +0800
+
+    current update
+
+[33mcommit 21f1d03666f25a284677fb62bf2e257ee418c964[m
+Merge: cab247c 89a6901
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 10:35:31 2019 +0800
+
+    Merge remote-tracking branch 'origin' into map-jn
+
+[33mcommit 5680b10fd4d539a161ca6bccb7034b673b10579c[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Mon Apr 15 10:24:10 2019 +0800
+
+    to switch branch
+
+[33mcommit cab247cb2ff2d5e37f748a8825adb32c6b3bbbd0[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Mon Apr 15 10:23:45 2019 +0800
+
+    add Loading component, Stamen Map Tiles
+
+[33mcommit 3a1869fa9dc0dd6f3da55eb37cb06ee6a0d16076[m
+Author: Yongggggg <ngyong09@gmail.com>
+Date:   Mon Apr 15 10:15:19 2019 +0800
+
+    MapY, Map showing pins, Geolocation
+
+[33mcommit 89a6901cb03ec12b7028fb645a121fa27199712a[m
+Merge: 692b7f0 a687672
+Author: Yong Ng <47735034+Yongggggg@users.noreply.github.com>
+Date:   Sun Apr 14 19:45:19 2019 +0800
+
+    Merge pull request #5 from kharissa/feat/add-register-login-forms
+    
+    Feat/add register login forms
+
+[33mcommit a68767277f2366f52b3df46fdc5f811525057bcf[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Sun Apr 14 19:11:56 2019 +0800
+
+    Complete login form, turn autoComplete for password off
+
+[33mcommit 1c6cc8e996d2ef258528d3aaef1b1d4faba8c3b0[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Sun Apr 14 19:00:56 2019 +0800
+
+    Add registration form, availty validation, and react toasts
+
+[33mcommit 98a1183e03a1af2ea491d7b8b1f59ca8dc283aa8[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Fri Apr 12 20:20:28 2019 +0800
+
+    add map base to MapJ
+
+[33mcommit 692b7f053a177c7d2c63592fbad78dde7549b840[m
+Merge: 85e6429 e869ccb
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Fri Apr 12 20:10:52 2019 +0800
+
+    Merge pull request #4 from kharissa/routers
+    
+    Routers
+
+[33mcommit 44eb0c958b0d22d8f2762589dffd4205ff6d6f77[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Fri Apr 12 20:02:27 2019 +0800
+
+    add css & style for react-leaflet in index.html
+
+[33mcommit c35b835be26a27d02024b2598569e69a5d2de373[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Fri Apr 12 20:01:01 2019 +0800
+
+    install react-leaflet
+
+[33mcommit e869ccb9bba3efe1ac74fbf9ba000ccaba640c93[m[33m ([m[1;31morigin/routers[m[33m, [m[1;32mrouters[m[33m)[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Fri Apr 12 19:40:43 2019 +0800
+
+    rework folder structure; move Chat.js to pages, create Home
+
+[33mcommit 85e64298042d4ebee0eb84ebcf62c4b26c7ca20f[m
+Author: jnsy <jadensy99@gmail.com>
+Date:   Fri Apr 12 18:42:18 2019 +0800
+
+    add react-router-dom
+
+[33mcommit e5dd6357b39c52a6497a0fd9f87119e862a129d4[m
+Merge: 5c9cf3a 3364342
+Author: jade n <jadensy99@gmail.com>
+Date:   Fri Apr 12 18:30:55 2019 +0800
+
+    Merge pull request #3 from kharissa/feat/add-reactstrap
+    
+    Update to reactstrap, remove react bootstrap
+
+[33mcommit 336434299272576289c65244e49096c1008bdb4b[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Fri Apr 12 18:29:26 2019 +0800
+
+    Update to reactstrap, remove react bootstrap
+
+[33mcommit 5c9cf3a758c4bfd43320bdea3a379b4ff811e720[m
+Merge: 7572387 95f6b4e
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Fri Apr 12 18:03:44 2019 +0800
+
+    Merge pull request #2 from kharissa/chatbot
+    
+    Added chatbot scripts
+
+[33mcommit 95f6b4efde8353690a9ed7b7aaf849071b01e5dc[m
+Author: nyx-ell <nicole.linyx@gmail.com>
+Date:   Fri Apr 12 17:19:49 2019 +0800
+
+    Added chatbot scripts
+
+[33mcommit 7572387c54a22c3e9bd1a841e49af00150442c71[m
+Merge: e6e4fb0 5e59a99
+Author: Kharissa <kharissa@users.noreply.github.com>
+Date:   Thu Apr 11 14:19:39 2019 +0800
+
+    Merge pull request #1 from kharissa/feat/basic-chat-functionality
+    
+    Added chat function and bootstrap.css
+
+[33mcommit 5e59a998321d2f09363c66a2a3c4b2bf4c80185e[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Thu Apr 11 14:17:05 2019 +0800
+
+    Added chat function and bootstrap.css
+
+[33mcommit e6e4fb05116fa26bd27586f3b0748ce593b0a9d6[m
+Author: kharissa <kharissafernando@gmail.com>
+Date:   Thu Apr 11 12:23:33 2019 +0800
+
+    First commit
