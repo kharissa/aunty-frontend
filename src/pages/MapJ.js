@@ -1,8 +1,6 @@
 import React from 'react';
-import { renderToStaticMarkup } from "react-dom/server";
-import { Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
-import { divIcon } from 'leaflet';
 import Geolocation from '../components/Geolocation.js'
 import Pins from '../components/Pins.js'
 
@@ -11,7 +9,6 @@ class MapJ extends React.Component {
         super(props);
         this.state={
             clickTime: 0,
-            mapZoom: 15,
             currentZoom: 15,
             mapTilesCarto: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
             clickedMarker : [],
@@ -19,6 +16,13 @@ class MapJ extends React.Component {
             isOpen: false,
             myLat: 0,
             myLng: 0,
+            pins: [
+                { id: "1", lat: 3.124526, lng: 101.630016, name: "Test Marker 03", category: "Theft" },
+                { id: "2", lat: 3.134526, lng: 101.650016, name: "Test Marker 04", category: "Arson" },
+                { id: "3", lat: 3.234526, lng: 101.650016, name: "Test Marker 04", category: "Theft" },
+                { id: "4", lat: 3.133526, lng: 101.650016, name: "Test Marker 04", category: "Arson" },
+                { id: "5", lat: 3.123526, lng: 101.650016, name: "Test Marker 04", category: "Harassment" },
+            ],
         }
     }
 
@@ -27,6 +31,11 @@ class MapJ extends React.Component {
             myLat: localStorage.getItem('latitude'),
             myLng: localStorage.getItem('longitude'),
         });
+
+        // heroku api GET
+        // set GET to pins
+        // this.setState({ pins: })
+
     }
 
     handleClick = (e) => {
@@ -46,11 +55,6 @@ class MapJ extends React.Component {
      }
 
     render() {
-
-        const cannaIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-cannabis fa-3x" />) });
-        const theftIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-angry fa-3x" />) });
-        const murderIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-skull fa-3x" />) });
-
         return (
             <LeafletMap
                 center={[this.state.myLat, this.state.myLng]}
@@ -68,23 +72,13 @@ class MapJ extends React.Component {
 
                 <TileLayer url={this.state.mapTilesCarto} />
 
-
                 <Geolocation getGeoloc={this.getGeoloc} />
-                <Pins currentZoom={this.state.currentZoom}/>
-
-                {/* { this.state.markers.map((marker, index) =>
-                    <Marker key={index} position={[marker.lat, marker.lng]}
-                        icon={marker.category === "Theft" ? theftIcon : murderIcon} >
-                        <Popup>
-                            <p>{marker.name}</p>
-                        </Popup>
-                    </Marker>
-                )} */}
+                <Pins currentZoom={this.state.currentZoom} pins={this.state.pins} />
 
                 {this.state.clickedMarker.length > 0
                     ? <Marker className="new-marker" position = {this.state.clickedMarker} onclick={this.toggleModal}></Marker>
                     : null
-                    // create a marker onclick with a modal pop-up to create a new marker.
+                    // create a marker onclick, with a modal pop-up to create a new marker.
                 }
 
                 <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
