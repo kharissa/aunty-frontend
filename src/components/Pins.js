@@ -11,6 +11,9 @@ export default class Pins extends React.Component {
             pins: [
                 { id: "1", lat: 3.124526, lng: 101.630016, name: "Test Marker 03", category: "Theft" },
                 { id: "2", lat: 3.134526, lng: 101.650016, name: "Test Marker 04", category: "Arson" },
+                { id: "3", lat: 3.234526, lng: 101.650016, name: "Test Marker 04", category: "Arson" },
+                { id: "4", lat: 3.133526, lng: 101.650016, name: "Test Marker 04", category: "Arson" },
+                { id: "5", lat: 3.123526, lng: 101.650016, name: "Test Marker 04", category: "Arson" },
             ],
         }
     }
@@ -30,17 +33,19 @@ export default class Pins extends React.Component {
         const murderIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-skull fa-3x" />) });
 
         //if else statement to determine icon types
+        console.log(this.props.currentZoom);
 
         return(
             <>
-            { this.state.pins.map((pin, index) =>
-                <Marker key={index} position={[pin.lat, pin.lng]}
-                    icon={pin.category === "Theft" ? theftIcon : murderIcon} >
-                    <Popup>
-                        <p>{pin.name}</p>
-                    </Popup>
-                </Marker>
-            )}
+            { this.props.currentZoom <= 11 ? null :
+                 this.state.pins.map((pin, index) =>
+                    <Marker key={index} position={[pin.lat, pin.lng]}
+                        icon={pin.category === "Theft" ? theftIcon : murderIcon} >
+                        <Popup>
+                            <p>{pin.name}</p>
+                        </Popup>
+                    </Marker>
+                )}
             </>
         )
     }

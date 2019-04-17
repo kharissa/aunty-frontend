@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderToStaticMarkup } from "react-dom/server";
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
 import { divIcon } from 'leaflet';
 import Geolocation from '../components/Geolocation.js'
@@ -12,13 +12,8 @@ class MapJ extends React.Component {
         this.state={
             clickTime: 0,
             mapZoom: 15,
+            currentZoom: 15,
             mapTilesCarto: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
-            marker: [3.134526, 101.670016],
-            markers: [
-                { id: "1", lat: 3.134526, lng: 101.630016, name: "Test Marker 01", category: "Theft" },
-                { id: "2", lat: 3.154526, lng: 101.650016, name: "Test Marker 02", category: "Arson" },
-                // to GET data from API
-            ],
             clickedMarker : [],
             modal: false,
             isOpen: false,
@@ -46,6 +41,10 @@ class MapJ extends React.Component {
         }))
     }
 
+    onZoomEvent = (e) => {
+        this.setState({ currentZoom: e.target.getZoom() })
+     }
+
     render() {
 
         const cannaIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-cannabis fa-3x" />) });
@@ -55,7 +54,7 @@ class MapJ extends React.Component {
         return (
             <LeafletMap
                 center={[this.state.myLat, this.state.myLng]}
-                zoom={this.state.mapZoom}
+                zoom={this.state.currentZoom}
                 maxZoom={20}
                 attributionControl={true}
                 zoomControl={true}
@@ -64,13 +63,14 @@ class MapJ extends React.Component {
                 dragging={true}
                 animate={true}
                 easeLinearity={0.35}
-                onclick={this.handleClick} >
+                onclick={this.handleClick}
+                onZoomend={this.onZoomEvent} >
 
                 <TileLayer url={this.state.mapTilesCarto} />
 
 
                 <Geolocation getGeoloc={this.getGeoloc} />
-                <Pins />
+                <Pins currentZoom={this.state.currentZoom}/>
 
                 {/* { this.state.markers.map((marker, index) =>
                     <Marker key={index} position={[marker.lat, marker.lng]}
