@@ -2,14 +2,35 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
-import Home from './pages/Home.js'
-import Chat from './pages/Chat.js'
-import Geolocation from './pages/Geolocation'
-import MapJ from './pages/MapJ.js'
-import aunty from './images/aunty.jpg'
+import Home from './pages/Home.js';
+import Chat from './pages/Chat.js';
+import Geolocation from './pages/Geolocation';
+import MapJ from './pages/MapJ.js';
+import aunty from './images/aunty.jpg';
+import axios from 'axios';
+// import { notificationItinerary } from './containers/Notification';
 import './App.css';
 
 class App extends Component {
+  notificationItinerary = () => {
+    const token = localStorage.getItem('token')
+    console.log('this funciton works')
+    axios({
+      method: 'GET',
+      url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        console.log(response)
+      })
+  }
+
+  componentDidMount() {
+    this.notificationItinerary();
+  }
+
   render() {
     if (this.props.coords) {
       localStorage.setItem('latitude', this.props.coords.latitude)
