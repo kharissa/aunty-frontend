@@ -6,9 +6,29 @@ class CreatePin extends React.Component {
         super(props);
         this.state = {
             autoFocus: true,
+            name: '',
+            description: '',
+            longitude: '',
+            latitude: '',
+            is_safe: false,
+            category: '',
+            radius: '',
+            is_public: true,
         };
     }
 
+    handleInput = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        // axios({
+        //     // POST to API with Pin Da
+        // })
+        console.log(this.state);
+    }
     render() {
 
         const closeBtn = <button className="close" onClick={this.props.toggleModal}>
