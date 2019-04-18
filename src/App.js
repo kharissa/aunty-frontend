@@ -8,7 +8,9 @@ import Map from './pages/Map.js'
 import aunty from './images/aunty.jpg'
 import './App.css';
 
+
 class App extends Component {
+
   render() {
     if (this.props.coords) {
       localStorage.setItem('latitude', this.props.coords.latitude)

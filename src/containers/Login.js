@@ -21,7 +21,7 @@ export default class Login extends React.Component{
             // Send POST request with login information
             // In production build, remove localhost
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/sessions/',
+            url: 'http://192.168.1.184:5000/api/v1/sessions/',
             data: {
                 email: this.state.loginEmail,
                 password: this.state.loginPassword

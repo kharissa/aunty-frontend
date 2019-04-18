@@ -50,17 +50,16 @@ export default class Pins extends React.Component {
     render() {
         return(
             <>
-            { this.props.currentZoom <= 5 ? null : // show icons based on current map level
-                this.props.pins.map((pin, index) =>
-                    <Marker key={index} position={[pin.lat, pin.lng]}
-                        icon={this.giveIcon(pin.category)} >
-                        <Popup>
-                            <p>{pin.name}</p>
-                        </Popup>
-                    </Marker>
-                )
-            }
+            { this.props.pins.map((pin, index) =>
+                <Marker key={pin.id} position={[Number(pin.latitude), Number(pin.longitude)]}
+               icon={this.giveIcon(pin.category)} >
+                    <Popup>
+                        <p>{pin.category}</p>
+                    </Popup>
+                </Marker>
+            )}
             </>
         )
     }
 }
+

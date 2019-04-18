@@ -24,7 +24,7 @@ export default class Register extends React.Component {
         axios({
             // Send POST request with registration information
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/users/',
+            url: 'http://192.168.1.184:5000/api/v1/users/',
             data: {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
