@@ -88,7 +88,7 @@ export default class Login extends React.Component{
                 </AvForm>
             </ModalBody>
             <ModalFooter>
-                <Button form="login" color="primary" type="submit">Login</Button>
+                <Button className="btn-lg" form="login" color="primary" type="submit">Login</Button>
             </ModalFooter>
         </>
         )

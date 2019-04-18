@@ -7,7 +7,6 @@ import Chat from './pages/Chat.js'
 import Geolocation from './pages/Geolocation'
 import MapJ from './pages/MapJ.js'
 import aunty from './images/aunty.jpg'
-import './App.css';
 
 class App extends Component {
   render() {

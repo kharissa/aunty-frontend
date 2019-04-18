@@ -240,7 +240,7 @@ export default class Register extends React.Component {
                     </AvForm>
                 </ModalBody>
                 <ModalFooter>
-                    <Button form="register" color="primary" type="submit">Register</Button>
+                    <Button className="btn-lg" form="register" color="primary" type="submit">Register</Button>
                 </ModalFooter>
             </>
         )
