@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import './App.css';
 import { Route, Link } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
-import Geolocation from './pages/Geolocation'
 import MapJ from './pages/MapJ.js'
+import Sos from './pages/Sos.js'
+import Geolocation from './pages/Geolocation'
 import aunty from './images/aunty.jpg'
 import './App.css';
 
@@ -27,6 +29,8 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/geolocation" component={Geolocation} />
           <Route exact path="/mapj" component={MapJ} />
+          <Route exact path="/sos" component={Sos} />
+
         </div>
       </ToastProvider>
     )

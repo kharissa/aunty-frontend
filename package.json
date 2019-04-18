@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "availity-reactstrap-validation": "^2.5.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "leaflet": "^1.4.0",
     "leaflet-geosearch": "^2.7.0",
     "react": "^16.8.6",
