@@ -160,6 +160,83 @@ export default class Register extends React.Component {
                                 </AvGroup>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                <p>Please add at least one emergency contact. We will message your contacts if Aunty is not able to reach you.</p>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Name</Label>
+                                    <AvInput
+                                        name="contactName"
+                                        type="text"
+                                        placeholder="Contact Name"
+                                        aria-describedby="inputGroupPrepend"
+                                        value={this.state.contactName} onChange={this.handleInput}
+                                        id="contactName"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please enter a  name.
+                                    </AvFeedback>
+                                </AvGroup>
+                            </Col>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Email</Label>
+                                    <AvInput
+                                        name="contactEmail"
+                                        type="text"
+                                        placeholder="Contact Email"
+                                        aria-describedby="inputGroupPrepend"
+                                        value={this.state.contactEmail} onChange={this.handleInput}
+                                        id="contactEmail"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please enter an email.
+                                    </AvFeedback>
+                                </AvGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Location</Label>
+                                    <AvInput
+                                        name="contactLocation"
+                                        type="text"
+                                        placeholder="Contact Location"
+                                        aria-describedby="inputGroupPrepend"
+                                        value={this.state.contactLocation} onChange={this.handleInput}
+                                        id="contactLocation"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please specify if your contact is local or foreign.
+                                    </AvFeedback>
+                                </AvGroup>
+                            </Col>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Relationship</Label>
+                                    <AvInput
+                                        name="contactRelationship"
+                                        type="text"
+                                        placeholder="Contact Relationship"
+                                        aria-describedby="inputGroupPrepend"
+                                        value={this.state.contactRelationship} onChange={this.handleInput}
+                                        id="contactRelationship"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please define what your relationship is to this contact.
+                                    </AvFeedback>
+                                </AvGroup>
+                            </Col>
+                        </Row>
                     </AvForm>
                 </ModalBody>
                 <ModalFooter>
