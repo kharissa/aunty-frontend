@@ -1,12 +1,18 @@
 import { withLeaflet, MapControl } from "react-leaflet";
-import { OpenStreetMapProvider, GeoSearchControl } from "leaflet-geosearch";
+import { GoogleProvider, GeoSearchControl } from "leaflet-geosearch";
 
 class GeoSearch extends MapControl {
     createLeafletElement(opts) {
-        const provider = new OpenStreetMapProvider();
+        const provider = new GoogleProvider({
+            params: {
+                key: process.env.REACT_APP_GOOGLE_API_KEY
+            },
+        });
+
         const searchControl = new GeoSearchControl({
             provider: provider,
-            position: "topleft"
+            position: "topleft",
+            style: 'bar'
         });
         return searchControl;
     }
