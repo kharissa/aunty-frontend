@@ -3,6 +3,7 @@ import { Button, Row, Col, Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import Ringtone from '../components/ringtone'
 
 export default class Call extends React.Component {
     state = {
@@ -89,6 +90,7 @@ export default class Call extends React.Component {
                     </Row>
                     : 
                     <Container className="p-4 call-screen" fluid>
+                    <Ringtone />
                     <Row className="p-2">
                         <Col>
                         <h4>Incoming Call</h4>
