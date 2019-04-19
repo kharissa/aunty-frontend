@@ -64,6 +64,11 @@ export default class Login extends React.Component{
         return(
             <>
             <ModalBody>
+                <Row>
+                    <Col>
+                    <p>Welcome back! Please login.</p>
+                    </Col>
+                </Row>
                 <AvForm onValidSubmit={this.handleSubmit} id="login">
                     <Row>
                         <Col>
