@@ -47,7 +47,6 @@ class CreatePin extends React.Component {
         const longitude = this.props.position[1].toFixed(6)
         const token = localStorage.getItem('token');
 
-
         axios({
             method: 'post',
             url: 'https://gokaikai.herokuapp.com/api/v1/pins/map/',
@@ -60,13 +59,14 @@ class CreatePin extends React.Component {
                 userId: localStorage.getItem('userId'),
                 latitude: latitude,
                 longitude: longitude,
-                category: this.props.category,
-                isSafe: this.props.is_safe,
-                isPublic: this.props.is_public,
+                category: this.state.category,
+                isSafe: this.state.is_safe,
+                isPublic: this.state.is_public,
                 radius: 3,
                 source: 'User'
             }
         }).then(response => {
+            console.log(response)
             if (response.data.status === "success") {
                 console.log('pin created!');
             } else {
