@@ -6,6 +6,7 @@ import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
 import Geolocation from './pages/Geolocation'
 import MapJ from './pages/MapJ.js'
+import Setting from './pages/Setting.js'
 import aunty from './images/aunty.jpg'
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/geolocation" component={Geolocation} />
           <Route exact path="/mapj" component={MapJ} />
+          <Route exact path="/setting" component={Setting} />
         </div>
       </ToastProvider>
     )
