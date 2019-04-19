@@ -7,15 +7,17 @@ import Ringtone from '../components/ringtone'
 
 export default class Call extends React.Component {
     state = {
-        show: false,
+        show: true,
         onCall: false,
         callTime: 0
     }
+    
     handleToggle = () => {
         this.setState(prevState => ({
             show: !prevState.show
         }));
     }
+
     handleCallAccept = () => {
         this.setState({
             onCall: true,
@@ -23,6 +25,7 @@ export default class Call extends React.Component {
         })
         this.handleTime()
     }
+
     handleCallEnd = () => {
         this.setState({
             onCall: false,
@@ -44,13 +47,10 @@ export default class Call extends React.Component {
     }
 
     render() {
-        const { show, onCall, callTime } = this.state;
+        const { show, onCall } = this.state;
         momentDurationFormatSetup(moment);
         return (
             <Container className="mx-0 px-0">
-                <div className="py-2">
-                    <Button color="primary" onClick={this.handleToggle}>Click here to initiate a call.</Button>
-                </div>
                 {   onCall ?
                     <Container className="p-4 call-screen" fluid>
                     <Row className="p-2">
