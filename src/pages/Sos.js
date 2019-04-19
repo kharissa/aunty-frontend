@@ -11,7 +11,6 @@ class Sos extends React.Component {
             message: "",
             disabled: false,
 
-            emergency_phone_number: "user.emergency_contact_phone_number",
             latitude: localStorage.getItem('latitude'),
             longitude: localStorage.getItem('longitude'),
             token: localStorage.getItem('token')
@@ -35,25 +34,30 @@ class Sos extends React.Component {
         this.timeout();
     }
 
-    contact_emergency = () => {
+    contact_emergency = (event) => {
         this.close()
+
+        const queryString = require('query-string')
+
         axios({
-            header: { Authorization: 'Bearer' + this.state.token },
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/sos',
-            // Backend not yet merge
+            url: 'http://localhost:5000/api/v1/sos/',
+            withCredentials: false,
+            headers: {
+                'Authorization': `Bearer ${this.state.token}`,
+                'Content-Type': 'application/json',
+            },
             data: {
                 latitude: this.state.latitude,
-                longiitude: this.state.longitude,
+                longitude: this.state.longitude
             }
+        }).then(response => {
+            if (response.data.status === "success") {
+                console.log('Aunty is asking for help dy!!')
+            } else {
+                console.log("Sorry, Aunty can't find your friend")
+            };
         })
-            .then(response => {
-                if (response.data.status === "success") {
-                    console.log('Aunty is asking for help dy!!')
-                } else {
-                    console.log("Sorry, Aunty can't find your friend")
-                };
-            })
     }
 
     timeout = () => {

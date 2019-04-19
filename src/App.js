@@ -9,7 +9,6 @@ import MapJ from './pages/MapJ.js'
 import Sos from './pages/Sos.js'
 import Geolocation from './pages/Geolocation'
 import aunty from './images/aunty.jpg'
-import './App.css';
 
 class App extends Component {
   render() {
