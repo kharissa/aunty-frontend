@@ -20,7 +20,7 @@ export default class Login extends React.Component {
         axios({
             // Send POST request with login information
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/sessions/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/sessions/',
             data: {
                 email: this.state.loginEmail,
                 password: this.state.loginPassword
@@ -63,12 +63,23 @@ export default class Login extends React.Component {
     render() {
         return (
             <>
+<<<<<<< HEAD
                 <ModalBody>
+=======
+            <ModalBody>
+                <Row>
+                    <Col>
+                    <p>Welcome back! Please login.</p>
+                    </Col>
+                </Row>
+                <AvForm onValidSubmit={this.handleSubmit} id="login">
+>>>>>>> master
                     <Row>
                         <Col>
                             <p>Welcome back! Please login.</p>
                         </Col>
                     </Row>
+<<<<<<< HEAD
                     <AvForm onValidSubmit={this.handleSubmit} id="login">
                         <Row>
                             <Col>
@@ -96,6 +107,14 @@ export default class Login extends React.Component {
                     <Button className="btn-lg" form="login" color="primary" type="submit">Login</Button>
                 </ModalFooter>
             </>
+=======
+                </AvForm>
+            </ModalBody>
+            <ModalFooter>
+                <Button className="btn-lg" form="login" color="primary" type="submit">Login</Button>
+            </ModalFooter>
+        </>
+>>>>>>> master
         )
     }
 }

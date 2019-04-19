@@ -12,7 +12,11 @@ export default class Register extends React.Component {
         dateOfBirth: '',
         nationality: '',
         contactName: '',
+<<<<<<< HEAD
         contactPhone: '',
+=======
+        contactPhone: ''
+>>>>>>> master
     };
 
     handleInput = (event) => {
@@ -26,7 +30,7 @@ export default class Register extends React.Component {
         axios({
             // Send POST request with registration information
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/users/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/users/',
             data: {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -35,7 +39,11 @@ export default class Register extends React.Component {
                 dateOfBirth: this.state.dateOfBirth,
                 nationality: this.state.nationality,
                 contactName: this.state.contactName,
+<<<<<<< HEAD
                 contactPhone: this.state.contactPhone,
+=======
+                contactPhone: this.state.contactPhone
+>>>>>>> master
             }
         })
             .then(response => {
@@ -78,7 +86,11 @@ export default class Register extends React.Component {
                 <ModalBody>
                     <Row>
                         <Col>
+<<<<<<< HEAD
                             <p>Register for an account to chat with Aunty.</p>
+=======
+                        <p>Register for an account to chat with Aunty.</p>
+>>>>>>> master
                         </Col>
                     </Row>
                     <AvForm onValidSubmit={this.handleSubmit} id="register">
@@ -171,7 +183,11 @@ export default class Register extends React.Component {
                         </Row>
                         <Row className="mt-3">
                             <Col>
+<<<<<<< HEAD
                                 <h5>Emergency Contact</h5>
+=======
+                            <h5>Emergency Contact</h5>
+>>>>>>> master
                             </Col>
                         </Row>
                         <Row>
