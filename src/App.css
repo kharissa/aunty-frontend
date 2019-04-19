@@ -42,3 +42,7 @@
 body {
   -webkit-touch-callout: none;
 }
+
+.leaflet-control-geosearch.bar form{
+  width: 70%;
+}
