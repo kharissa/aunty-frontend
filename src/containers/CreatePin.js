@@ -47,25 +47,6 @@ class CreatePin extends React.Component {
         const longitude = this.props.position[1].toFixed(6)
         const token = localStorage.getItem('token');
 
-        // POST /api/v1/pins/map/ HTTP/1.1
-        // Host: gokaikai.herokuapp.com
-        // Content-Type: application/json
-        // Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTYwODkyOTEsImlhdCI6MTU1NTY1NzI5MSwic3ViIjo3fQ.mFXi14TZTfQRP9UGTZQ_sf3H7opJfBeMxIECSwV675Q
-        // cache-control: no-cache
-        // Postman-Token: a5caf322-157f-4794-919a-2743387a4ff6
-        // {
-        //     "pinName": "Sexual harassment from workers",
-        //     "userId" : 7,
-        //     "latitude": 3.131144,
-        //     "longitude": 101.630748,
-        //     "category": "Harassment",
-        //     "source": "User",
-        //     "isSafe": false,
-        //     "isPublic": true,
-        //     "radius": 3
-        // }------WebKitFormBoundary7MA4YWxkTrZu0gW--
-
-        // POST to API with Pin Data
 
         axios({
             method: 'post',
