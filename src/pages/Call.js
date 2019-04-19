@@ -2,14 +2,13 @@ import React from 'react';
 import { Button, Row, Col, Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-
+import momentDurationFormatSetup from 'moment-duration-format';
 
 export default class Call extends React.Component {
     state = {
         show: false,
         onCall: false,
-        callTime: '',
-        currentTime: ''
+        callTime: 0
     }
     handleToggle = () => {
         this.setState(prevState => ({
@@ -19,27 +18,33 @@ export default class Call extends React.Component {
     handleCallAccept = () => {
         this.setState({
             onCall: true,
-            startTime: 0
+            callTime: 0
         })
+        this.handleTime()
     }
     handleCallEnd = () => {
         this.setState({
             onCall: false,
             show: false,
-            startTime: 0
+            callTime: 0
         }) 
+        clearInterval(this.state.timer)
     }
 
     handleTime = () => {
-        setInterval(() => {
+        const timer = setInterval(() => {
             this.setState({
-                startTime: this.state.startTime + 1
+                callTime: this.state.callTime + 1
             })
+        }, 1000)
+        this.setState({
+            timer: timer
         })
     }
 
     render() {
         const { show, onCall, callTime } = this.state;
+        momentDurationFormatSetup(moment);
         return (
             <Container className="mx-0 px-0">
                 <div className="py-2">
@@ -50,7 +55,7 @@ export default class Call extends React.Component {
                     <Row className="p-2">
                         <Col>
                         <h4>On Call</h4>
-                        <br />{ this.handleTime() }
+                        <br /> { moment.duration(this.state.callTime, "seconds").format("h:mm:ss", {trim: false}) }
                         </Col>
                     </Row>
                     <Row className="p-2">
@@ -64,9 +69,13 @@ export default class Call extends React.Component {
                             <h1>Aunty</h1>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col className="end-call">
-                            <Button color="danger" className="btn-lg float-right" onClick={this.handleCallEnd}><FontAwesomeIcon icon="phone-slash"/>
+                    <Row className="p-3 call-action">
+                        <Col>
+                            <Button color="secondary" className="btn-lg" onClick={this.handleCallEnd}><FontAwesomeIcon icon="video"/>
+                            </Button>
+                        </Col>
+                        <Col>
+                            <Button color="danger" className="btn-lg" onClick={this.handleCallEnd}><FontAwesomeIcon icon="phone-slash"/>
                             </Button>
                         </Col>
                     </Row>
@@ -76,7 +85,6 @@ export default class Call extends React.Component {
                     ? 
                     <Row>
                         <Col>
-                            <p>False</p>
                         </Col>
                     </Row>
                     : 
@@ -99,12 +107,12 @@ export default class Call extends React.Component {
                     </Row>
                     <Row className="p-3 call-action">
                         <Col>
-                            <Button color="success" className="btn-lg" onClick={this.handleCallAccept}>Accept {' '} 
+                            <Button color="success" className="btn-lg" onClick={this.handleCallAccept}> 
                             <FontAwesomeIcon icon="phone"/>
                             </Button>
                         </Col>
                         <Col>
-                            <Button color="danger" className="btn-lg" onClick={this.handleCallEnd}>Decline {' '} <FontAwesomeIcon icon="phone-slash"/>
+                            <Button color="danger" className="btn-lg" onClick={this.handleCallEnd}><FontAwesomeIcon icon="phone-slash"/>
                             </Button>
                         </Col>
                     </Row>

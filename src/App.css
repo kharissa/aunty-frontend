@@ -66,15 +66,15 @@
   height: 250px;
   background-size: cover;
 }
-.end-call {
-  text-align: center;
+/* .end-call {
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-}
+} */
 
-.end-call .btn {
+.call-action .btn {
   width: 75px;
   height: 75px;
   border-radius: 50%;
