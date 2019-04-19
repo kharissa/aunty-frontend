@@ -20,7 +20,7 @@ export default class Login extends React.Component{
         axios({
             // Send POST request with login information
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/sessions/',
+            url: 'http://localhost:5000/api/v1/sessions/',
             data: {
                 email: this.state.loginEmail,
                 password: this.state.loginPassword
@@ -53,8 +53,7 @@ export default class Login extends React.Component{
         .catch(error => {
             // On failed API call, display error toast and keep Login modal open
             console.log(error);
-            const message = error.data.message;
-            toastManager.add(`Something went wrong: "${message}"`, {
+            toastManager.add(`Something went wrong.`, {
                 appearance: 'error',
             });
         })
