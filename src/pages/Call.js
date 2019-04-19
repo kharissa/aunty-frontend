@@ -7,20 +7,21 @@ import Ringtone from '../components/ringtone'
 
 export default class Call extends React.Component {
     state = {
-        show: true,
+        incomingCall: true,
         onCall: false,
         callTime: 0
     }
-    
+
     handleToggle = () => {
         this.setState(prevState => ({
-            show: !prevState.show
+            incomingCall: !prevState.incomingCall
         }));
     }
 
     handleCallAccept = () => {
         this.setState({
             onCall: true,
+            incomingCall: false,
             callTime: 0
         })
         this.handleTime()
@@ -29,7 +30,7 @@ export default class Call extends React.Component {
     handleCallEnd = () => {
         this.setState({
             onCall: false,
-            show: false,
+            incomingCall: false,
             callTime: 0
         }) 
         clearInterval(this.state.timer)
@@ -47,11 +48,42 @@ export default class Call extends React.Component {
     }
 
     render() {
-        const { show, onCall } = this.state;
+        const { incomingCall, onCall } = this.state;
         momentDurationFormatSetup(moment);
         return (
             <Container className="mx-0 px-0">
-                {   onCall ?
+            { incomingCall ?
+                <Container className="p-4 call-screen" fluid>
+                    <Ringtone />
+                    <Row className="p-2">
+                        <Col>
+                        <h4>Incoming Call</h4>
+                        </Col>
+                    </Row>
+                    <Row className="p-2">
+                        <Col md={4}>
+                            <div className="aunty-call">
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row className="p-3">
+                        <Col>
+                            <h1>Aunty</h1>
+                        </Col>
+                    </Row>
+                    <Row className="p-3 call-action">
+                        <Col>
+                            <Button color="success" className="btn-lg" onClick={this.handleCallAccept}> 
+                            <FontAwesomeIcon icon="phone"/>
+                            </Button>
+                        </Col>
+                        <Col>
+                            <Button color="danger" className="btn-lg" onClick={this.handleCallEnd}><FontAwesomeIcon icon="phone-slash"/>
+                            </Button>
+                        </Col>
+                    </Row>
+                    </Container>
+            : onCall ? 
                     <Container className="p-4 call-screen" fluid>
                     <Row className="p-2">
                         <Col>
@@ -81,43 +113,12 @@ export default class Call extends React.Component {
                         </Col>
                     </Row>
                     </Container>
-                    :
-                    !show
-                    ? 
-                    <Row>
-                        <Col>
-                        </Col>
-                    </Row>
-                    : 
-                    <Container className="p-4 call-screen" fluid>
-                    <Ringtone />
-                    <Row className="p-2">
-                        <Col>
-                        <h4>Incoming Call</h4>
-                        </Col>
-                    </Row>
-                    <Row className="p-2">
-                        <Col md={4}>
-                            <div className="aunty-call">
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row className="p-3">
-                        <Col>
-                            <h1>Aunty</h1>
-                        </Col>
-                    </Row>
-                    <Row className="p-3 call-action">
-                        <Col>
-                            <Button color="success" className="btn-lg" onClick={this.handleCallAccept}> 
-                            <FontAwesomeIcon icon="phone"/>
-                            </Button>
-                        </Col>
-                        <Col>
-                            <Button color="danger" className="btn-lg" onClick={this.handleCallEnd}><FontAwesomeIcon icon="phone-slash"/>
-                            </Button>
-                        </Col>
-                    </Row>
+                :
+                    <Container>
+                        <Row>
+                            <Col>
+                            </Col>
+                        </Row>
                     </Container>
                 }
             </Container>
