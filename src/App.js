@@ -11,8 +11,8 @@ import aunty from './images/aunty.jpg'
 class App extends Component {
   render() {
     if (this.props.coords) {
-      localStorage.setItem('latitude', this.props.coords.latitude)
-      localStorage.setItem('longitude', this.props.coords.longitude)
+      localStorage.setItem('latitude', this.props.coords.latitude.toFixed(6))
+      localStorage.setItem('longitude', this.props.coords.longitude.toFixed(6))
       localStorage.setItem('isGeolocationAvailable', this.props.isGeolocationEnabled)
       localStorage.setItem('isGeolocationEnabled', this.props.isGeolocationEnabled)
     }
