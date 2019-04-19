@@ -17,7 +17,26 @@ mapTilesMapTiler: 'https://api.maptiler.com/maps/positron/{z}/{x}/{y}.png?key=QQ
 
 
 
+<option>Hate Crime</option>
+<option>Assault</option>
+<option>Theft</option>
+<option>Shooting</option>
+<option>Harassment</option>
 
+Hate Crime
+Assault
+Theft
+Shooting
+Harassment
+
+Police Presence
+Medical
+Hotel
+Home/Safe House
+
+
+safeCats: ['Home/Safe House', 'Hotel', 'Police Presence', 'Medical'],
+dangerCats: ['Harassment', 'Theft', 'Hate Crime', 'Assault', 'Shooting'],
 
 
 

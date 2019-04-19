@@ -17,8 +17,8 @@ class Map extends React.Component {
             currentZoom: 15,
             mapTilesCarto: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
             clickedMarker: [],
-            modal: false,
-            isOpen: false,
+            modal: true,
+            isOpen: true,
             myLat: 0,
             myLng: 0,
             pins: [],
@@ -46,11 +46,6 @@ class Map extends React.Component {
         }).catch(error => {
             console.log(error)
         })
-
-        // console.log(this.state.pins)
-        // heroku api GET
-        // set GET to pins
-        // this.setState({ pins: })
 
     }
 
