@@ -12,7 +12,7 @@ export default class Register extends React.Component {
         dateOfBirth: '',
         nationality: '',
         contactName: '',
-        contactEmail: ''
+        contactPhone: ''
     };
 
     handleInput = (event) => {
@@ -35,7 +35,7 @@ export default class Register extends React.Component {
                 dateOfBirth: this.state.dateOfBirth,
                 nationality: this.state.nationality,
                 contactName: this.state.contactName,
-                contactEmail: this.state.contactEmail
+                contactPhone: this.state.contactPhone
             }
         })
             .then(response => {
@@ -182,7 +182,6 @@ export default class Register extends React.Component {
                                         name="contactName"
                                         type="text"
                                         placeholder="Contact Name"
-                                        aria-describedby="inputGroupPrepend"
                                         value={this.state.contactName} onChange={this.handleInput}
                                         id="contactName"
                                         required
@@ -194,18 +193,17 @@ export default class Register extends React.Component {
                             </Col>
                             <Col>
                                 <AvGroup>
-                                    <Label>Email</Label>
+                                    <Label>Phone</Label>
                                     <AvInput
-                                        name="contactEmail"
+                                        name="contactPhone"
                                         type="text"
-                                        placeholder="Contact Email"
-                                        aria-describedby="inputGroupPrepend"
-                                        value={this.state.contactEmail} onChange={this.handleInput}
-                                        id="contactEmail"
+                                        placeholder="Contact Phone"
+                                        value={this.state.contactPhone} onChange={this.handleInput}
+                                        id="contactPhone"
                                         required
                                     />
                                     <AvFeedback>
-                                        Please enter an email.
+                                        Please enter a phone number.
                                     </AvFeedback>
                                 </AvGroup>
                             </Col>
