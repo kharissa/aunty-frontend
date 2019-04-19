@@ -7,29 +7,31 @@ import Chat from './pages/Chat.js';
 import Geolocation from './pages/Geolocation';
 import MapJ from './pages/MapJ.js';
 import aunty from './images/aunty.jpg';
+import Camera from './pages/Camera.js';
 import axios from 'axios';
-// import { notificationItinerary } from './containers/Notification';
+// import Notification from './containers/Notification';
 import './App.css';
 
 class App extends Component {
-  notificationItinerary = () => {
-    const token = localStorage.getItem('token')
-    console.log('this funciton works')
-    axios({
-      method: 'GET',
-      url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        console.log(response)
-      })
-  }
+  // notificationItinerary = () => {
+  //   const token = localStorage.getItem('token')
+  //   console.log('this funciton works')
+  //   axios({
+  //     method: 'GET',
+  //     url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     }
+  //   })
+  //     .then(response => {
+  //       console.log('this is the response')
+  //       console.log(response)
+  //     })
+  // }
 
-  componentDidMount() {
-    this.notificationItinerary();
-  }
+  // componentDidMount() {
+  //   this.notificationItinerary();
+  // }
 
   render() {
     if (this.props.coords) {
@@ -48,6 +50,7 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/geolocation" component={Geolocation} />
           <Route exact path="/mapj" component={MapJ} />
+          <Route exact path="/camera" component={Camera} />
         </div>
       </ToastProvider>
     )
