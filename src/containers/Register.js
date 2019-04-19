@@ -10,7 +10,9 @@ export default class Register extends React.Component {
         email: '',
         password: '',
         dateOfBirth: '',
-        nationality: ''
+        nationality: '',
+        contactName: '',
+        contactPhone: ''
     };
 
     handleInput = (event) => {
@@ -32,6 +34,8 @@ export default class Register extends React.Component {
                 password: this.state.password,
                 dateOfBirth: this.state.dateOfBirth,
                 nationality: this.state.nationality,
+                contactName: this.state.contactName,
+                contactPhone: this.state.contactPhone
             }
         })
             .then(response => {
@@ -72,6 +76,11 @@ export default class Register extends React.Component {
         return (
             <>
                 <ModalBody>
+                    <Row>
+                        <Col>
+                        <p>Register for an account to chat with Aunty.</p>
+                        </Col>
+                    </Row>
                     <AvForm onValidSubmit={this.handleSubmit} id="register">
                         <Row>
                             <Col>
@@ -125,7 +134,7 @@ export default class Register extends React.Component {
                                     <AvInput name="password" type="password" placeholder="Password" value={this.state.password} id="password" autoComplete="off" onChange={this.handleInput} required />
                                     <AvFeedback>
                                         Please provide a valid password.
-                                </AvFeedback>
+                                    </AvFeedback>
                                 </AvGroup>
                             </Col>
                         </Row>
@@ -141,7 +150,7 @@ export default class Register extends React.Component {
                                         required />
                                     <AvFeedback>
                                         Please provide a valid date of birth.
-                                </AvFeedback>
+                                    </AvFeedback>
                                 </AvGroup>
                             </Col>
                             <Col>
@@ -156,14 +165,60 @@ export default class Register extends React.Component {
                                     </AvField>
                                     <AvFeedback>
                                         Please provide a nationality.
-                                </AvFeedback>
+                                    </AvFeedback>
                                 </AvGroup>
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col>
+                            <h5>Emergency Contact</h5>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Name</Label>
+                                    <AvInput
+                                        name="contactName"
+                                        type="text"
+                                        placeholder="Contact Name"
+                                        value={this.state.contactName} onChange={this.handleInput}
+                                        id="contactName"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please enter a  name.
+                                    </AvFeedback>
+                                </AvGroup>
+                            </Col>
+                            <Col>
+                                <AvGroup>
+                                    <Label>Phone</Label>
+                                    <AvInput
+                                        name="contactPhone"
+                                        type="text"
+                                        placeholder="Contact Phone"
+                                        value={this.state.contactPhone} onChange={this.handleInput}
+                                        id="contactPhone"
+                                        required
+                                    />
+                                    <AvFeedback>
+                                        Please enter a phone number.
+                                    </AvFeedback>
+                                </AvGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="register-info">
+                                <p>
+                                    Your contact will receive a message if Aunty is unable to reach you. You can update your emergency contacts and user details on the Settings page.
+                                </p>
                             </Col>
                         </Row>
                     </AvForm>
                 </ModalBody>
                 <ModalFooter>
-                    <Button form="register" color="primary" type="submit">Register</Button>
+                    <Button className="btn-lg" form="register" color="primary" type="submit">Register</Button>
                 </ModalFooter>
             </>
         )
