@@ -53,8 +53,7 @@ export default class Login extends React.Component{
         .catch(error => {
             // On failed API call, display error toast and keep Login modal open
             console.log(error);
-            const message = error.data.message;
-            toastManager.add(`Something went wrong: "${message}"`, {
+            toastManager.add(`Something went wrong.`, {
                 appearance: 'error',
             });
         })
