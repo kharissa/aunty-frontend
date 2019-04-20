@@ -37,7 +37,8 @@ export default class Chat extends React.Component {
         firstName: '',
         loading: true,
         itineraryTime: '',
-        call: false
+        call: false,
+        update: true
     }
 
     componentDidMount = () => {
@@ -71,7 +72,20 @@ export default class Chat extends React.Component {
 
     render() {
         const loader = <div>Loading...</div>
-        const steps = [{
+        const update = [{
+            id: '1',
+            message: 'Aunty has an update for you.',
+            trigger: '2',
+        }, {
+            id: '2',
+            message: 'I took a look at your photo.',
+            trigger: '3'
+        }, {
+            id: '3',
+            message: 'This is what I found...',
+            end: true
+        }];
+        const normal = [{
             id: '1',
             message: `Hallo hallo ${this.state.firstName}! Aunty here. How are you?`,
             trigger: '2',
@@ -246,7 +260,6 @@ export default class Chat extends React.Component {
             message: '<Link to "video call"/ camera scan>',
             end: true,
         }];
-        
         return (
             <Container>
                 <Row className="justify-content-md-center">
@@ -262,7 +275,7 @@ export default class Chat extends React.Component {
                                 headerTitle="Chat with Aunty"
                                 recognitionEnable={true}
                                 speechSynthesis={{ enable: true, lang: 'en' }}
-                                steps={steps}
+                                steps={this.state.update ? update : normal}
                             />
                         </ThemeProvider>
                     }
