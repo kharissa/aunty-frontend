@@ -19,7 +19,7 @@ export default class CameraCall extends Component {
     // Send dataURI to backend
     axios({
       method: 'POST',
-      url: 'https://gokaikai.herokuapp.com/api/v1/images',
+      url: 'https://gokaikai.herokuapp.com/api/v1/images/',
       data: {
         token: localStorage.getItem('token'),
         dataUri: dataUri
