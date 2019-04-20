@@ -7,7 +7,7 @@ import Chat from './pages/Chat.js';
 import Geolocation from './pages/Geolocation';
 import MapJ from './pages/MapJ.js';
 import aunty from './images/aunty.jpg';
-import Camera from './pages/Camera.js';
+import CameraCall from './pages/Camera.js';
 import axios from 'axios';
 // import Notification from './containers/Notification';
 import './App.css';
@@ -50,7 +50,7 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/geolocation" component={Geolocation} />
           <Route exact path="/mapj" component={MapJ} />
-          <Route exact path="/camera" component={Camera} />
+          <Route exact path="/camera" component={CameraCall} />
         </div>
       </ToastProvider>
     )
