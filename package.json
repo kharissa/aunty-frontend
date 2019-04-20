@@ -12,6 +12,7 @@
     "leaflet": "^1.4.0",
     "leaflet-geosearch": "^2.7.0",
     "moment-duration-format": "^2.2.2",
+    "google-maps": "^3.3.0",
     "rc-time-picker": "^3.6.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -41,5 +42,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }
