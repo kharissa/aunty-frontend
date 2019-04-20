@@ -41,7 +41,7 @@ class App extends Component {
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/map" component={props => <MapJ {...props} lat={lat} lng={lng} />} />
+          <Route exact path="/map" component={props => <Geolocation {...props} lat={lat} lng={lng} />} />
 
           <Route exact path="/call" component={Call} />
 
