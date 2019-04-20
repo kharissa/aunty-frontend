@@ -37,6 +37,7 @@ export default class Chat extends React.Component {
         firstName: '',
         loading: true,
         itineraryTime: '',
+        call: false
     }
 
     componentDidMount = () => {
@@ -62,8 +63,9 @@ export default class Chat extends React.Component {
     // Redirect user to Home page if they are not logged in.
     handleRedirect() {
         if (this.state.loggedIn === false) {
-            window.alert('Please login to access chat.')
-            return <Redirect to = "/" />
+            return <Redirect to="/" />
+        } else if (this.state.call === true) {
+            return <Redirect to="/call" />
         }
     }
 
@@ -228,7 +230,12 @@ export default class Chat extends React.Component {
             end: true,
         }, {
             id: '22',
-            message: '<Link this to a fake call>',
+            message: (() => {
+                this.setState({
+                    call: true,
+                });
+                return 'Aunty will call you now!'
+            }),
             end: true,
         }, {
             id: '23',
@@ -250,6 +257,8 @@ export default class Chat extends React.Component {
                         :
                         <ThemeProvider theme={theme}>
                             <ChatBot
+                                cache={true}
+                                hideHeader={true}
                                 headerTitle="Chat with Aunty"
                                 recognitionEnable={true}
                                 speechSynthesis={{ enable: true, lang: 'en' }}
@@ -259,6 +268,7 @@ export default class Chat extends React.Component {
                     }
                     </Col>
                 </Row>
+                { this.handleRedirect() }
             </Container>
         )
     }

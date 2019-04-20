@@ -4,9 +4,14 @@ import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
+import Call from './pages/Call.js'
 import Geolocation from './pages/Geolocation'
 import MapJ from './pages/MapJ.js'
 import aunty from './images/aunty.jpg'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPhoneSlash, faPhone, faVideo);
 
 class App extends Component {
   render() {
@@ -26,6 +31,7 @@ class App extends Component {
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/geolocation" component={Geolocation} />
           <Route exact path="/mapj" component={MapJ} />
+          <Route exact path="/call" component={Call} />
         </div>
       </ToastProvider>
     )
