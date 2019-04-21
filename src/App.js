@@ -5,37 +5,50 @@ import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
 import Map from './pages/Map.js'
-import aunty from './images/aunty.jpg'
-import './App.css';
+import Call from './pages/Call.js'
+import Navigation from './containers/Navigation.js'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+library.add(faPhoneSlash, faPhone, faVideo);
 
 
 class App extends Component {
+  state = {
+    lat: 3.136053,
+    lng: 101.6308768,
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const { latitude, longitude } = pos.coords
+      this.setState({
+        lat: latitude,
+        lng: longitude
+      });
+      localStorage.setItem('latitude', latitude.toFixed(6));
+      localStorage.setItem('longitude', longitude.toFixed(6));
+    })
+  }
 
   render() {
-    if (this.props.coords) {
-      localStorage.setItem('latitude', this.props.coords.latitude)
-      localStorage.setItem('longitude', this.props.coords.longitude)
-      localStorage.setItem('isGeolocationAvailable', this.props.isGeolocationEnabled)
-      localStorage.setItem('isGeolocationEnabled', this.props.isGeolocationEnabled)
-    }
+    const { lat, lng } = this.state
 
     return (
       <ToastProvider>
+        <Navigation />
         <div align="center">
-          <img src={aunty} alt="aunty" width="250px" /><br /><br />
-          <Link to="/">Home</Link><br /><br />
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/map" component={Map} />
+          <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
+          <Route exact path="/call" component={Call} />
+
+          {/* update these two  */}
+          <Route exact path="/sos" component={Home} />
+          <Route exact path="/itinerary" component={Home} />
         </div>
       </ToastProvider>
     )
   }
 }
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false,
-  },
-  userDecisionTimeout: 6000,
-})(App);
+export default App;

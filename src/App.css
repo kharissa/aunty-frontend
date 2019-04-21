@@ -2,23 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
@@ -30,13 +13,34 @@
 .modal-title {
   width: 100%;
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+@-webkit-keyframes slide-in {
+  0% { right: -400px; }
+  100% { right: 0; }
+}
+
+@keyframes slide-out {
+  0% { right: 0; }
+  100% { right: -400px; }
+}
+
+.modal.right .modal-dialog {
+  animation: slide-in 1.5s forwards;
+  position: fixed;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+  border: none;
+  border-radius: 0;
 }
 
 body {
@@ -45,4 +49,46 @@ body {
 
 .leaflet-control-geosearch.bar form{
   width: 70%;
+}
+
+.call-screen {
+  height: 100vh;
+  width: 100%;
+  background: rgb(1,54,108);
+  background: linear-gradient(60deg, rgba(1,54,108,1) 0%, rgba(0,31,63,1) 50%, rgba(0,20,41,1) 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.aunty-call {
+  background-image: url('./images/aunty_hello.jpeg');
+  background-position: cover;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+}
+
+/* .end-call {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+} */
+
+.call-action .btn {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.register-info {
+  font-size: .9em;
 }

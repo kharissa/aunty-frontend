@@ -28,28 +28,28 @@ export default class LoginModal extends React.Component {
 
   render() {
     return (
-      <Modal isOpen={this.props.isOpen} toggle={this.props.toggle} className={this.props.className}>
-      <ModalHeader toggle={this.props.toggle}>
-        <Nav tabs>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '1' })}
-              onClick={() => { this.switch('1'); }}
-            >
-              Register
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={classnames({ active: this.state.activeTab === '2' })}
-              onClick={() => { this.switch('2'); }}
-            >
-              Login
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </ModalHeader>
-      <TabContent activeTab={this.state.activeTab}>
+      <Modal isOpen={this.props.isOpen} toggle={this.props.toggle} modalClassName="right" fade={false}>
+        <ModalHeader toggle={this.props.toggle}>
+          <Nav tabs>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === '1' })}
+                onClick={() => { this.switch('1'); }}
+              >
+                Register
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                className={classnames({ active: this.state.activeTab === '2' })}
+                onClick={() => { this.switch('2'); }}
+              >
+                Login
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </ModalHeader>
+        <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
             <RegisterToasts toggle={this.props.toggle}/>
           </TabPane>
