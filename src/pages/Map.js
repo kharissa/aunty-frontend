@@ -1,7 +1,6 @@
 import React from 'react';
-import { Map as LeafletMap, TileLayer, Marker } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
-import Geolocation from '../components/Geolocation.js';
 import Pins from '../components/Pins.js';
 import GeoSearch from '../components/GeoSearch.js';
 import MarkerClusterGroup from 'react-leaflet-markercluster'
@@ -9,7 +8,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { divIcon } from 'leaflet';
 import axios from 'axios';
 
-class Map extends React.Component {
+export default class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,18 +18,14 @@ class Map extends React.Component {
             clickedMarker: [],
             modal: false,
             isOpen: false,
-            myLat: 0,
-            myLng: 0,
             pins: [],
+            itinerary: [],
+            publicPins: [],
+            privatePins: [],
         }
     }
 
     componentDidMount() {
-        this.setState({
-            myLat: localStorage.getItem('latitude'),
-            myLng: localStorage.getItem('longitude'),
-        });
-
         const token = localStorage.getItem('token');
 
         axios({
@@ -46,7 +41,6 @@ class Map extends React.Component {
         }).catch(error => {
             console.log(error)
         })
-
     }
 
     handleClick = (e) => {
@@ -62,35 +56,45 @@ class Map extends React.Component {
     }
 
     render() {
+        const { lat, lng } = this.props
+        const geolocIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-circle" />) });
         return (
             <>
                 <LeafletMap
-                    center={[this.state.myLat, this.state.myLng]}
+                    center={[lat, lng]}
                     zoom={13}
                     maxZoom={20}
                     attributionControl={true}
-                    zoomControl={true}
+                    zoomControl={false}
                     doubleClickZoom={true}
                     scrollWheelZoom={true}
+                    closePopupOnClick={true}
                     dragging={true}
                     animate={true}
                     easeLinearity={0.35}
                     onclick={this.handleClick}
                     onZoomend={this.onZoomEvent}
+                    worldCopyJump={true}
+                    tap={true}
                     className="markercluster-map">
 
-                    <GeoSearch />
+                    <GeoSearch interactive={true}/>
                     <TileLayer url={this.state.mapTilesCarto} />
-                    <MarkerClusterGroup>
+
+                    <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                        spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+
                     <Pins pins={this.state.pins} />
                     </MarkerClusterGroup>
 
-                    <Geolocation />
+                    <Marker position={[lat, lng]} icon={geolocIcon}>
+                        <Popup>You & Aunty are here!</Popup>
+                    </Marker>
+
                     {this.state.clickedMarker.length > 0
                         ? <Marker className="new-marker" position={this.state.clickedMarker} onclick={this.toggleModal}
                             icon={ divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />)}) }></Marker>
                         : null
-                        // create a marker onclick, with a modal pop-up to create a new marker.
                     }
 
                     <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
@@ -100,6 +104,3 @@ class Map extends React.Component {
         );
     }
 }
-
-export default Map;
-
