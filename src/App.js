@@ -6,10 +6,11 @@ import Home from './pages/Home.js';
 import Chat from './pages/Chat.js';
 import Geolocation from './pages/Geolocation';
 import MapJ from './pages/MapJ.js';
+import Call from './pages/Call.js'
+import CameraCall from './pages/Camera.js';
 import aunty from './images/aunty.jpg';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
-import CameraCall from './pages/Camera.js';
 // import axios from 'axios';
 // import Notification from './containers/Notification';
 import './App.css';
