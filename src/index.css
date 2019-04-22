@@ -15,7 +15,7 @@ code {
 
 /* leaflet container styling */
 .leaflet-container {
-  height: 100vh;
+  height: 85vh;
   width: 100vw;
   position: absolute;
 }
@@ -265,7 +265,23 @@ code {
 }
 
 /* custom styling for clusters */
-.markerClusterSmall {
+.marker-cluster-small div {
+  background-color: rgb(219,80,74, 0.5);
+}
+
+.marker-cluster-small {
+  background-color: rgb(219,80,74, 0.5);
+}
+
+.marker-cluster-medium {
+  background-color: rgb(255,162,5, 0.6);
+}
+
+.marker-cluster-medium div {
+  background-color: rgb(255,162,5, 0.6);
+}
+
+/* .markerClusterSmall {
    border-radius: 20px;
    font-size: 0.6vw;
    color: #fff;
@@ -301,4 +317,11 @@ code {
    display: flex;
    justify-content: center;
    align-items: center;
+} */
+
+.go-to-loc {
+  position: fixed;
+  z-index: 999;
+  bottom: 100px;
+  right: 100px;
 }

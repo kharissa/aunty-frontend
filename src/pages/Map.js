@@ -58,11 +58,15 @@ export default class Map extends React.Component {
             itinerary: [],
             publicPins: [],
             privatePins: [],
-        }
+        };
+        this.onClickGeoloc = this.onClickGeoloc.bind(this)
+        this.leafletMap = React.createRef();
     }
 
     componentDidMount() {
+
         const token = localStorage.getItem('token');
+        console.log(this.leafletMap.current)
 
         // axios({
         //     method: 'GET',
@@ -95,16 +99,25 @@ export default class Map extends React.Component {
         }))
     }
 
+    onClickGeoloc = () => {
+        console.log('button is working~');
+        const {lat, lng} = this.props;
+        this.leafletMap.current.leafletElement.flyTo([lat, lng], 15)
+    }
+
     render() {
         const { lat, lng } = this.props
         const geolocIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-circle" />) });
         return (
             <>
                 <LeafletMap
+                    ref={this.leafletMap}
+                    useFlyTo={true}
                     center={[lat, lng]}
                     zoom={13}
                     maxZoom={20}
                     attributionControl={true}
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     zoomControl={false}
                     doubleClickZoom={true}
                     scrollWheelZoom={true}
@@ -137,7 +150,7 @@ export default class Map extends React.Component {
                     </Marker>
 
                     {this.state.clickedMarker.length > 0
-                        ? <Marker className="new-marker" position={this.state.clickedMarker} onclick={this.toggleModal}
+                        ? <Marker opacity='0.7' draggable={true} className="new-marker" position={this.state.clickedMarker} onClick={this.toggleModal}
                             icon={ divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />)}) }></Marker>
                         : null
                     }
@@ -145,6 +158,8 @@ export default class Map extends React.Component {
                     <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
 
                 </LeafletMap>
+
+                <button className="go-to-loc" onClick={this.onClickGeoloc}> go to my location</button>
             </>
         );
     }
