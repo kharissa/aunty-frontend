@@ -34,18 +34,25 @@ export default class Chat extends React.Component {
         loading: true,
         itineraryTime: '',
         call: false,
-        update: true,
+        update: false,
     }
 
     componentDidMount = () => {
-        this.setState({
-            firstName: localStorage.getItem('firstName'),
-            loading: false,
-            update: true,
-        })
+
         if (!localStorage.getItem('token')) {
             this.setState({
                 loggedIn: false,
+            })
+        } else if (localStorage.getItem('update')) {
+            this.setState({
+                firstName: localStorage.getItem('firstName'),
+                loading: false,
+                update: true,
+            })
+        } else {
+            this.setState({
+                firstName: localStorage.getItem('firstName'),
+                loading: false
             })
         }
     }
@@ -78,6 +85,9 @@ export default class Chat extends React.Component {
             component: (
                 <ImageReview />
             ),
+            metadata: {
+                image_id: localStorage.getItem('updateImageId')
+            },
             asMessage: true,
             trigger: 'need more help'
         }, {

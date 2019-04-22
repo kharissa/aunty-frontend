@@ -43,11 +43,11 @@ class Itinerary extends React.Component {
             data: {
                 pinId: pin_id
             }
-        }).then(response => {
-            if (response.data.status === "success") {
-                console.log(response)
-            }
         })
+            .then(response => {
+                console.log(response.data);
+                window.location.reload()
+            })
             .catch(error => {
                 console.log(error);
             })
@@ -75,7 +75,8 @@ class Itinerary extends React.Component {
                             </th>
                             <td>
                                 {itinerary.start_time} <br />
-                                Location: {itinerary.address}
+                                <hr />
+                                {itinerary.address}
                             </td>
                         </tr>
                     )}

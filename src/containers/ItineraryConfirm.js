@@ -1,10 +1,6 @@
 import React from 'react';
 import axios from 'axios'
 import 'rc-time-picker/assets/index.css';
-// import moment from 'moment';
-// import TimePicker from 'rc-time-picker';
-// import { Redirect } from 'react-router-dom'
-// import GoogleMapsLoader from 'google-maps'
 
 
 export default class ItineraryConfirm extends React.Component {
@@ -21,18 +17,20 @@ export default class ItineraryConfirm extends React.Component {
         const description = localStorage.getItem('itineraryDetails');
         const latitude = localStorage.getItem('itineraryLatitude');
         const longitude = localStorage.getItem('itineraryLongitude');
+        const address = localStorage.getItem('itineraryAddress');
 
         // Make axios POST request to create itinerary pin 
         axios({
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
+            url: 'http://localhost:5000/api/v1/pins/itinerary/',
             data: {
                 pinName: location,
                 userId: userId,
                 longitude: parseFloat(latitude),
                 latitude: parseFloat(longitude),
                 startTime: time,
-                description: description
+                description: description,
+                address: address
             }
         })
             .then(response => {
