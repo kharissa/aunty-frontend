@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
 class Itinerary extends React.Component {
     constructor(props) {
@@ -42,11 +42,15 @@ class Itinerary extends React.Component {
 
                     {this.state.itineraries.map(itinerary =>
                         <tr>
-                            <th scope="row">{itinerary.pinName}</th>
+                            <th scope="row">
+                                {itinerary.pinName}
+                                <tr>
+                                    <Button type='submit' outline color='danger' size='sm' onClick={this.handleDelete}>Delete</Button>
+                                </tr>
+                            </th>
                             <td>
                                 {itinerary.start_time} <br />
-                                Latitude: {itinerary.latitude}, <br />
-                                Longitude: {itinerary.longitude}
+                                Location: {itinerary.location}
                             </td>
                         </tr>
                     )}
