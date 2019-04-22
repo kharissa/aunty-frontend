@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
@@ -34,18 +34,24 @@ export default class Chat extends React.Component {
         loading: true,
         itineraryTime: '',
         call: false,
-        update: true,
+        update: false,
     }
 
     componentDidMount = () => {
-        this.setState({
-            firstName: localStorage.getItem('firstName'),
-            loading: false,
-            update: true,
-        })
         if (!localStorage.getItem('token')) {
             this.setState({
                 loggedIn: false,
+            })
+        } else if (this.props.update) {
+            this.setState({
+                firstName: localStorage.getItem('firstName'),
+                loading: false,
+                update: true,
+            })
+        } else {
+            this.setState({
+                firstName: localStorage.getItem('firstName'),
+                loading: false
             })
         }
     }
@@ -78,6 +84,9 @@ export default class Chat extends React.Component {
             component: (
                 <ImageReview />
             ),
+            metadata: {
+                image_id: 7 // this.props.params.match.id
+            },
             asMessage: true,
             trigger: 'need more help'
         }, {
