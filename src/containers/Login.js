@@ -20,7 +20,7 @@ export default class Login extends React.Component{
         axios({
             // Send POST request with login information
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/sessions/',
+            url: 'https://localhost:5000/api/v1/sessions/',
             data: {
                 email: this.state.loginEmail,
                 password: this.state.loginPassword

@@ -32,10 +32,11 @@ export default class ImageReview extends React.Component {
     })
     .then(response => {
         console.log(response);
+        const results = response.results;
         const properties = []
-        for (result in response.results) {
-            if (properties[property] > 0.70) {
-                properties.push(property)
+        for (let attribute in results) {
+            if (results[attribute] > 0.70) {
+                properties.push(attribute)
             }
         }
         this.setStatus({
