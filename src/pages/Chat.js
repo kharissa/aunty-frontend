@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
