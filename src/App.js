@@ -9,10 +9,34 @@ import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+import CameraCall from './pages/Camera.js';
+// import axios from 'axios';
+// import Notification from './containers/Notification';
+import './App.css';
 library.add(faPhoneSlash, faPhone, faVideo);
 
 
 class App extends Component {
+  // notificationItinerary = () => {
+  //   const token = localStorage.getItem('token')
+  //   console.log('this funciton works')
+  //   axios({
+  //     method: 'GET',
+  //     url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     }
+  //   })
+  //     .then(response => {
+  //       console.log('this is the response')
+  //       console.log(response)
+  //     })
+  // }
+
+  // componentDidMount() {
+  //   this.notificationItinerary();
+  // }
+
   state = {
     lat: 3.136053,
     lng: 101.6308768,
@@ -40,10 +64,9 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/setting" component={Setting} />
-
           <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
-
           <Route exact path="/call" component={Call} />
+          <Route exact path="/camera" component={CameraCall} />
 
           {/* update SOS path  */}
           <Route exact path="/sos" component={Home} />

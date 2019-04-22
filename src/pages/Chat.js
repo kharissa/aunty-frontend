@@ -73,7 +73,7 @@ export default class Chat extends React.Component {
             id: 'welcome',
             message: `Hallo ${this.state.firstName}! Aunty here. How are you?`,
             trigger: () => this.state.update ? 'update' : 'welcome user response'
-        },{
+        }, {
             id: 'update',
             component: (
                 <ImageReview />
@@ -88,10 +88,10 @@ export default class Chat extends React.Component {
         }, {
             id: 'need more help options',
             options: [
-            { value: 'Yes', label: 'Yes', trigger: 'menu' },
-            { value: 'No', label: 'No', trigger: '21' },
+                { value: 'Yes', label: 'Yes', trigger: 'menu' },
+                { value: 'No', label: 'No', trigger: '21' },
             ],
-      },{
+        }, {
             id: 'welcome user response',
             user: true,
             trigger: 'menu',
@@ -102,25 +102,25 @@ export default class Chat extends React.Component {
         }, {
             id: '4',
             options: [{
-                    value: "Tell Aunty where I'm going so she can check on me",
-                    label: "Aunty, I'm going out today!",
-                    trigger: '5'
-                },
-                {
-                    value: 'Get on a call with Aunty',
-                    label: 'Aunty, lai! We chit chat together gether.',
-                    trigger: '22'
-                },
-                {
-                    value: 'Ask Aunty where the nearest safe spot is',
-                    label: "Aunty, I don't feel safe here. Where's the nearest, safest place to go?",
-                    trigger: '23'
-                },
-                {
-                    value: 'Let Aunty scan your location for danger',
-                    label: "Aunty, I don't feel safe, can you look around for me?",
-                    trigger: '24'
-                },
+                value: "Tell Aunty where I'm going so she can check on me",
+                label: "Aunty, I'm going out today!",
+                trigger: '5'
+            },
+            {
+                value: 'Get on a call with Aunty',
+                label: 'Aunty, lai! We chit chat together gether.',
+                trigger: '22'
+            },
+            {
+                value: 'Ask Aunty where the nearest safe spot is',
+                label: "Aunty, I don't feel safe here. Where's the nearest, safest place to go?",
+                trigger: '23'
+            },
+            {
+                value: 'Let Aunty scan your location for danger',
+                label: "Aunty, I don't feel safe, can you look around for me?",
+                trigger: '24'
+            },
             ],
         }, {
             id: '5',
@@ -129,7 +129,7 @@ export default class Chat extends React.Component {
         }, {
             id: 'itineraryLocation',
             user: true,
-            trigger: 'itineraryLocationSearch', 
+            trigger: 'itineraryLocationSearch',
         }, {
             id: 'itineraryLocationSearch',
             component: (
@@ -140,15 +140,15 @@ export default class Chat extends React.Component {
         }, {
             id: '8',
             options: [{
-                    value: 'Ya, ya, correct.',
-                    label: 'Ya, ya, correct.',
-                    trigger: '9'
-                },
-                {
-                    value: "No, that's not the right location.",
-                    label: "No, that's not the right location.",
-                    trigger: '5'
-                },
+                value: 'Ya, ya, correct.',
+                label: 'Ya, ya, correct.',
+                trigger: '9'
+            },
+            {
+                value: "No, that's not the right location.",
+                label: "No, that's not the right location.",
+                trigger: '5'
+            },
             ],
         }, {
             id: '9',
@@ -182,21 +182,22 @@ export default class Chat extends React.Component {
         }, {
             id: 'itineraryDetails',
             options: [{
-                    value: 'alone',
-                    label: 'By myself',
-                    trigger: '13'
-                },
-                {
-                    value: "With people lah.",
-                    label: "With people lah.",
-                    trigger: '16'
-                },
+                value: 'alone',
+                label: 'By myself',
+                trigger: '13'
+            },
+            {
+                value: "With people lah.",
+                label: "With people lah.",
+                trigger: '16'
+            },
             ],
         }, {
             id: '13',
-            message: (({previousValue}) => {
-                localStorage.setItem('itineraryDetails', previousValue); 
-                return 'Wah, you syok sendiri! Bojio Aunty ):'}),
+            message: (({ previousValue }) => {
+                localStorage.setItem('itineraryDetails', previousValue);
+                return 'Wah, you syok sendiri! Bojio Aunty ):'
+            }),
             trigger: '14',
         }, {
             id: '14',
@@ -212,9 +213,10 @@ export default class Chat extends React.Component {
             trigger: '18',
         }, {
             id: '18',
-            message: (({previousValue}) => {
-                localStorage.setItem('itineraryDetails', 'with ' + previousValue); 
-                return 'Oh ya, I know the mother. You all enjoy and be safe!'}),
+            message: (({ previousValue }) => {
+                localStorage.setItem('itineraryDetails', 'with ' + previousValue);
+                return 'Oh ya, I know the mother. You all enjoy and be safe!'
+            }),
             trigger: 'ConfirmItineraryPin',
         }, {
             id: 'ConfirmItineraryPin',
@@ -230,15 +232,15 @@ export default class Chat extends React.Component {
         }, {
             id: '20',
             options: [{
-                    value: 'Yes',
-                    label: 'Yes',
-                    trigger: '5'
-                },
-                {
-                    value: 'No',
-                    label: 'No',
-                    trigger: '21'
-                },
+                value: 'Yes',
+                label: 'Yes',
+                trigger: '5'
+            },
+            {
+                value: 'No',
+                label: 'No',
+                trigger: '21'
+            },
             ],
         }, {
             id: '21',
@@ -266,19 +268,19 @@ export default class Chat extends React.Component {
             <Container>
                 {
                     this.state.loading || this.state.firstName.length === 0 ?
-                    loader 
-                    :
-                    <ThemeProvider theme={theme}>
-                        <ChatBot
-                            hideHeader={true}
-                            headerTitle="Chat with Aunty"
-                            recognitionEnable={true}
-                            // speechSynthesis={{ enable: true, lang: 'en' }}
-                            steps={steps}
-                        />
-                    </ThemeProvider>
+                        loader
+                        :
+                        <ThemeProvider theme={theme}>
+                            <ChatBot
+                                hideHeader={true}
+                                headerTitle="Chat with Aunty"
+                                recognitionEnable={true}
+                                // speechSynthesis={{ enable: true, lang: 'en' }}
+                                steps={steps}
+                            />
+                        </ThemeProvider>
                 }
-            { this.handleRedirect() }
+                {this.handleRedirect()}
             </Container>
         )
     }
