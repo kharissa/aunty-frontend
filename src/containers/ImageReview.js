@@ -35,6 +35,7 @@ export default class ImageReview extends React.Component {
             loading: false,
             properties: properties
         })
+        localStorage.removeItem('update')
     })
     .catch(error => {
         console.log(error);
@@ -58,7 +59,7 @@ export default class ImageReview extends React.Component {
                         properties.length > 0 ?
                             <div className="text-left">
                                 Based on Aunty's analysis, there is a high probability of the following in the photo:
-            <ul>
+                                <ul>
                                     {
                                         properties.map((property, index) =>
                                             <li key={index}>{property}</li>
