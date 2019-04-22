@@ -232,9 +232,31 @@ code {
 }
 
 
+
+/* const iconHate = " fa fa-angry fa-2x" />) });
+        const iconAssault = " fa fa-skull fa-2x" />) });
+        const iconTheft = " fa fa-walking fa-2x" />) });
+        const iconShoot = " fa fa-haykal fa-2x" />) });
+        const iconHarrass = " fa fa-shoe-prints fa-2x" />) });
+        const iconPolice = " fa fa-bullhorn fa-2x" />) });
+        const iconMedical = " fa fa-first-aid fa-2x" />) });
+        const iconHotel = " fa fa-bed fa-2x" />) });
+        const iconHome = " fa fa-home fa-2x" />) });
+        const iconMarker = " fa fa-map-marker-alt fa-2x" />) });
+
+        const iconItineraryUpcoming = " far fa-clock fa-2x" />) });
+        const iconItineraryResolved = " fas fa-history fa-2x" />) });
+        const iconSOS = " fas fa-bell fa-2x" />) });
+
+        */
+
 /* leaflet custom icons individual styling */
-.fa-cannabis {
-  color: green;
+.fa-angry, .fa-skull, .fa-walking, .fa-haykal, .fa-shoe-prints {
+  color: #D62246;
+}
+
+.fa-first-aid, .fa-bed, .fa-home, .fa-bullhorn {
+  color: #17BEBB;
 }
 
 .fa-circle {

@@ -16,7 +16,7 @@ export default class ItineraryConfirm extends React.Component {
         description: '',
         time: ''
     };
-        
+
     componentWillMount() {
         const userId = localStorage.getItem('userId');
         const location = localStorage.getItem('itineraryLocation');
@@ -25,7 +25,7 @@ export default class ItineraryConfirm extends React.Component {
         const latitude = localStorage.getItem('itineraryLatitude');
         const longitude = localStorage.getItem('itineraryLongitude');
 
-        // Make axios POST request to create itinerary pin 
+        // Make axios POST request to create itinerary pin
         axios({
             method: 'POST',
             url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
@@ -43,7 +43,7 @@ export default class ItineraryConfirm extends React.Component {
         })
         .catch(error => {
             console.log(error);
-        }) 
+        })
         this.setState({
             location: location,
             description: description,

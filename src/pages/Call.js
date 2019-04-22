@@ -32,7 +32,7 @@ export default class Call extends React.Component {
             onCall: false,
             incomingCall: false,
             callTime: 0
-        }) 
+        })
         clearInterval(this.state.timer)
     }
 
@@ -73,7 +73,7 @@ export default class Call extends React.Component {
                     </Row>
                     <Row className="p-3 call-action">
                         <Col>
-                            <Button color="success" className="btn-lg" onClick={this.handleCallAccept}> 
+                            <Button color="success" className="btn-lg" onClick={this.handleCallAccept}>
                             <FontAwesomeIcon icon="phone"/>
                             </Button>
                         </Col>
@@ -83,7 +83,7 @@ export default class Call extends React.Component {
                         </Col>
                     </Row>
                     </Container>
-            : onCall ? 
+            : onCall ?
                     <Container className="p-4 call-screen" fluid>
                     <Row className="p-2">
                         <Col>
