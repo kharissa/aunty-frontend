@@ -5,44 +5,44 @@ export default class ImageReview extends React.Component {
     constructor(props) {
         super(props);
 
-    this.state = {
-        loading: true,
-        properties: []
-    };
-  }
+        this.state = {
+            loading: true,
+            properties: []
+        };
+    }
 
-  componentWillMount = () => {
-    const token = localStorage.getItem('token')
-    const imageId = this.props.step.metadata.image_id
-    const properties = []
-    
-    axios({
-        method: 'get',
-        url: `http://localhost:5000/api/v1/images/${imageId}`,
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => {
-        const results = response.data.results;
-        for (let attribute in results) {
-            if (results[attribute] > 0.70) {
-                properties.push(attribute)
+    componentWillMount = () => {
+        const token = localStorage.getItem('token')
+        const imageId = this.props.step.metadata.image_id
+        const properties = []
+
+        axios({
+            method: 'get',
+            url: `http://localhost:5000/api/v1/images/${imageId}`,
+            headers: {
+                'Authorization': `Bearer ${token}`
             }
-        }
-        this.setState({
-            loading: false,
-            properties: properties
         })
-        localStorage.removeItem('update')
-    })
-    .catch(error => {
-        console.log(error);
-        this.setState({
-            loading: false,
-        })
-    })
-  }
+            .then(response => {
+                const results = response.data.results;
+                for (let attribute in results) {
+                    if (results[attribute] > 0.70) {
+                        properties.push(attribute)
+                    }
+                }
+                this.setState({
+                    loading: false,
+                    properties: properties
+                })
+                localStorage.removeItem('update')
+            })
+            .catch(error => {
+                console.log(error);
+                this.setState({
+                    loading: false,
+                })
+            })
+    }
 
     render() {
         const { loading, properties } = this.state;
