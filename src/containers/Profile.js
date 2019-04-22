@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { Table, Button, Input, } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 
 
 class Profile extends React.Component {

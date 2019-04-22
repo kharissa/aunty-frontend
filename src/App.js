@@ -1,34 +1,53 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
+import Call from './pages/Call.js'
 import Geolocation from './pages/Geolocation'
-import MapJ from './pages/MapJ.js'
 import Setting from './pages/Setting.js'
+import Navigation from './containers/Navigation.js'
 import aunty from './images/aunty.jpg'
-import Itinerary from './containers/Itinerary.js';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPhoneSlash, faPhone, faVideo);
 
 class App extends Component {
+  state = {
+    lat: 3.136053,
+    lng: 101.6308768,
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const { latitude, longitude } = pos.coords
+      this.setState({
+        lat: latitude,
+        lng: longitude
+      });
+      localStorage.setItem('latitude', latitude.toFixed(6));
+      localStorage.setItem('longitude', longitude.toFixed(6));
+    })
+  }
+
   render() {
-    if (this.props.coords) {
-      localStorage.setItem('latitude', this.props.coords.latitude)
-      localStorage.setItem('longitude', this.props.coords.longitude)
-      localStorage.setItem('isGeolocationAvailable', this.props.isGeolocationEnabled)
-      localStorage.setItem('isGeolocationEnabled', this.props.isGeolocationEnabled)
-    }
+    const { lat, lng } = this.state
 
     return (
       <ToastProvider>
+        <Navigation />
         <div align="center">
-          <img src={aunty} alt="aunty" width="250px" /><br /><br />
-          <Link to="/">Home</Link><br /><br />
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/geolocation" component={Geolocation} />
-          <Route exact path="/mapj" component={MapJ} />
           <Route exact path="/setting" component={Setting} />
+          <Route exact path="/map" component={props => <Geolocation {...props} lat={lat} lng={lng} />} />
+
+          <Route exact path="/call" component={Call} />
+
+          {/* update these two  */}
+          <Route exact path="/sos" component={Home} />
         </div>
       </ToastProvider>
     )
