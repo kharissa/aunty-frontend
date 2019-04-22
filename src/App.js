@@ -8,6 +8,7 @@ import Geolocation from './pages/Geolocation'
 import MapJ from './pages/MapJ.js'
 import Setting from './pages/Setting.js'
 import aunty from './images/aunty.jpg'
+import Itinerary from './containers/Itinerary.js';
 
 class App extends Component {
   render() {

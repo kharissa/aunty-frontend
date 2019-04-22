@@ -1,82 +1,68 @@
-import React from 'react'
-import axios from 'axios'
-import { Table } from 'reactstrap';
+import React from 'react';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import classnames from 'classnames';
+import Profile from '../containers/Profile.js'
+import Itinerary from '../containers/Itinerary.js'
+import Contact from '../containers/Contact.js'
 
-class Setting extends React.Component {
+export default class Example extends React.Component {
     constructor(props) {
         super(props);
+
+        this.toggle = this.toggle.bind(this);
         this.state = {
-            user: [],
+            activeTab: '1'
+        };
+    }
+
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
         }
     }
-
-    componentDidMount() {
-        const token = localStorage.getItem('token');
-        axios({
-            method: 'GET',
-            url: 'http://localhost:5000/api/v1/users/me/',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        }).then(response => {
-            this.setState({
-                user: response.data
-            })
-            console.log(this.state.user)
-        })
-
-    }
-
-    convertTime() {
-
-        { this.state.user.dob }
-    }
-
-
-
     render() {
         return (
-            <Table>
-                <thead>
-                    <tr>
-                        <th>Personal Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">First Name</th>
-                        <td>{this.state.user.first_name}</td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">Last Name</th>
-                        <td>{this.state.user.last_name}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Date Of Birth</th>
-                        <td>{this.state.user.dob}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">First Language</th>
-                        <td>{this.state.user.language_primary}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Second Language</th>
-                        <td>{this.state.user.language_secondary}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">First Language</th>
-                        <td>{this.state.user.language_primary}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">First Language</th>
-                        <td>{this.state.user.language_primary}</td>
-                    </tr>
-                </tbody>
-            </Table>
-        )
+            <div>
+                <Nav tabs>
+                    <NavItem>
+                        <NavLink
+                            className={classnames({ active: this.state.activeTab === '1' })}
+                            onClick={() => { this.toggle('1'); }}
+                        >
+                            Profile
+            </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink
+                            className={classnames({ active: this.state.activeTab === '2' })}
+                            onClick={() => { this.toggle('2'); }}
+                        >
+                            Itinerary
+            </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink
+                            className={classnames({ active: this.state.activeTab === '3' })}
+                            onClick={() => { this.toggle('3'); }}
+                        >
+                            Contacts
+            </NavLink>
+                    </NavItem>
+                </Nav>
+                <TabContent activeTab={this.state.activeTab}>
+                    <TabPane tabId="1">
+                        <Profile />
+                    </TabPane>
+                    <TabPane tabId="2">
+                        <Itinerary />
+                    </TabPane>
+                    <TabPane tabId="3">
+                        <Contact />
+                    </TabPane>
+                </TabContent>
+            </div>
+        );
     }
-
 }
-
-export default Setting;
