@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
-import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
+import Map from './pages/Map.js'
 import Call from './pages/Call.js'
-import Geolocation from './pages/Geolocation'
 import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
-import aunty from './images/aunty.jpg'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
-
 library.add(faPhoneSlash, faPhone, faVideo);
+
 
 class App extends Component {
   state = {
@@ -42,11 +40,12 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/setting" component={Setting} />
-          <Route exact path="/map" component={props => <Geolocation {...props} lat={lat} lng={lng} />} />
+
+          <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
 
           <Route exact path="/call" component={Call} />
 
-          {/* update these two  */}
+          {/* update SOS path  */}
           <Route exact path="/sos" component={Home} />
         </div>
       </ToastProvider>
@@ -54,9 +53,4 @@ class App extends Component {
   }
 }
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false,
-  },
-  userDecisionTimeout: 6000,
-})(App);
+export default App;
