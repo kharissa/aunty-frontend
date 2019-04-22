@@ -49,6 +49,7 @@ export default class ItinerarySearch extends React.Component {
                     localStorage.setItem('itineraryLatitude', lat)
                     localStorage.setItem('itineraryLongitude', lng)
                     localStorage.setItem('itineraryLocation', this.state.name);
+                    localStorage.setItem('itineraryAddress', results[0]['formatted_address'])
                 } else {
                     this.props.triggerNextStep({
                         trigger: '5'
