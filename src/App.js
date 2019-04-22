@@ -9,7 +9,7 @@ import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
-import CameraCall, { CameraToasts } from './pages/Camera.js';
+import { CameraToasts } from './pages/Camera.js';
 // import axios from 'axios';
 // import Notification from './containers/Notification';
 import './App.css';

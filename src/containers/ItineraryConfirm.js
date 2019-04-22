@@ -1,13 +1,6 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import ChatBot from 'react-simple-chatbot';
-import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios'
 import 'rc-time-picker/assets/index.css';
-import moment from 'moment';
-import TimePicker from 'rc-time-picker';
-import { Redirect } from 'react-router-dom'
-import GoogleMapsLoader from 'google-maps'
 
 
 export default class ItineraryConfirm extends React.Component {
