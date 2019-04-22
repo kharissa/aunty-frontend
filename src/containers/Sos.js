@@ -120,6 +120,9 @@ class Sos extends React.Component {
     render() {
         return (
             <div className="container">
+                <br /><br />
+                <br /><br />
+                <br /><br />
                 <Button color="danger" disabled={this.state.disabled} onClick={this.open} size='lg'>SOS</Button>
                 <Modal isOpen={this.state.modal} toggle={this.close}>
                     <ModalHeader toggle={this.close}>Are you in danger?</ModalHeader>
