@@ -12,6 +12,7 @@ class CreatePin extends React.Component {
             category: 'none',
             is_public: true,
             modalType: false,
+            newPins: []
         };
     }
 
@@ -19,14 +20,12 @@ class CreatePin extends React.Component {
         this.setState({
             [e.target.id]: e.target.value
         })
-        // console.log(this.state)
     }
 
     handleSafeOrDanger = () => {
         this.setState(prevState => ({
             is_safe: !prevState.is_safe
         }));
-        // console.log(this.state);
     }
 
     handlePublicOrPrivate = () => {
@@ -37,7 +36,6 @@ class CreatePin extends React.Component {
 
     handleCategorySelect = (e) => {
         this.setState({ category: e.target.value })
-        // console.log(this.state.category)
     }
 
     handleSubmit = (e) => {
@@ -69,6 +67,16 @@ class CreatePin extends React.Component {
             console.log(response)
             if (response.data.status === "success") {
                 console.log('pin created!');
+                console.log('response');
+
+                // TODO : change this to refresh page with new pin
+                // OR push new pin to props
+
+                // const newPins = [...this.state.newPins];
+                // newPins.push({value: NewPin});
+                // this.setState({ newPins }
+
+                console.log(this.state.newPins);
             } else {
                 console.log('ohnoes.');
             }
@@ -76,7 +84,6 @@ class CreatePin extends React.Component {
             console.log(error);
         })
 
-        console.log(this.state);
     }
 
     render() {

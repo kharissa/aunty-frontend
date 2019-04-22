@@ -43,6 +43,10 @@ export default class Map extends React.Component {
         })
     }
 
+    // TODO
+    // get itinerary pins
+
+
     handleClick = (e) => {
         const { lat, lng } = e.latlng;
         this.setState({ clickedMarker: [lat, lng] })
@@ -88,7 +92,12 @@ export default class Map extends React.Component {
                     </MarkerClusterGroup>
 
                     <Marker position={[lat, lng]} icon={geolocIcon}>
-                        <Popup>You & Aunty are here!</Popup>
+                        <Popup>
+                            <div align="center">
+                                <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??"/><br/>
+                                <b>Wah, this place you bring Aunty so nice!</b>
+                            </div>
+                        </Popup>
                     </Marker>
 
                     {this.state.clickedMarker.length > 0

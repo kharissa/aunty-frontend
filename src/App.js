@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
-import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
 import Map from './pages/Map.js'
