@@ -36,9 +36,6 @@ class Sos extends React.Component {
 
     contact_emergency = (event) => {
         this.close()
-
-        const queryString = require('query-string')
-
         axios({
             method: 'POST',
             url: 'http://localhost:5000/api/v1/sos/',
@@ -122,8 +119,8 @@ class Sos extends React.Component {
 
     render() {
         return (
-            <div>
-                <Button color="danger" disabled={this.state.disabled} onClick={this.open}>SOS</Button>
+            <div className="container">
+                <Button color="danger" disabled={this.state.disabled} onClick={this.open} size='lg'>SOS</Button>
                 <Modal isOpen={this.state.modal} toggle={this.close}>
                     <ModalHeader toggle={this.close}>Are you in danger?</ModalHeader>
                     <ModalBody>

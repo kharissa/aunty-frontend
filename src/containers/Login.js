@@ -19,6 +19,7 @@ export default class Login extends React.Component {
         const { toastManager } = this.props;
         axios({
             // Send POST request with login information
+            // In production build, remove localhost
             method: 'POST',
             url: 'http://localhost:5000/api/v1/sessions/',
             data: {

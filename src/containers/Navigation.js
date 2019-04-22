@@ -7,6 +7,9 @@ import {
 import { Link } from 'react-router-dom';
 
 export default class Navigation extends React.Component {
+    state = {
+        disabled: false
+    }
 
     render() {
         return (
@@ -23,7 +26,7 @@ export default class Navigation extends React.Component {
                             <Link className="nav-link" to="/"><i className="fa fa-calendar-alt" /></Link>
                         </NavItem>
                         <NavItem>
-                            <Link className="nav-link" to="/"><i className="fa fa-sliders-h" /></Link>
+                            <Link className="nav-link" to="/setting"><i className="fa fa-sliders-h" /></Link>
                         </NavItem>
                         <NavItem>
                             <Link className="nav-link" to="/sos"><i className="fa fa-bell" /></Link>

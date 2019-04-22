@@ -33,10 +33,8 @@ class Homepage extends React.Component {
             <div>
                 <Link to="/chat">Chat with Aunty</Link> <br />
                 <Link to="/geolocation">Geolocation</Link> <br />
-                <Link to="/mapj">Jade's Map</Link> <br />
-                <Link to="/setting">Setting</Link> <br />
-                <Link to="/sos">SOS</Link><br /><br />
-
+                <Link to="/map">Map</Link> <br /> <br />
+                <Link to="/setting">Setting</Link> <br /> <br />
                 <Button outline color="primary" onClick={this.showModal}>Register / Login</Button>
                 <p>This is the home page. <br />Wait ah, Aunty still building.</p>
                 <LoginModal isOpen={this.state.modal} toggle={this.showModal} />
