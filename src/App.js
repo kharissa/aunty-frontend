@@ -5,6 +5,7 @@ import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
 import Map from './pages/Map.js'
 import Call from './pages/Call.js'
+import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
@@ -38,12 +39,14 @@ class App extends Component {
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
+          <Route exact path="/setting" component={Setting} />
+
           <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
+
           <Route exact path="/call" component={Call} />
 
-          {/* update these two  */}
+          {/* update SOS path  */}
           <Route exact path="/sos" component={Home} />
-          <Route exact path="/itinerary" component={Home} />
         </div>
       </ToastProvider>
     )

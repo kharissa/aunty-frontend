@@ -92,3 +92,8 @@ body {
 .register-info {
   font-size: .9em;
 }
+
+#edit {
+  border: none;
+  height: 25px;
+}
