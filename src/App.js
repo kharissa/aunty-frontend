@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
 import Call from './pages/Call.js'
 import Geolocation from './pages/Geolocation'
-import MapJ from './pages/MapJ.js'
+import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import aunty from './images/aunty.jpg'
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -41,13 +41,13 @@ class App extends Component {
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
+          <Route exact path="/setting" component={Setting} />
           <Route exact path="/map" component={props => <Geolocation {...props} lat={lat} lng={lng} />} />
 
           <Route exact path="/call" component={Call} />
 
           {/* update these two  */}
           <Route exact path="/sos" component={Home} />
-          <Route exact path="/itinerary" component={Home} />
         </div>
       </ToastProvider>
     )
