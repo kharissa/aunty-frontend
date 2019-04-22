@@ -25,6 +25,7 @@ export default class ImageReview extends React.Component {
     })
     .then(response => {
         const results = response.data.results;
+        const imageUrl = response.data.imageURL;
         for (let attribute in results) {
             if (results[attribute] > 0.70) {
                 properties.push(attribute)
@@ -32,7 +33,8 @@ export default class ImageReview extends React.Component {
         }
         this.setState({
             loading: false,
-            properties: properties
+            properties: properties,
+            imageUrl: imageUrl
         })
         localStorage.removeItem('update')
     })
@@ -45,12 +47,13 @@ export default class ImageReview extends React.Component {
   }
 
     render() {
-        const { loading, properties } = this.state;
+        const { loading, properties, imageUrl } = this.state;
         const loader = <div>Loading...</div>
         return (
             <div>
                 <strong>UPDATE</strong>
                 <p>Aunty took a look at the photo you sent...</p>
+                <img src={imageUrl} />
                 {
                     loading ?
                         loader
