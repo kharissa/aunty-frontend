@@ -6,47 +6,40 @@ export default class ImageReview extends React.Component {
         super(props);
 
         this.state = {
-            weapon: false,
-            alcohol: false,
-            drugs: false,
-            male: false,
-            female: false,
-            minor: false,
-            sunglasses: false,
-            scam: false,
-            nudity: false,
             loading: true,
             properties: []
         };
     }
 
-    componentWillMount() {
-        const token = localStorage.getItem('token');
+    componentWillMount = () => {
+        const token = localStorage.getItem('token')
+        const imageId = this.props.step.metadata.image_id
+        const properties = []
 
         axios({
             method: 'get',
-            url: 'https://localhost:5000/api/v1/images/',
+            url: `http://localhost:5000/api/v1/images/${imageId}`,
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
-                console.log(response);
-                const properties = []
-                for (result in response.results) {
-                    if (properties[property] > 0.70) {
-                        properties.push(property)
+                const results = response.data.results;
+                for (let attribute in results) {
+                    if (results[attribute] > 0.70) {
+                        properties.push(attribute)
                     }
                 }
-                this.setStatus({
-                    isLoading: false,
+                this.setState({
+                    loading: false,
                     properties: properties
                 })
+                localStorage.removeItem('update')
             })
             .catch(error => {
                 console.log(error);
                 this.setState({
-                    isLoading: false,
+                    loading: false,
                 })
             })
     }
@@ -65,7 +58,7 @@ export default class ImageReview extends React.Component {
                         properties.length > 0 ?
                             <div className="text-left">
                                 Based on Aunty's analysis, there is a high probability of the following in the photo:
-            <ul>
+                                <ul>
                                     {
                                         properties.map((property, index) =>
                                             <li key={index}>{property}</li>
