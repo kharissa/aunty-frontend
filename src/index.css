@@ -320,8 +320,26 @@ code {
 } */
 
 .go-to-loc {
+  height: 30px;
+  width: 30px;
+  background-color: #FFA205;
+  border-radius: 15px;
+  border: none;
   position: fixed;
   z-index: 999;
   bottom: 100px;
   right: 100px;
 }
+
+
+.go-to-loc:focus {
+    outline: 0 !important;
+}
+
+
+.leaflet-control-layers-toggle{
+    width: 20px;
+    padding:3px;
+
+}
+
