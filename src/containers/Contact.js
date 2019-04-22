@@ -86,7 +86,7 @@ class Contact extends React.Component {
                 <thead>
                     <tr>
                         <th>Contact</th>
-                        <td>{submitButton}</td>
+                        <th>{submitButton}</th>
                     </tr>
                 </thead>
                 <tbody>
