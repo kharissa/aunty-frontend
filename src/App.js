@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
-import { geolocated } from 'react-geolocated';
-import Home from './pages/Home.js';
-import Chat from './pages/Chat.js';
-import Geolocation from './pages/Geolocation';
-import MapJ from './pages/MapJ.js';
-import Navigation from './containers/Navigation.js'
+import Home from './pages/Home.js'
+import Chat from './pages/Chat.js'
+import Map from './pages/Map.js'
 import Call from './pages/Call.js'
-import CameraCall from './pages/Camera.js';
-import aunty from './images/aunty.jpg'
+import Setting from './pages/Setting.js'
+import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+import CameraCall from './pages/Camera.js';
 // import axios from 'axios';
 // import Notification from './containers/Notification';
 import './App.css';
-
 library.add(faPhoneSlash, faPhone, faVideo);
+
 
 class App extends Component {
   // notificationItinerary = () => {
@@ -65,22 +63,17 @@ class App extends Component {
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
-          <Route exact path="/camera" component={CameraCall} />
-          <Route exact path="/map" component={props => <Geolocation {...props} lat={lat} lng={lng} />} />
+          <Route exact path="/setting" component={Setting} />
+          <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
           <Route exact path="/call" component={Call} />
+          <Route exact path="/camera" component={CameraCall} />
 
-          {/* update these two  */}
+          {/* update SOS path  */}
           <Route exact path="/sos" component={Home} />
-          <Route exact path="/itinerary" component={Home} />
         </div>
       </ToastProvider>
     )
   }
 }
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false,
-  },
-  userDecisionTimeout: 6000,
-})(App);
+export default App;
