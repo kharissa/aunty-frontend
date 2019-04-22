@@ -38,11 +38,12 @@ export default class Chat extends React.Component {
     }
 
     componentDidMount = () => {
+
         if (!localStorage.getItem('token')) {
             this.setState({
                 loggedIn: false,
             })
-        } else if (this.props.update) {
+        } else if (localStorage.getItem('update')) {
             this.setState({
                 firstName: localStorage.getItem('firstName'),
                 loading: false,
@@ -85,7 +86,7 @@ export default class Chat extends React.Component {
                 <ImageReview />
             ),
             metadata: {
-                image_id: 7 // this.props.params.match.id
+                image_id: localStorage.getItem('updateImageId')
             },
             asMessage: true,
             trigger: 'need more help'

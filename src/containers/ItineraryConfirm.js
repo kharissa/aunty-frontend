@@ -24,6 +24,7 @@ export default class ItineraryConfirm extends React.Component {
         const description = localStorage.getItem('itineraryDetails');
         const latitude = localStorage.getItem('itineraryLatitude');
         const longitude = localStorage.getItem('itineraryLongitude');
+        const address = localStorage.getItem('itineraryAddress');
 
         // Make axios POST request to create itinerary pin 
         axios({
@@ -35,7 +36,8 @@ export default class ItineraryConfirm extends React.Component {
                 longitude: parseFloat(latitude),
                 latitude: parseFloat(longitude),
                 startTime: time,
-                description: description
+                description: description,
+                address: address
             }
         })
         .then(response => {

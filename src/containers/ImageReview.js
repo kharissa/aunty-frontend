@@ -12,6 +12,7 @@ export default class ImageReview extends React.Component {
   }
 
   componentWillMount = () => {
+    const { toastManager } = this.props;
     const token = localStorage.getItem('token')
     const imageId = this.props.step.metadata.image_id
     const properties = []

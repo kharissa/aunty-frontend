@@ -9,7 +9,7 @@ import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
-import CameraCall from './pages/Camera.js';
+import CameraCall, { CameraToasts } from './pages/Camera.js';
 // import axios from 'axios';
 // import Notification from './containers/Notification';
 import './App.css';
@@ -66,7 +66,7 @@ class App extends Component {
           <Route exact path="/setting" component={Setting} />
           <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
           <Route exact path="/call" component={Call} />
-          <Route exact path="/camera" component={CameraCall} />
+          <Route exact path="/camera" component={CameraToasts} />
 
           {/* update SOS path  */}
           <Route exact path="/sos" component={Home} />
