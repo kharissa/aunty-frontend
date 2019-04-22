@@ -11,7 +11,7 @@ export default class Navigation extends React.Component {
     render() {
         return (
             <div>
-                <Navbar light color="light" fixed="bottom" className="nav-fill justify-content-around ">
+                <Navbar light color="light" fixed="bottom" className="nav-fill justify-content-around">
                     <Nav>
                         <NavItem>
                             <Link className="nav-link" to="/chat"><i className="fa fa-comment-dots" /></Link>

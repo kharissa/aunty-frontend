@@ -140,6 +140,13 @@ export default class Map extends React.Component {
                         </MarkerClusterGroup>
                     </Overlay>
 
+                    <Overlay checked name="Itinerary">
+                        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                            <Pins pins={this.state.itinerary} />
+                        </MarkerClusterGroup>
+                    </Overlay>
+
                     <Overlay checked name="Safe">
                         <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
                             spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
@@ -154,12 +161,6 @@ export default class Map extends React.Component {
                         </MarkerClusterGroup>
                     </Overlay>
 
-                    <Overlay checked name="Itinerary">
-                        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                            spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
-                            <Pins pins={this.state.itinerary} />
-                        </MarkerClusterGroup>
-                    </Overlay>
 
                     <Marker position={[lat, lng]} icon={geolocIcon}>
                         <Popup>
@@ -175,7 +176,7 @@ export default class Map extends React.Component {
                             position={this.state.clickedMarker}
                             onClick={this.toggleModal}
                             icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}>
-                            <Popup>Click again to create a new pin!</Popup> </Marker>
+                          </Marker>
                         : null
                     }
 
