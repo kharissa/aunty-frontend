@@ -3,41 +3,19 @@ import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
+import Sos from './containers/Sos.js'
 import Map from './pages/Map.js'
 import Call from './pages/Call.js'
 import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
-import CameraCall from './pages/Camera.js';
-// import axios from 'axios';
-// import Notification from './containers/Notification';
+import { faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell } from '@fortawesome/free-solid-svg-icons';
+import { CameraToasts } from './pages/Camera.js';
 import './App.css';
 
-library.add(faPhoneSlash, faPhone, faVideo);
-
+library.add(faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell);
 
 class App extends Component {
-  // notificationItinerary = () => {
-  //   const token = localStorage.getItem('token')
-  //   console.log('this funciton works')
-  //   axios({
-  //     method: 'GET',
-  //     url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
-  //     headers: {
-  //       'Authorization': `Bearer ${token}`
-  //     }
-  //   })
-  //     .then(response => {
-  //       console.log('this is the response')
-  //       console.log(response)
-  //     })
-  // }
-
-  // componentDidMount() {
-  //   this.notificationItinerary();
-  // }
-
   state = {
     lat: 3.136053,
     lng: 101.6308768,
@@ -57,21 +35,18 @@ class App extends Component {
 
   render() {
     const { lat, lng } = this.state
-
     return (
       <ToastProvider>
-        <Navigation />
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
+          <Route exact path="/sos" component={Sos} />
           <Route exact path="/setting" component={Setting} />
           <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
           <Route exact path="/call" component={Call} />
-          <Route exact path="/camera" component={CameraCall} />
-
-          {/* update SOS path  */}
-          <Route exact path="/sos" component={Home} />
+          <Route exact path="/camera" component={CameraToasts} />
         </div>
+        <Navigation />
       </ToastProvider>
     )
   }

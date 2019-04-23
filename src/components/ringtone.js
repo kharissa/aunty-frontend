@@ -24,7 +24,7 @@ export default class Ringtone extends React.Component {
         <Sound
             url={OldPhoneTone}
             loop={true}
-            playStatus={Sound.status.PLAYING}
+            playStatus={this.state.status}
             playFromPosition={300}
         />
     ); 

@@ -21,7 +21,7 @@ export default class Login extends React.Component {
             // Send POST request with login information
             // In production build, remove localhost
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/sessions/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/sessions/',
             data: {
                 email: this.state.loginEmail,
                 password: this.state.loginPassword
@@ -71,6 +71,8 @@ export default class Login extends React.Component {
                         </Col>
                     </Row>
                     <AvForm onValidSubmit={this.handleSubmit} id="login">
+
+
                         <Row>
                             <Col>
                                 <AvGroup>
