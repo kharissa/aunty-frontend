@@ -15,9 +15,6 @@ const icons = {
     "Embassy": divIcon({ html: renderToStaticMarkup(<i className=" far fa-building fa-2x" />) }),
     "Home/Safe House": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-home fa-2x" />) }),
     "Itinerary": divIcon({ html: renderToStaticMarkup(<i className=" far fa-clock fa-2x" />) }),
-
-    // const iconMarker = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-map-marker-alt fa-2x" />) });
-
 }
 
 export default class Pins extends React.Component {
@@ -29,8 +26,13 @@ export default class Pins extends React.Component {
                 <Marker key={pin.id} position={[Number(pin.latitude), Number(pin.longitude)]}
                icon={icons[pin.category]} >
                     <Popup>
-                        <p>{pin.category}</p>
-                        <p>{pin.name}</p>
+                        <h6>{pin.category}</h6>
+                        <p></p>
+                        { (pin.pinName) ? <b>{pin.pinName}</b> : <b>{pin.name}</b> }
+                        <br/>
+                        { (pin.address) ? <>{pin.address}</> : null }
+                        <br/>
+                        { (pin.start_time) ? <p><b>Check in time:</b> {pin.start_time}</p> : null }
                     </Popup>
                 </Marker>
             )}

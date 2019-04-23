@@ -79,7 +79,7 @@ export default class Map extends React.Component {
                 newPin.longitude = latitude;
                 return newPin
             })
-            console.log(newData);
+            // console.log(newData);
             this.setState({ itinerary: newData.map(pin => ({
                 ...pin,
                 category: 'Itinerary'
@@ -87,7 +87,6 @@ export default class Map extends React.Component {
         }).catch(error => {
             console.log(error)
         })
-
     }
 
     handleClick = (e) => {
@@ -131,33 +130,32 @@ export default class Map extends React.Component {
                         </BaseLayer>
 
                         <Overlay checked name="Dangerous">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.dangerPins} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Itinerary">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.itinerary} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Safe">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.safePins} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Private">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.privatePins} />
                             </MarkerClusterGroup>
                         </Overlay>
-
 
                         <Marker position={[lat, lng]} icon={geolocIcon}>
                             <Popup>
