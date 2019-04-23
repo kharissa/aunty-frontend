@@ -41,8 +41,8 @@ export default class Map extends React.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then(response => {
-            // this.state.pins.push(response.data.publicPins);
             // console.log(response.data.publicPins);
+
             let pubPins = response.data.publicPins;
             let isSafe = [];
             let isDanger = [];
@@ -55,11 +55,8 @@ export default class Map extends React.Component {
                 }
             })
 
-
-            console.log(isSafe)
-            console.log(isDanger)
-
             this.setState({ safePins: isSafe, dangerPins: isDanger });
+            this.setState({ privatePins: response.data.privatePins });
 
         }).catch(error => {
             console.log(error)
