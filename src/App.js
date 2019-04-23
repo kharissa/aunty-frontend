@@ -42,7 +42,7 @@ class App extends Component {
     lat: 3.136053,
     lng: 101.6308768,
   }
-
+  
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(pos => {
       const { latitude, longitude } = pos.coords
@@ -57,10 +57,8 @@ class App extends Component {
 
   render() {
     const { lat, lng } = this.state
-
     return (
       <ToastProvider>
-        <Navigation />
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
@@ -72,6 +70,7 @@ class App extends Component {
           <Route exact path="/call" component={Call} />
           <Route exact path="/camera" component={CameraToasts} />
         </div>
+        <Navigation/>
       </ToastProvider>
     )
   }
