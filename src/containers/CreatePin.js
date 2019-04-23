@@ -73,6 +73,8 @@ class CreatePin extends React.Component {
                 newPin.push(response.data.pin);
                 this.setState({ newPins: newPin });
                 this.props.toggleModal();
+                window.location.reload()
+
 
             } else {
                 console.log('ohnoes.');
