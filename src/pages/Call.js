@@ -4,12 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
 import Ringtone from '../components/ringtone'
+import PhoneCall from '../components/phonecall';
+import { Redirect } from 'react-router-dom';
 
 export default class Call extends React.Component {
     state = {
         incomingCall: true,
         onCall: false,
-        callTime: 0
+        callTime: 0,
+        onVideo: false,
+        endCall: false
     }
 
     handleToggle = () => {
@@ -31,9 +35,19 @@ export default class Call extends React.Component {
         this.setState({
             onCall: false,
             incomingCall: false,
-            callTime: 0
+            callTime: 0,
+            endCall: true
         }) 
         clearInterval(this.state.timer)
+    }
+
+    handleVideo = () => {
+        this.setState({
+            onVideo: true,
+            onCall: false,
+            incomingCall: false,
+            callTime: 0
+        }) 
     }
 
     handleTime = () => {
@@ -47,8 +61,17 @@ export default class Call extends React.Component {
         })
     }
 
+    handleRedirect() {
+        if (this.state.onVideo) {
+            return <Redirect to="/camera" />
+        }
+        else if (this.state.endCall) {
+            return <Redirect to="/" />
+        }
+    }
+
     render() {
-        const { incomingCall, onCall } = this.state;
+        const { incomingCall, onCall, onVideo } = this.state;
         momentDurationFormatSetup(moment);
         return (
             <Container className="mx-0 px-0">
@@ -82,9 +105,10 @@ export default class Call extends React.Component {
                             </Button>
                         </Col>
                     </Row>
-                    </Container>
+                </Container>
             : onCall ? 
-                    <Container className="p-4 call-screen" fluid>
+                <Container className="p-4 call-screen" fluid>
+                    <PhoneCall />
                     <Row className="p-2">
                         <Col>
                         <h4>On Call</h4>
@@ -104,7 +128,7 @@ export default class Call extends React.Component {
                     </Row>
                     <Row className="p-3 call-action">
                         <Col>
-                            <Button color="secondary" className="btn-lg" onClick={this.handleCallEnd}><FontAwesomeIcon icon="video"/>
+                            <Button color="secondary" className="btn-lg" onClick={this.handleVideo}><FontAwesomeIcon icon="video"/>
                             </Button>
                         </Col>
                         <Col>
@@ -112,15 +136,16 @@ export default class Call extends React.Component {
                             </Button>
                         </Col>
                     </Row>
-                    </Container>
+                </Container>
                 :
-                    <Container>
-                        <Row>
-                            <Col>
-                            </Col>
-                        </Row>
-                    </Container>
-                }
+                <Container>
+                    <Row>
+                        <Col>
+                        </Col>
+                    </Row>
+                </Container>
+            }
+            { this.handleRedirect() }
             </Container>
         )
     }
