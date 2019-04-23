@@ -39,8 +39,6 @@ export default class Login extends React.Component {
                     localStorage.setItem('token', response.data['auth_token']);
                     localStorage.setItem('userId', response.data.user['id']);
                     localStorage.setItem('firstName', response.data.user['first_name']);
-                    localStorage.setItem('lastName', response.data.user['last_name']);
-                    localStorage.setItem('email', response.data.user['email']);
                 } else {
                     // On response but password validation failure, display error toast
                     toastManager.add(`Uh oh! We were unable to match your email with the password provided.`, {

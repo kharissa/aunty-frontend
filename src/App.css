@@ -112,18 +112,18 @@ body {
 
 /* -----------------Chatbot CSS----------------- */
 /* align user options to the right so that users know that they need to pick an option */
-ul {
+/* ul {
 list-style-type: none;
 padding: 0;
 margin: 0;
 text-align: right;
-}
+} */
 
-li {
-background-position: 100% .4em;
-padding-right: .6em;
-color:white;
-}
+.rsc-os-option-element {
+  background-position: 100% .4em !important;
+  padding-right: .6em !important;
+  color:white !important;
+} 
 
 /* users options bubble */
 .cBYVVs {
@@ -142,7 +142,7 @@ background:gray
 }
 
 /* chatbox size */
-html,body { 
+html, body { 
   height:100%; 
 }
 
