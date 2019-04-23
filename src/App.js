@@ -16,7 +16,7 @@ import CustomRoute from './CustomRoute.js';
 library.add(faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell);
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       lat: 3.136053,
@@ -38,7 +38,7 @@ class App extends Component {
 
   render() {
     const { lat, lng } = this.state
-    
+
     return (
       <>
         <ToastProvider>
