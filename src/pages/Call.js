@@ -92,7 +92,7 @@ export default class Call extends React.Component {
                         </Col>
                     </Row>
                     <Row className="p-2">
-                        <Col md={4}>
+                        <Col md="4">
                             <div className="aunty-call">
                             </div>
                         </Col>
@@ -125,3 +125,5 @@ export default class Call extends React.Component {
         )
     }
 }
+
+// Denise own reminder: how do i add something nice to see after the user hangs up on fake call

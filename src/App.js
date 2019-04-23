@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import { geolocated } from 'react-geolocated';
-import Home from './pages/Home.js'
+import Login from './pages/Login.js'
 import Chat from './pages/Chat.js'
 import Call from './pages/Call.js'
+import Settings from './pages/Settings.js'
 import Geolocation from './pages/Geolocation'
-import MapJ from './pages/MapJ.js'
 import Navigation from './containers/Navigation.js'
-import aunty from './images/aunty.jpg'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faPhoneSlash, faPhone, faVideo);
+library.add(faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell);
 
 class App extends Component {
   state = {
     lat: 3.136053,
     lng: 101.6308768,
   }
-
+  
+  
+  // loadNavigation (page) {
+  //   if (page = '/') {
+  //     return null;
+  //   }
+  //   return <Navigation/>
+  // }
+  
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(pos => {
       const { latitude, longitude } = pos.coords
@@ -34,21 +41,22 @@ class App extends Component {
 
   render() {
     const { lat, lng } = this.state
-
+    // loadNavigation({window.location.pathname})
     return (
+      // Denise: is there a reason why toastprovider wraps this isntead of <Router>
       <ToastProvider>
-        <Navigation />
         <div align="center">
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Login} />
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/map" component={props => <Geolocation {...props} lat={lat} lng={lng} />} />
 
           <Route exact path="/call" component={Call} />
 
-          {/* update these two  */}
-          <Route exact path="/sos" component={Home} />
-          <Route exact path="/itinerary" component={Home} />
+          {/* SOS may no need a path, it may just be a button with a pop-up alert  */}
+          <Route exact path="/sos" component={Login} />
+          <Route exact path="/settings" component={Login} />
         </div>
+        <Navigation/>
       </ToastProvider>
     )
   }
