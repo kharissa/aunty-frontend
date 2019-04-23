@@ -10,11 +10,7 @@
     "availity-reactstrap-validation": "^2.5.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
-<<<<<<< HEAD
-    "google-maps": "^3.3.0",
-=======
     "fs": "0.0.1-security",
->>>>>>> master
     "leaflet": "^1.4.0",
     "leaflet-geosearch": "^2.7.0",
     "leaflet.markercluster": "^1.4.1",
