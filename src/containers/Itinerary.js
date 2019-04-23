@@ -68,9 +68,13 @@ class Itinerary extends React.Component {
                     {this.state.itineraries.map(itinerary =>
                         <tr>
                             <th scope="row">
-                                {itinerary.pinName}
+                                <div className='m-2'>
+                                    {itinerary.pinName}
+                                </div>
                                 <tr>
-                                    <Button outline color='danger' size='sm' onClick={this.handleDelete} data-pin_id={itinerary.id}>Delete</Button>
+                                    <div className='m-2'>
+                                        <Button outline color='danger' size='sm' onClick={this.handleDelete} data-pin_id={itinerary.id}>Delete</Button>
+                                    </div>
                                 </tr>
                             </th>
                             <td>

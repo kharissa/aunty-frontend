@@ -172,3 +172,8 @@ height:100%
   height: 25px;
 }
 
+@media (min-width: 600px) {
+  #sosButton {
+    width: 30%;
+  }
+}
