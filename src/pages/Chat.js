@@ -105,22 +105,22 @@ export default class Chat extends React.Component {
             id: 'menu',
             options: [{
                 value: "Set itinerary for check ins",
-                label: "Aunty, can you check in on me later?",
+                label: "Set itinerary for check ins",
                 trigger: '5'
             },
             {
                 value: 'Call Aunty',
-                label: 'Aunty, lai! We chit chat together gether.',
+                label: 'Call Aunty',
                 trigger: '22'
             },
             {
                 value: 'Find safe locations',
-                label: "Aunty, I don't feel safe. Where do I go?",
+                label: "Find safe locations",
                 trigger: '23'
             },
             {
                 value: 'Scan my area',
-                label: "Aunty, I don't feel safe. Can you look around for me?",
+                label: "Scan my area",
                 trigger: '24'
             },
             ],
