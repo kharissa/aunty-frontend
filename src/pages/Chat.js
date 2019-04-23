@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom';
 import ItinerarySearch from '../containers/ItinerarySearch';
 import ImageReview from '../containers/ImageReview';
 import ItineraryConfirm from '../containers/ItineraryConfirm';
+import { Link } from 'react-router-dom';
 
 // Formatting date/time to be saved in local storage
 const format = 'YYYY-MM-DD HH:mm';
@@ -259,11 +260,15 @@ export default class Chat extends React.Component {
             end: true,
         }, {
             id: '23',
-            message: 'Nah, this is the nearest I can find. Open the map and see <Link to map>',
+            component: (
+                <Link to="/map">View on the map</Link>
+            ),
             end: true,
         }, {
             id: '24',
-            message: '<Link to "video call"/ camera scan>',
+            component: (
+                <Link to="/call">Video call with Aunty</Link>
+            ),
             end: true,
         }];
         return (
