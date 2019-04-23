@@ -17,7 +17,7 @@ class CameraCall extends Component {
     this.setState({
       onConfirm: true,
       dataUri: dataUri
-    })                               
+    })
   }
 
   handleSubmit = () => {
@@ -25,7 +25,7 @@ class CameraCall extends Component {
     const token = localStorage.getItem('token')
     axios({
       method: 'POST',
-      url: 'http://localhost:5000/api/v1/images/',
+      url: 'https://gokaikai.herokuapp.com/api/v1/images/',
       headers: {
         'Authorization': `Bearer ${token}`
       },
@@ -33,25 +33,25 @@ class CameraCall extends Component {
         dataUri: this.state.dataUri
       }
     })
-    .then(response => {
-      console.log(response)
-      toastManager.add('Aunty successfully analysed your photo. Redirecting to chat...', {
-        appearance: 'success',
-        autoDismiss: true
-      });
-      localStorage.setItem('update', true);
-      localStorage.setItem('updateImageId', response.data.imageId);
-      this.setState({
-        redirect: true
+      .then(response => {
+        console.log(response)
+        toastManager.add('Aunty successfully analysed your photo. Redirecting to chat...', {
+          appearance: 'success',
+          autoDismiss: true
+        });
+        localStorage.setItem('update', true);
+        localStorage.setItem('updateImageId', response.data.imageId);
+        this.setState({
+          redirect: true
+        })
       })
-    })
-    .catch(error => {
-      console.log(error);
-      toastManager.add('Unfortunately there was an error in uploading your photo. ', {
-        appearance: 'error',
-        autoDismiss: true,
-      });
-    })
+      .catch(error => {
+        console.log(error);
+        toastManager.add('Unfortunately there was an error in uploading your photo. ', {
+          appearance: 'error',
+          autoDismiss: true,
+        });
+      })
   }
 
   handleReject = () => {
@@ -63,33 +63,33 @@ class CameraCall extends Component {
   handleRedirect() {
     if (this.state.redirect) {
       return <Redirect to="/chat" />
-    } 
+    }
   }
 
   render() {
     const { onConfirm, dataUri } = this.state;
     return (
       <Row>{
-        onConfirm ? 
-        <Col>
-          <img src={`${dataUri}`} height="500"/>
-          <p>Submit photo for analysis?</p>
-          <Row className="justify-content-around">
-            <Button color="success" onClick={this.handleSubmit}>Yes</Button>
-            <Button color="warning" onClick={this.handleReject}>No</Button>
-          </Row>
-        </Col>
-        : 
-        <Col>
-        <Camera
-          onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
-          idealResolution={{ width: 480, height: 800 }}
-          isSilentMode={true}
-          imageType = {IMAGE_TYPES.JPG}
-        />
-        </Col>
+        onConfirm ?
+          <Col>
+            <img src={`${dataUri}`} height="500" />
+            <p>Submit photo for analysis?</p>
+            <Row className="justify-content-around">
+              <Button color="success" onClick={this.handleSubmit}>Yes</Button>
+              <Button color="warning" onClick={this.handleReject}>No</Button>
+            </Row>
+          </Col>
+          :
+          <Col>
+            <Camera
+              onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
+              idealResolution={{ width: 480, height: 800 }}
+              isSilentMode={true}
+              imageType={IMAGE_TYPES.JPG}
+            />
+          </Col>
       }
-      { this.handleRedirect() }
+        {this.handleRedirect()}
       </Row>
     );
   }

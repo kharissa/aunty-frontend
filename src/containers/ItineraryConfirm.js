@@ -22,7 +22,7 @@ export default class ItineraryConfirm extends React.Component {
         // Make axios POST request to create itinerary pin 
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/pins/itinerary/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
             data: {
                 pinName: location,
                 userId: userId,

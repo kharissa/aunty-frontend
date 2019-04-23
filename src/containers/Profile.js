@@ -29,7 +29,7 @@ class Profile extends React.Component {
         const token = localStorage.getItem('token');
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/api/v1/users/me/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/users/me/',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -63,7 +63,7 @@ class Profile extends React.Component {
         event.preventDefault();
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/users/update/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/users/update/',
             headers: {
                 'Authorization': `Bearer ${token}`
             },

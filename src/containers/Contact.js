@@ -22,7 +22,7 @@ class Contact extends React.Component {
         const token = localStorage.getItem('token');
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/api/v1/contacts/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/contacts/',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -54,7 +54,7 @@ class Contact extends React.Component {
         event.preventDefault();
         axios({
             method: 'PUT',
-            url: `http://localhost:5000/api/v1/contacts/12/`,
+            url: `https://gokaikai.herokuapp.com/api/v1/contacts/12/`,
             headers: {
                 'Authorization': `Bearer ${token}`
             },
