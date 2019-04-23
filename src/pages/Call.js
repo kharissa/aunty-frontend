@@ -125,5 +125,3 @@ export default class Call extends React.Component {
         )
     }
 }
-
-// Denise own reminder: how do i add something nice to see after the user hangs up on fake call
