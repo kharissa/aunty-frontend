@@ -61,6 +61,23 @@ export default class Map extends React.Component {
         }).catch(error => {
             console.log(error)
         })
+
+        axios({
+            method: 'GET',
+            url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
+            'headers': {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+
+            this.setState({ itinerary: response.data.map(pin => ({
+                ...pin,
+                category: 'Itinerary'
+            })) });
+        }).catch(error => {
+            console.log(error)
+        })
+
     }
 
     // TODO
