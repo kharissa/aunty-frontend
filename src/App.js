@@ -60,7 +60,7 @@ class App extends Component {
     return (
       <ToastProvider>
         <div align="center">
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
 
           <Route exact path="/sos" component={Sos} />
