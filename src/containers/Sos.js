@@ -23,7 +23,7 @@ class Sos extends React.Component {
         const token = localStorage.getItem('token');
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/api/v1/contacts/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/contacts/',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -59,7 +59,7 @@ class Sos extends React.Component {
         this.close()
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/sos/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/sos/',
             withCredentials: false,
             headers: {
                 'Authorization': `Bearer ${this.state.token}`,

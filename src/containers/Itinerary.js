@@ -17,7 +17,7 @@ class Itinerary extends React.Component {
         const token = localStorage.getItem('token');
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/api/v1/pins/itinerary/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -36,7 +36,7 @@ class Itinerary extends React.Component {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/api/v1/pins/itinerary/delete/',
+            url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/delete/',
             headers: {
                 'Authorization': `Bearer ${token}`
             },

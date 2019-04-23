@@ -82,19 +82,19 @@ export default class Map extends React.Component {
                     tap={true}
                     className="markercluster-map">
 
-                    <GeoSearch interactive={true}/>
+                    <GeoSearch interactive={true} />
                     <TileLayer url={this.state.mapTilesCarto} />
 
                     <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
                         spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
 
-                    <Pins pins={this.state.pins} />
+                        <Pins pins={this.state.pins} />
                     </MarkerClusterGroup>
 
                     <Marker position={[lat, lng]} icon={geolocIcon}>
                         <Popup>
                             <div align="center">
-                                <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??"/><br/>
+                                <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />
                                 <b>Wah, this place you bring Aunty so nice!</b>
                             </div>
                         </Popup>
@@ -102,7 +102,7 @@ export default class Map extends React.Component {
 
                     {this.state.clickedMarker.length > 0
                         ? <Marker className="new-marker" position={this.state.clickedMarker} onclick={this.toggleModal}
-                            icon={ divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />)}) }></Marker>
+                            icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}></Marker>
                         : null
                     }
 
