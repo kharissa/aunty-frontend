@@ -16,6 +16,7 @@
     "leaflet.markercluster": "^1.4.1",
     "prop-types": "^15.7.2",
     "moment-duration-format": "^2.2.2",
+    "google-maps": "^3.3.0",
     "rc-time-picker": "^3.6.4",
     "react": "^16.8.6",
     "react-animations": "^1.0.0",
