@@ -21,6 +21,7 @@ export default class Navigation extends React.Component {
                             <FontAwesomeIcon icon="map-marked-alt" color='black' size="2x" />
                         </NavLink>
                     </Col>
+
                     <Col xs='2' md="1" >
                         <NavLink to="/chat" >
                             <div style={{justifyContent:'left'}}>

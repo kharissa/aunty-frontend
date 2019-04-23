@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import LoginModal from '../containers/LoginModal'
 
@@ -8,8 +8,18 @@ class Homepage extends React.Component {
         super(props);
         this.state = {
             modal: false,
+            loggedIn: true,
         };
         this.showModal = this.showModal.bind(this);
+    }
+
+    componentDidMount = () => {
+        const token = localStorage.getItem('token')
+        if (!token) {
+            this.setState({
+                loggedIn: false
+            }) 
+        }
     }
 
     showModal = () => {
@@ -28,6 +38,12 @@ class Homepage extends React.Component {
         }
     }
 
+    handleRedirect = () => {
+        if (this.state.loggedIn === false) {
+            return <Redirect to="/login" />
+        }
+    }
+
     render() {
         return (
             <div>
@@ -38,6 +54,7 @@ class Homepage extends React.Component {
                 <Button outline color="primary" onClick={this.showModal}>Register / Login</Button>
                 <p>This is the home page. <br />Wait ah, Aunty still building.</p>
                 <LoginModal isOpen={this.state.modal} toggle={this.showModal} />
+                { this.handleRedirect() }
             </div>
         )
     }

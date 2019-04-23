@@ -54,7 +54,7 @@ class Contact extends React.Component {
         event.preventDefault();
         axios({
             method: 'PUT',
-            url: `https://gokaikai.herokuapp.com/api/v1/contacts/12/`,
+            url: `https://gokaikai.herokuapp.com/api/v1/contacts/${this.state.contact_id}/`,
             headers: {
                 'Authorization': `Bearer ${token}`
             },

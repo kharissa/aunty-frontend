@@ -62,7 +62,7 @@ class CameraCall extends Component {
 
   handleRedirect() {
     if (this.state.redirect) {
-      return <Redirect to="/chat" />
+      return <Redirect to="/" />
     }
   }
 

@@ -17,6 +17,14 @@ export default class LoginModal extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    if (this.props.login) {
+      this.setState({
+        activeTab: '2'
+      })
+    }
+  }
+
   // Change state of active tab in order to switch between tabs
   switch(tab) {
     if (this.state.activeTab !== tab) {
