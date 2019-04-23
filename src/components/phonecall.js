@@ -1,8 +1,8 @@
 import React from 'react';
 import Sound from 'react-sound';
-import OldPhoneTone from '../images/sounds/old_phone.mp3'
+import AuntyCall from '../images/sounds/phonecall.mpeg'
  
-export default class Ringtone extends React.Component {
+export default class PhoneCall extends React.Component {
     state = {
         status: '',
     }
@@ -22,10 +22,8 @@ export default class Ringtone extends React.Component {
   render() {
     return (
         <Sound
-            url={OldPhoneTone}
-            loop={true}
+            url={AuntyCall}
             playStatus={this.state.status}
-            playFromPosition={300}
         />
     ); 
   }
