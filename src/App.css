@@ -168,12 +168,27 @@ height:100%
 }
 
 #edit {
-  border: none;
   height: 25px;
+}
+
+#contact {
+  border: 1px black solid;
+  padding: 16px;
+  margin: 15px;
+  background-color: #FFA205;
+  color: black;
+}
+
+#contact h3 {
+    border-bottom: 1px black solid;
 }
 
 @media (min-width: 600px) {
   #sosButton {
     width: 30%;
   }
+}
+
+.tabs {
+  background-color: #FFA205;
 }
