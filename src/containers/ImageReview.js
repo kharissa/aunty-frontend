@@ -37,32 +37,15 @@ export default class ImageReview extends React.Component {
             imageUrl: imageUrl
         })
         localStorage.removeItem('update')
+        localStorage.removeItem('updateImageId')
     })
     .catch(error => {
         console.log(error);
         this.setState({
             loading: false,
         })
-            .then(response => {
-                const results = response.data.results;
-                for (let attribute in results) {
-                    if (results[attribute] > 0.70) {
-                        properties.push(attribute)
-                    }
-                }
-                this.setState({
-                    loading: false,
-                    properties: properties
-                })
-                localStorage.removeItem('update')
-            })
-            .catch(error => {
-                console.log(error);
-                this.setState({
-                    loading: false,
-                })
-            })
-    }
+    })
+  }
 
     render() {
         const { loading, properties, imageUrl } = this.state;
@@ -71,7 +54,7 @@ export default class ImageReview extends React.Component {
             <div>
                 <strong>UPDATE</strong>
                 <p>Aunty took a look at the photo you sent...</p>
-                <img src={imageUrl} />
+                <img src={imageUrl} width="100%"/>
                 {
                     loading ?
                         loader
@@ -90,9 +73,9 @@ export default class ImageReview extends React.Component {
                             :
                             <p>
                                 Aunty was unable to detect anything.
-            <br />
+                            <br />
                                 However, stay alert! We will save this photo for you.
-        </p>
+                            </p>
                 }
             </div>
         );
