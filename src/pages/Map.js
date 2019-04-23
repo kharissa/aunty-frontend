@@ -61,10 +61,34 @@ export default class Map extends React.Component {
         }).catch(error => {
             console.log(error)
         })
-    }
 
-    // TODO
-    // get itinerary pins
+        axios({
+            method: 'GET',
+            url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
+            'headers': {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+            // SUPER HACKY! DONT DO THIS IN REAL SITUATIONS, FIX YOUR BACKEND!!!! (by Matt)
+
+            let newData = response.data.map(pin => {
+                let newPin = pin;
+                let latitude = pin.latitude;
+                let longitude = pin.longitude;
+                newPin.latitude = longitude;
+                newPin.longitude = latitude;
+                return newPin
+            })
+            console.log(newData);
+            this.setState({ itinerary: newData.map(pin => ({
+                ...pin,
+                category: 'Itinerary'
+            })) });
+        }).catch(error => {
+            console.log(error)
+        })
+
+    }
 
     handleClick = (e) => {
         const { lat, lng } = e.latlng;
