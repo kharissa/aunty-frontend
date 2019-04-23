@@ -48,8 +48,7 @@ export default class ImageReview extends React.Component {
         const loader = <div>Loading...</div>
         return (
             <div>
-                <strong>UPDATE</strong>
-                <p>Aunty took a look at the photo you sent...</p>
+                <p>Wait ah... Aunty wear spec first...</p>
                 <img src={imageUrl} width="100%" />
                 {
                     loading ?
@@ -57,7 +56,7 @@ export default class ImageReview extends React.Component {
                         :
                         properties.length > 0 ?
                             <div className="text-left">
-                                Based on Aunty's analysis, there is a high probability of the following in the photo:
+                                My eye very sharp leh! See what I found:
                                 <ul>
                                     {
                                         properties.filter(attribute => attribute[1] > 0.59).map((property, index) => 
@@ -71,9 +70,7 @@ export default class ImageReview extends React.Component {
                             </div>
                             :
                             <p>
-                                Aunty was unable to detect anything.
-                            <br />
-                                However, stay alert! We will save this photo for you.
+                                Aunty didn't find anything, but I keep this photo just in case lah.
                             </p>
                 }
             </div>
