@@ -10,33 +10,11 @@ import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { CameraToasts } from './pages/Camera.js';
-// import axios from 'axios';
-// import Notification from './containers/Notification';
 import './App.css';
 library.add(faPhoneSlash, faPhone, faVideo);
 
 
 class App extends Component {
-  // notificationItinerary = () => {
-  //   const token = localStorage.getItem('token')
-  //   console.log('this funciton works')
-  //   axios({
-  //     method: 'GET',
-  //     url: 'https://gokaikai.herokuapp.com/api/v1/pins/itinerary/',
-  //     headers: {
-  //       'Authorization': `Bearer ${token}`
-  //     }
-  //   })
-  //     .then(response => {
-  //       console.log('this is the response')
-  //       console.log(response)
-  //     })
-  // }
-
-  // componentDidMount() {
-  //   this.notificationItinerary();
-  // }
-
   state = {
     lat: 3.136053,
     lng: 101.6308768,
