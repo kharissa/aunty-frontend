@@ -12,6 +12,7 @@ const icons = {
     "Police Presence": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-bullhorn fa-2x" />) }),
     "Medical": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-first-aid fa-2x" />) }),
     "Hotel": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-bed fa-2x" />) }),
+    "Embassy": divIcon({ html: renderToStaticMarkup(<i className=" far fa-building fa-2x" />) }),
     "Home/Safe House": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-home fa-2x" />) }),
     "Itinerary": divIcon({ html: renderToStaticMarkup(<i className=" far fa-clock fa-2x" />) }),
 
