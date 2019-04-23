@@ -15,7 +15,7 @@ code {
 
 /* leaflet container styling */
 .leaflet-container {
-  height: 90vh;
+  height: 80vh;
   width: 100vw;
   position: absolute;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map as LeafletMap, TileLayer, Marker, Popup, FeatureGroup, LayerGroup, LayersControl, Circle, Rectangle } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
 import Pins from '../components/Pins.js';
 import GeoSearch from '../components/GeoSearch.js';
@@ -20,45 +20,10 @@ export default class Map extends React.Component {
             clickedMarker: [],
             modal: false,
             isOpen: false,
-            pins: [{ id: "1", latitude: 3.119762, longitude: 101.60296, name: "testMarker1", category: "Hate Crime" },
-                { id: "2", latitude: 3.110983, longitude: 101.61024, name: "testMarker2", category: "Harassment" },
-                { id: "3", latitude: 3.171447, longitude: 101.641153, name: "testMarker3", category: "Theft" },
-                { id: "4", latitude: 3.139644, longitude: 101.608547, name: "testMarker4", category: "Shooting" },
-                { id: "5", latitude: 3.130199, longitude: 101.641782, name: "testMarker5", category: "Harassment" },
-                { id: "6", latitude: 3.106342, longitude: 101.641819, name: "testMarker6", category: "Police Presence" },
-                { id: "7", latitude: 3.12007, longitude: 101.667079, name: "testMarker7", category: "Theft" },
-                { id: "8", latitude: 3.168114, longitude: 101.687128, name: "testMarker8", category: "Shooting" },
-                { id: "9", latitude: 3.19088, longitude: 101.604994, name: "testMarker9", category: "Police Presence" },
-                { id: "10", latitude: 3.161724, longitude: 101.656656, name: "testMarker10", category: "Shooting" },
-                { id: "11", latitude: 3.188178, longitude: 101.6444, name: "testMarker11", category: "Hotel" },
-                { id: "24", latitude: 3.155008, longitude: 101.60233, name: "testMarker24", category: "Shooting" },
-                { id: "25", latitude: 3.19386, longitude: 101.604615, name: "testMarker25", category: "Medical" },
-                { id: "26", latitude: 3.101151, longitude: 101.688244, name: "testMarker26", category: "Shooting" },
-                { id: "27", latitude: 3.173683, longitude: 101.67386, name: "testMarker27", category: "Theft" },
-                { id: "28", latitude: 3.124245, longitude: 101.683102, name: "testMarker28", category: "Home/Safe House" },
-                { id: "29", latitude: 3.188432, longitude: 101.665079, name: "testMarker29", category: "Assault" },
-                { id: "30", latitude: 3.170735, longitude: 101.618958, name: "testMarker30", category: "Police Presence" },
-                { id: "31", latitude: 3.178123, longitude: 101.605709, name: "testMarker31", category: "Home/Safe House" },
-                { id: "32", latitude: 3.135818, longitude: 101.642709, name: "testMarker32", category: "Medical" },
-                { id: "33", latitude: 3.165527, longitude: 101.690918, name: "testMarker33", category: "Police Presence" },
-                { id: "34", latitude: 3.145956, longitude: 101.623987, name: "testMarker34", category: "Shooting" },
-                { id: "35", latitude: 3.102214, longitude: 101.698403, name: "testMarker35", category: "Hate Crime" },
-                { id: "36", latitude: 3.167531, longitude: 101.672277, name: "testMarker36", category: "Harassment" },
-                ],
-            itinerary: [{ id: "12", latitude: 3.112263, longitude: 101.623803, name: "testMarker12", category: "Police Presence" },
-                { id: "13", latitude: 3.187117, longitude: 101.623561, name: "testMarker13", category: "Police Presence" },
-                { id: "14", latitude: 3.183028, longitude: 101.66733, name: "testMarker14", category: "Shooting" },
-                { id: "15", latitude: 3.11285, longitude: 101.64148, name: "testMarker15", category: "Shooting" },
-                { id: "16", latitude: 3.174661, longitude: 101.616431, name: "testMarker16", category: "Home/Safe House" },
-                { id: "17", latitude: 3.147024, longitude: 101.669873, name: "testMarker17", category: "Assault" },
-                { id: "18", latitude: 3.142843, longitude: 101.620548, name: "testMarker18", category: "Theft" },
-                { id: "19", latitude: 3.184614, longitude: 101.652273, name: "testMarker19", category: "Police Presence" },
-                { id: "20", latitude: 3.165951, longitude: 101.627323, name: "testMarker20", category: "Medical" },
-                { id: "21", latitude: 3.134949, longitude: 101.654135, name: "testMarker21", category: "Hotel" },
-                { id: "22", latitude: 3.177534, longitude: 101.611822, name: "testMarker22", category: "Assault" },
-                { id: "23", latitude: 3.178374, longitude: 101.606668, name: "testMarker23", category: "Theft" },
-                ],
-            publicPins: [],
+            pins: [],
+            itinerary: [],
+            safePins: [],
+            dangerPins: [],
             privatePins: [],
         };
         this.onClickGeoloc = this.onClickGeoloc.bind(this)
@@ -68,26 +33,41 @@ export default class Map extends React.Component {
     componentDidMount() {
 
         const token = localStorage.getItem('token');
-        console.log(this.leafletMap.current)
 
-        // axios({
-        //     method: 'GET',
-        //     url: 'https://gokaikai.herokuapp.com/api/v1/pins/map/',
-        //     'headers': {
-        //         Authorization: `Bearer ${token}`
-        //     }
-        // }).then(response => {
-        //     // this.state.pins.push(response.data.publicPins);
-        //     // console.log(response.data.publicPins);
-        //     this.setState({ pins: response.data.publicPins });
-        // }).catch(error => {
-        //     console.log(error)
-        // })
+        axios({
+            method: 'GET',
+            url: 'https://gokaikai.herokuapp.com/api/v1/pins/map/',
+            'headers': {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+            // this.state.pins.push(response.data.publicPins);
+            // console.log(response.data.publicPins);
+            let pubPins = response.data.publicPins;
+            let isSafe = [];
+            let isDanger = [];
+
+            pubPins.forEach(pin => {
+                if (pin.is_safe === true) {
+                    isSafe.push(pin)
+                } else {
+                    isDanger.push(pin)
+                }
+            })
+
+
+            console.log(isSafe)
+            console.log(isDanger)
+
+            this.setState({ safePins: isSafe, dangerPins: isDanger });
+
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
     // TODO
     // get itinerary pins
-
 
     handleClick = (e) => {
         const { lat, lng } = e.latlng;
@@ -102,17 +82,13 @@ export default class Map extends React.Component {
     }
 
     onClickGeoloc = () => {
-        console.log('button is working~');
-        const {lat, lng} = this.props;
+        const { lat, lng } = this.props;
         this.leafletMap.current.leafletElement.flyTo([lat, lng], 15)
     }
 
     render() {
         const { lat, lng } = this.props
         const geolocIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-circle" />) });
-
-        const center = [51.505, -0.09]
-        const rectangle = [[51.49, -0.08], [51.5, -0.06]]
 
         return (
             <>
@@ -129,63 +105,63 @@ export default class Map extends React.Component {
 
                     <LayersControl position="bottomright">
 
-                    <BaseLayer checked name="Base Layer">
-                        <TileLayer url={this.state.mapTilesCarto} />
-                    </BaseLayer>
+                        <BaseLayer checked name="Base Layer">
+                            <TileLayer url={this.state.mapTilesCarto} />
+                        </BaseLayer>
 
-                    <Overlay checked name="Dangerous">
-                        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                            spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
-                            <Pins pins={this.state.pins} />
-                        </MarkerClusterGroup>
-                    </Overlay>
+                        <Overlay checked name="Dangerous">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.dangerPins} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
-                    <Overlay checked name="Itinerary">
-                        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                            spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
-                            <Pins pins={this.state.itinerary} />
-                        </MarkerClusterGroup>
-                    </Overlay>
+                        <Overlay checked name="Itinerary">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.itinerary} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
-                    <Overlay checked name="Safe">
-                        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                            spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
-                            <Pins pins={this.state.publicPins} />
-                        </MarkerClusterGroup>
-                    </Overlay>
+                        <Overlay checked name="Safe">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.safePins} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
-                    <Overlay checked name="Private">
-                        <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                            spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
-                            <Pins pins={this.state.privatePins} />
-                        </MarkerClusterGroup>
-                    </Overlay>
+                        <Overlay checked name="Private">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.privatePins} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
 
-                    <Marker position={[lat, lng]} icon={geolocIcon}>
-                        <Popup>
-                            <div align="center">
-                                <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />
-                                <b>Wah, this place you bring Aunty so nice!</b>
-                            </div>
-                        </Popup>
-                    </Marker>
+                        <Marker position={[lat, lng]} icon={geolocIcon}>
+                            <Popup>
+                                <div align="center">
+                                    <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />
+                                    <b>Wah, this place you bring Aunty so nice!</b>
+                                </div>
+                            </Popup>
+                        </Marker>
 
-                    {this.state.clickedMarker.length > 0
-                        ? <Marker opacity='0.7' draggable={true} className="new-marker"
-                            position={this.state.clickedMarker}
-                            onClick={this.toggleModal}
-                            icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}>
-                          </Marker>
-                        : null
-                    }
+                        {this.state.clickedMarker.length > 0
+                            ? <Marker opacity='0.7' draggable={true} className="new-marker"
+                                position={this.state.clickedMarker}
+                                onClick={this.toggleModal}
+                                icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}>
+                            </Marker>
+                            : null
+                        }
 
-                    <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
+                        <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
 
                     </LayersControl>
                 </LeafletMap>
 
-                <button className="go-to-loc" onClick={this.onClickGeoloc}><i class="far fa-dot-circle"></i></button>
+                <button className="go-to-loc" onClick={this.onClickGeoloc}><i className="far fa-dot-circle"></i></button>
 
             </>
         );

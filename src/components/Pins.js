@@ -8,7 +8,6 @@ export default class Pins extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
         }
     }
 
@@ -24,8 +23,8 @@ export default class Pins extends React.Component {
         const iconHome = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-home fa-2x" />) });
         const iconMarker = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-map-marker-alt fa-2x" />) });
 
-        const iconItineraryUpcoming = divIcon({ html: renderToStaticMarkup(<i className=" far fa-clock fa-2x" />) });
-        const iconItineraryResolved = divIcon({ html: renderToStaticMarkup(<i className=" fas fa-history fa-2x" />) });
+        const iconItnUpcoming = divIcon({ html: renderToStaticMarkup(<i className=" far fa-clock fa-2x" />) });
+        const iconItnResolved = divIcon({ html: renderToStaticMarkup(<i className=" fas fa-history fa-2x" />) });
         const iconSOS = divIcon({ html: renderToStaticMarkup(<i className=" fas fa-bell fa-2x" />) });
 
 
