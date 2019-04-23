@@ -43,14 +43,6 @@ class App extends Component {
     lng: 101.6308768,
   }
   
-  
-  // loadNavigation (page) {
-  //   if (page = '/') {
-  //     return null;
-  //   }
-  //   return <Navigation/>
-  // }
-  
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(pos => {
       const { latitude, longitude } = pos.coords
@@ -65,9 +57,7 @@ class App extends Component {
 
   render() {
     const { lat, lng } = this.state
-    // loadNavigation({window.location.pathname})
     return (
-      // Denise: is there a reason why toastprovider wraps this isntead of <Router>
       <ToastProvider>
         <div align="center">
           <Route exact path="/" component={Login} />
