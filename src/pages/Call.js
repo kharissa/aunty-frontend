@@ -81,6 +81,8 @@ export default class Call extends React.Component {
                     <Row className="p-2">
                         <Col>
                         <h4>Incoming Call</h4>
+                        <br />
+                        <br />
                         </Col>
                     </Row>
                     <Row className="p-2">
