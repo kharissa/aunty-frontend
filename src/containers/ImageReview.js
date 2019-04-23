@@ -14,7 +14,6 @@ export default class ImageReview extends React.Component {
     componentWillMount = () => {
         const token = localStorage.getItem('token')
         const imageId = this.props.step.metadata.image_id
-        const properties = []
 
         axios({
             method: 'get',
@@ -23,28 +22,25 @@ export default class ImageReview extends React.Component {
                 'Authorization': `Bearer ${token}`
             }
         })
-            .then(response => {
-                const results = response.data.results;
-                const imageUrl = response.data.imageURL;
-                for (let attribute in results) {
-                    if (results[attribute] > 0.70) {
-                        properties.push(attribute)
-                    }
-                }
-                this.setState({
-                    loading: false,
-                    properties: properties,
-                    imageUrl: imageUrl
-                })
-                localStorage.removeItem('update')
-                localStorage.removeItem('updateImageId')
+        .then(response => {
+            const output = response.data.results;
+            const imageUrl = response.data.imageURL;
+            let properties = Object.entries(output)
+
+            this.setState({
+              loading: false,
+              properties: properties,
+              imageUrl: imageUrl
+            });
+            localStorage.removeItem('update')
+            localStorage.removeItem('updateImageId')
+        })
+        .catch(error => {
+            console.log(error);
+            this.setState({
+                loading: false,
             })
-            .catch(error => {
-                console.log(error);
-                this.setState({
-                    loading: false,
-                })
-            })
+        })
     }
 
     render() {
@@ -64,8 +60,11 @@ export default class ImageReview extends React.Component {
                                 Based on Aunty's analysis, there is a high probability of the following in the photo:
                                 <ul>
                                     {
-                                        properties.map((property, index) =>
-                                            <li key={index}>{property}</li>
+                                        properties.filter(attribute => attribute[1] > 0.59).map((property, index) => 
+                                            <li key={index}>
+                                                {property[0]}:  {property[1] * 100}%
+                                            </li>
+                                           
                                         )
                                     }
                                 </ul>
