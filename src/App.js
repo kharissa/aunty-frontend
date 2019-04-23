@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
 import Home from './pages/Home.js'
 import Chat from './pages/Chat.js'
+import Sos from './containers/Sos.js'
 import Map from './pages/Map.js'
 import Call from './pages/Call.js'
 import Setting from './pages/Setting.js'
@@ -63,13 +64,13 @@ class App extends Component {
         <div align="center">
           <Route exact path="/" component={Home} />
           <Route exact path="/chat" component={Chat} />
+
+          <Route exact path="/sos" component={Sos} />
+
           <Route exact path="/setting" component={Setting} />
           <Route exact path="/map" component={props => <Map {...props} lat={lat} lng={lng} />} />
           <Route exact path="/call" component={Call} />
           <Route exact path="/camera" component={CameraToasts} />
-
-          {/* update SOS path  */}
-          <Route exact path="/sos" component={Home} />
         </div>
       </ToastProvider>
     )

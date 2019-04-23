@@ -20,7 +20,7 @@ export default class ItinerarySearch extends React.Component {
         const userLong = parseFloat(localStorage.getItem('longitude'))
 
         // Radius is set to 100 km / 60 miles around user's location
-        const userLocation = {radius: 100000, center: {lat: userLat, lng: userLong}}
+        const userLocation = { radius: 100000, center: { lat: userLat, lng: userLong } }
 
         // Request returns location name, coords, and address
         const request = {
@@ -28,12 +28,12 @@ export default class ItinerarySearch extends React.Component {
             fields: ['name', 'geometry', 'formatted_address'],
             locationBias: userLocation
         }
-    
+
         GoogleMapsLoader.load((google) => {
             // Creating / attaching a node required to use API
             const map = new google.maps.Map(document.createElement('div'));
             const service = new google.maps.places.PlacesService(map);
-            
+
             // Sending query text-based request to find place
             service.findPlaceFromQuery(request, (results, status) => {
                 if (status === "OK") {
@@ -67,17 +67,17 @@ export default class ItinerarySearch extends React.Component {
         const { name, address, error, loading } = this.state;
         return (
             <div> {
-                loading 
-                ? <p>Searching my phonebook...</p>
-                : error 
-                    ? <p>
-                        I don't know where that is! Please try again.
+                loading
+                    ? <p>Searching my phonebook...</p>
+                    : error
+                        ? <p>
+                            I don't know where that is! Please try again.
                     </p>
-                    : <div id="result">
-                        <p>Is it this one ah?</p>
-                        <p><b>{ name }</b></p>
-                        <p>{ address }</p>
-                </div> }
+                        : <div id="result">
+                            <p>Is it this one ah?</p>
+                            <p><b>{name}</b></p>
+                            <p>{address}</p>
+                        </div>}
             </div>
         );
     }
