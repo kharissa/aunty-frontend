@@ -3,7 +3,6 @@ import LoginModal from '../containers/LoginModal'
 import aunty from '../images/aunty.png';
 import {Row, Col, Button} from 'reactstrap';
 
-
 class Homepage extends React.Component {
   constructor(props) {
       super(props);

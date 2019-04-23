@@ -50,8 +50,6 @@ export default class Register extends React.Component {
                     localStorage.setItem('token', response.data['auth_token']);
                     localStorage.setItem('userId', response.data.user['id']);
                     localStorage.setItem('firstName', response.data.user['first_name']);
-                    localStorage.setItem('lastName', response.data.user['last_name']);
-                    localStorage.setItem('email', response.data.user['email']);
                 } else {
                     // On response but email validation failure, display error toast
                     toastManager.add(`Uh oh! We already have an account with that email. `, {
