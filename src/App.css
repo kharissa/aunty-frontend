@@ -101,15 +101,6 @@ body {
 }
 
 
-/* ------------Navbar Icons------------------------ */
-.auntyIcon{
-  transform: translate(50%,0)
-}
-
-.active-icon{
-  -webkit-tap-highlight-color: #FFA205;
-}
-
 /* -----------------Chatbot CSS----------------- */
 /* align user options to the right so that users know that they need to pick an option */
 ul {
@@ -158,7 +149,6 @@ html,body {
 
 .ijcYgp {
 width: 100%;
-height:800px;
 margin-top:2px;
 }
 
