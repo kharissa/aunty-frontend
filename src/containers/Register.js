@@ -12,7 +12,7 @@ export default class Register extends React.Component {
         dateOfBirth: '',
         nationality: '',
         contactName: '',
-        contactPhone: ''
+        contactPhone: '',
     };
 
     handleInput = (event) => {
@@ -26,7 +26,7 @@ export default class Register extends React.Component {
         axios({
             // Send POST request with registration information
             method: 'POST',
-            url: 'https://gokaikai.herokuapp.com/api/v1/users/',
+            url: 'http://localhost:5000/api/v1/users/',
             data: {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -38,37 +38,37 @@ export default class Register extends React.Component {
                 contactPhone: this.state.contactPhone
             }
         })
-        .then(response => {
-            if (response.data.status === "success") {
-                // On success, display success toast
-                toastManager.add('Thank you for creating an account! You are now logged in.', {
-                    appearance: 'success',
-                    autoDismiss: true,
-                });
+            .then(response => {
+                if (response.data.status === "success") {
+                    // On success, display success toast
+                    toastManager.add('Thank you for creating an account! You are now logged in.', {
+                        appearance: 'success',
+                        autoDismiss: true,
+                    });
 
-                // Save auth token and user details into local storage
-                localStorage.setItem('token', response.data['auth_token']);
-                localStorage.setItem('userId', response.data.user['id']);
-                localStorage.setItem('firstName', response.data.user['first_name']);
-                localStorage.setItem('lastName', response.data.user['last_name']);
-                localStorage.setItem('email', response.data.user['email']);
-            } else {
-                // On response but email validation failure, display error toast
-                toastManager.add(`Uh oh! We already have an account with that email. `, {
+                    // Save auth token and user details into local storage
+                    localStorage.setItem('token', response.data['auth_token']);
+                    localStorage.setItem('userId', response.data.user['id']);
+                    localStorage.setItem('firstName', response.data.user['first_name']);
+                    localStorage.setItem('lastName', response.data.user['last_name']);
+                    localStorage.setItem('email', response.data.user['email']);
+                } else {
+                    // On response but email validation failure, display error toast
+                    toastManager.add(`Uh oh! We already have an account with that email. `, {
+                        appearance: 'error',
+                        autoDismiss: true,
+                    });
+                }
+                // Close Register modal
+                this.props.toggle();
+            })
+            .catch(error => {
+                // On failed API call, display error toast and keep Register modal open
+                console.log(error);
+                toastManager.add(`Something went wrong.`, {
                     appearance: 'error',
-                    autoDismiss: true,
                 });
-            }
-            // Close Register modal
-            this.props.toggle();
-        })
-        .catch(error => {
-            // On failed API call, display error toast and keep Register modal open
-            console.log(error);
-            toastManager.add(`Something went wrong.`, {
-                appearance: 'error',
-            });
-        })
+            })
     }
 
     render() {
@@ -77,7 +77,7 @@ export default class Register extends React.Component {
                 <ModalBody>
                     <Row>
                         <Col>
-                        <p>Register for an account to chat with Aunty.</p>
+                            <p>Register for an account to chat with Aunty.</p>
                         </Col>
                     </Row>
                     <AvForm onValidSubmit={this.handleSubmit} id="register">
@@ -170,7 +170,7 @@ export default class Register extends React.Component {
                         </Row>
                         <Row className="mt-3">
                             <Col>
-                            <h5>Emergency Contact</h5>
+                                <h5>Emergency Contact</h5>
                             </Col>
                         </Row>
                         <Row>

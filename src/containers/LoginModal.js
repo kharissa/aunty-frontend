@@ -52,10 +52,10 @@ export default class LoginModal extends React.Component {
         </ModalHeader>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
-            <RegisterToasts toggle={this.props.toggle}/>
+            <RegisterToasts toggle={this.props.toggle} />
           </TabPane>
           <TabPane tabId="2">
-            <LoginToasts toggle={this.props.toggle}/>
+            <LoginToasts toggle={this.props.toggle} />
           </TabPane>
         </TabContent>
       </Modal>
