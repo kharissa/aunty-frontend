@@ -73,6 +73,7 @@ export default class Call extends React.Component {
     render() {
         const { incomingCall, onCall, onVideo } = this.state;
         momentDurationFormatSetup(moment);
+        
         return (
             <Container className="mx-0 px-0">
             { incomingCall ?
@@ -81,6 +82,8 @@ export default class Call extends React.Component {
                     <Row className="p-2">
                         <Col>
                         <h4>Incoming Call</h4>
+                        <br />
+                        <br />
                         </Col>
                     </Row>
                     <Row className="p-2">
