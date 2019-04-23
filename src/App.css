@@ -110,6 +110,12 @@ margin: 0;
 text-align: right;
 } */
 
+.rsc {
+  position:fixed;
+  bottom:100px;
+  width:93%
+}
+
 .rsc-os-option-element {
   background-position: 100% .4em !important;
   padding-right: .6em !important;
@@ -127,6 +133,11 @@ background:gray
   color:white;
 }
 
+/* aunty follow up bubble */
+.ksTzOQ {
+  margin: 0;
+}
+
 /* remove chat avatars */
 .cwuCQv, .eijbEu {
   display:none;
@@ -138,14 +149,14 @@ html, body {
 }
 
 /* app footer containing User Typebox */
-.hDUXUW {
+/* .hDUXUW {
   position: -webkit-sticky;
   position: sticky;
   bottom: 10px;
   left: 0;
   width: 100%;
   color: white;
-}
+} */
 
 .ijcYgp {
 width: 100%;
@@ -156,6 +167,9 @@ margin-top:2px;
 width:100%;
 height:100%
 }
+
+
+
 
 #edit {
   height: 25px;
