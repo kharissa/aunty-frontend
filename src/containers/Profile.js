@@ -90,8 +90,8 @@ class Profile extends React.Component {
     render() {
         let { disabled } = this.state;
         let submitButton = disabled === false
-            ? <Button type='submit' outline color='danger' className='float-right' onClick={this.handleSave}>Save</Button>
-            : <Button outline color='primary' className='float-right' onClick={this.handleEdit}>Edit</Button>
+            ? <Button type='submit' size='sm' outline color='danger' className='float-right' onClick={this.handleSave}>Save</Button>
+            : <Button outline color='primary' size='sm' className='float-right' onClick={this.handleEdit}>Edit</Button>
         return (
             <Table>
                 <thead>

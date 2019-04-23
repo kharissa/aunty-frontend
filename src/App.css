@@ -97,3 +97,9 @@ body {
   border: none;
   height: 25px;
 }
+
+@media (min-width: 600px) {
+  #sosButton {
+    width: 30%;
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Progress } from 'reactstrap';
+import sos from '../images/sos.jpg'
 
 class Sos extends React.Component {
     constructor(props) {
@@ -10,11 +11,29 @@ class Sos extends React.Component {
             value: 0,
             message: "",
             disabled: false,
+            contact: [],
 
             latitude: localStorage.getItem('latitude'),
             longitude: localStorage.getItem('longitude'),
             token: localStorage.getItem('token')
         };
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem('token');
+        axios({
+            method: 'GET',
+            url: 'http://localhost:5000/api/v1/contacts/',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => {
+            this.setState({
+                contact: response.data.personalContacts[0],
+            })
+            console.log(response)
+        })
+
     }
 
     reset() {
@@ -30,8 +49,10 @@ class Sos extends React.Component {
     }
 
     open = () => {
-        this.setState({ modal: true })
-        this.timeout();
+        if (this.state.disabled === false) {
+            this.setState({ modal: true })
+            this.timeout();
+        }
     }
 
     contact_emergency = (event) => {
@@ -62,7 +83,7 @@ class Sos extends React.Component {
         setTimeout(() => {
             if (this.state.modal === true) {
                 this.setState({ modal: false })
-                console.log('sending email!')
+                console.log('Aunty is contacting your friend')
                 this.contact_emergency();
             }
         }, 7000);
@@ -119,11 +140,15 @@ class Sos extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <br /><br />
-                <br /><br />
-                <br /><br />
-                <Button color="danger" disabled={this.state.disabled} onClick={this.open} size='lg'>SOS</Button>
+            <div height="100%">
+                <br /> <br />
+                <img id='sosButton' className='my-auto' src={sos} onClick={this.open} width='100%' />
+                <div>
+                    <p>Name: {this.state.contact.name}</p>
+                    <p>Relationship: {this.state.contact.relationship}</p>
+                    <p>Phone Number: {this.state.contact.phone_number}</p>
+                </div>
+
                 <Modal isOpen={this.state.modal} toggle={this.close}>
                     <ModalHeader toggle={this.close}>Are you in danger?</ModalHeader>
                     <ModalBody>
