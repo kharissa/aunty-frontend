@@ -106,6 +106,36 @@ export default class Map extends React.Component {
         this.leafletMap.current.leafletElement.flyTo([lat, lng], 15)
     }
 
+    // createClusterCustomIcon = (cluster) => {
+    //     const count = cluster.getChildCount();
+    //     let size = 'LargeXL';
+
+    //     if (count < 10) {
+    //         size = 'Small';
+    //     }
+    //     else if (count >= 10 && count < 100) {
+    //         size = 'Medium';
+    //     }
+    //     else if (count >= 100 && count < 500) {
+    //         size = 'Large';
+    //     }
+    //     const options = {
+    //         cluster: `markerCluster${size}`,
+    //     };
+
+    //     return this.leafletMap.divIcon({
+    //         html:
+    //             `<div>
+    //     <span class="markerClusterLabel">${count}</span>
+    //   </div>`,
+    //         className: `${options.cluster}`,
+    //     });
+    // };
+
+    // place in <MarkerClusterGroup>
+    // iconCreateFunction={this.createClusterCustomIcon}
+
+
     render() {
         const { lat, lng } = this.props
         const geolocIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-circle" />) });

@@ -2,6 +2,7 @@ import React from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import { renderToStaticMarkup } from "react-dom/server";
 import { divIcon } from 'leaflet';
+import { Button } from 'reactstrap';
 
 const icons = {
     "Hate Crime": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-angry fa-2x" />) }),
@@ -32,7 +33,10 @@ export default class Pins extends React.Component {
                         <br/>
                         { (pin.address) ? <>{pin.address}</> : null }
                         <br/>
-                        { (pin.start_time) ? <p><b>Check in time:</b> {pin.start_time}</p> : null }
+                        { (pin.start_time)
+                            ? <p><b>Check in time:</b> {pin.start_time} <br /><br />
+                                <Button color="success" size="sm">I'm Safe!</Button></p>
+                            : null }
                     </Popup>
                 </Marker>
             )}
