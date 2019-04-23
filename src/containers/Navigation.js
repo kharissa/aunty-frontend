@@ -6,9 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default class Navigation extends React.Component {
-<<<<<<< HEAD
-
-
     render() {
         return (
             <div>
@@ -37,36 +34,7 @@ export default class Navigation extends React.Component {
                                 <FontAwesomeIcon icon="bell" color='black' size="3x" />
                         </Col>
                 </Navbar>             
-=======
-    render() {
-        return (
-            <div>
-                <Navbar light color="light" fixed="bottom" className="nav-fill justify-content-around ">
-                    <Nav>
-                        <NavItem>
-                            <Link className="nav-link" to="/chat"><i className="fa fa-comment-dots" /></Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link" to="/map"><i className="fa fa-map-marker-alt" /></Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link" to="/"><i className="fa fa-calendar-alt" /></Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link" to="/setting"><i className="fa fa-sliders-h" /></Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link className="nav-link" to="/sos"><i className="fa fa-bell" /></Link>
-                        </NavItem>
-                    </Nav>
-                </Navbar>
->>>>>>> master
             </div>
         );
     }
 }
-
-
-
-// I need to write code to hide navbar on home page, once user logs in, they should land at the chat page!
-// May also need to hide naviation bar while in fake call
