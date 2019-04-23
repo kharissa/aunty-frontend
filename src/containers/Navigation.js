@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import aunty from '../images/aunty.png';
+import siren from '../images/police.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -9,30 +10,35 @@ export default class Navigation extends React.Component {
     render() {
         return (
             <div>
-                <Navbar fixed="bottom" style={{ backgroundColor: 'White' }}>
-                    <Col xs="2" md={{ span: 1, offset: 1 }} style={{ textAlign: 'center' }}>
-                        <NavLink to="/call" activeClassName='activeIcon'>
+                <Navbar fixed="bottom" style={{ backgroundColor: 'orange', }}>
+                    <Col xs='2' md="1" style={{ textAlign: 'center' }}>
+                        <NavLink to="/call">
                             <FontAwesomeIcon icon="phone-volume" color='black' size="2x" />
                         </NavLink>
                     </Col>
-                    <Col xs="2" md="1" style={{ textAlign: 'center' }}>
-                        <NavLink to="/map" activeClassName='activeIcon'>
+                    <Col xs='2' md="1" style={{ textAlign: 'center' }}>
+                        <NavLink to="/map">
                             <FontAwesomeIcon icon="map-marked-alt" color='black' size="2x" />
                         </NavLink>
                     </Col>
-                    <Col>
-                        <NavLink xs="2" md="2" to="/chat" >
-                            <img className='auntyIcon' src={aunty} alt='aunty' height={100} />
+
+                    <Col xs='2' md="1" >
+                        <NavLink to="/" >
+                            <div style={{ justifyContent: 'left' }}>
+                                <img className='auntyIcon' src={aunty} alt='aunty' height={65} />
+                            </div>
                         </NavLink>
                     </Col>
-                    <Col xs="2" md="1" style={{ textAlign: 'center' }}>
-                        <NavLink to="/setting" activeClassName='activeIcon' >
+                    <Col xs='3' md="1" style={{ textAlign: 'center' }}>
+                        <NavLink to="/setting" >
                             <FontAwesomeIcon icon="sliders-h" color='black' size="2x" />
                         </NavLink>
                     </Col>
-                    <Col xs="2" md="1" style={{ textAlign: 'center' }}>
-                        <NavLink to="/sos" activeClassName='activeIcon' >
-                            <FontAwesomeIcon icon="bell" color='black' size="3x" />
+                    <Col xs='2' md="1" style={{ justifyContent: 'left' }}>
+                        <NavLink to="/sos" >
+                            <div style={{ justifyContent: 'left' }}>
+                                <img className='sirenIcon' src={siren} alt='siren' height={40} />
+                            </div>
                         </NavLink>
                     </Col>
                 </Navbar>

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Progress } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Progress, Table } from 'reactstrap';
 import sos from '../images/sos.jpg'
 
 class Sos extends React.Component {
@@ -141,12 +141,14 @@ class Sos extends React.Component {
     render() {
         return (
             <div height="100%">
-                <br /> <br />
+
                 <img id='sosButton' className='my-auto' src={sos} onClick={this.open} width='100%' />
-                <div>
-                    <p>Name: {this.state.contact.name}</p>
-                    <p>Relationship: {this.state.contact.relationship}</p>
-                    <p>Phone Number: {this.state.contact.phone_number}</p>
+                <div id='contact'>
+                    <h3><i class="fas fa-exclamation-triangle" />  Emergency Contact</h3>
+                    <h6>
+                        Name: {this.state.contact.name}<br />
+                        Relationship: {this.state.contact.relationship}<br />
+                        Phone Number: {this.state.contact.phone_number}</h6>
                 </div>
 
                 <Modal isOpen={this.state.modal} toggle={this.close}>

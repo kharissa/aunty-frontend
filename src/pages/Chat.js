@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom';
 import ItinerarySearch from '../containers/ItinerarySearch';
 import ImageReview from '../containers/ImageReview';
 import ItineraryConfirm from '../containers/ItineraryConfirm';
+import { Link } from 'react-router-dom';
 
 // Formatting date/time to be saved in local storage
 const format = 'YYYY-MM-DD HH:mm';
@@ -68,7 +69,7 @@ export default class Chat extends React.Component {
     // Redirect user to Home page if they are not logged in.
     handleRedirect() {
         if (this.state.loggedIn === false) {
-            return <Redirect to="/" />
+            return <Redirect to="/login" />
         } else if (this.state.call === true) {
             return <Redirect to="/call" />
         }
@@ -78,8 +79,8 @@ export default class Chat extends React.Component {
         const loader = <div>Loading...</div>
         const steps = [{
             id: 'welcome',
-            message: `Hallo ${this.state.firstName}! Aunty here. How are you?`,
-            trigger: () => this.state.update ? 'update' : 'welcome user response'
+            message: `Hallo ${this.state.firstName}! How can Aunty help you?`,
+            trigger: () => this.state.update ? 'update' : 'menu'
         }, {
             id: 'update',
             component: (
@@ -102,33 +103,25 @@ export default class Chat extends React.Component {
                 { value: 'No', label: 'No', trigger: '21' },
             ],
         }, {
-            id: 'welcome user response',
-            user: true,
-            trigger: 'menu',
-        }, {
             id: 'menu',
-            message: 'How can Aunty help you today?',
-            trigger: '4',
-        }, {
-            id: '4',
             options: [{
-                value: "Tell Aunty where I'm going so she can check on me",
-                label: "Aunty, I'm going out today!",
+                value: "Set itinerary for check ins",
+                label: "Set itinerary for check ins",
                 trigger: '5'
             },
             {
-                value: 'Get on a call with Aunty',
-                label: 'Aunty, lai! We chit chat together gether.',
+                value: 'Call Aunty',
+                label: 'Call Aunty',
                 trigger: '22'
             },
             {
-                value: 'Ask Aunty where the nearest safe spot is',
-                label: "Aunty, I don't feel safe here. Where's the nearest, safest place to go?",
+                value: 'Find safe locations',
+                label: "Find safe locations",
                 trigger: '23'
             },
             {
-                value: 'Let Aunty scan your location for danger',
-                label: "Aunty, I don't feel safe, can you look around for me?",
+                value: 'Scan my area',
+                label: "Scan my area",
                 trigger: '24'
             },
             ],
@@ -192,13 +185,13 @@ export default class Chat extends React.Component {
         }, {
             id: 'itineraryDetails',
             options: [{
-                value: 'alone',
+                value: 'By myself',
                 label: 'By myself',
                 trigger: '13'
             },
             {
-                value: "With people lah.",
-                label: "With people lah.",
+                value: "With people lah",
+                label: "With people lah",
                 trigger: '16'
             },
             ],
@@ -206,7 +199,7 @@ export default class Chat extends React.Component {
             id: '13',
             message: (({ previousValue }) => {
                 localStorage.setItem('itineraryDetails', previousValue);
-                return 'Wah, you syok sendiri! Bojio Aunty ):'
+                return 'Wah, you syok sendiri! Never call Aunty ):'
             }),
             trigger: '14',
         }, {
@@ -254,7 +247,7 @@ export default class Chat extends React.Component {
             ],
         }, {
             id: '21',
-            message: 'Ok ok. Come and spend time with Aunty lah.',
+            message: 'Ok ok. Then come see Aunty lah!',
             end: true,
         }, {
             id: '22',
@@ -267,11 +260,15 @@ export default class Chat extends React.Component {
             end: true,
         }, {
             id: '23',
-            message: 'Nah, this is the nearest I can find. Open the map and see <Link to map>',
+            component: (
+                <Link to="/map">View on the map</Link>
+            ),
             end: true,
         }, {
             id: '24',
-            message: '<Link to "video call"/ camera scan>',
+            component: (
+                <Link to="/call">Video call with Aunty</Link>
+            ),
             end: true,
         }];
         return (
