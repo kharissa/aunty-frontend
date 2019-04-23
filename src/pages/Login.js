@@ -14,7 +14,7 @@ class Homepage extends React.Component {
       this.showModal = this.showModal.bind(this);
   }
 
-    showModal = (tab) => {
+    showModal = () => {
         // This is a hacky solution to apply slide-out animation to a specific motion (close out of a reactstrap modal). Although it works, it is not recommended. We can remove this if we only want slide-in motion.
         if (this.state.modal) {
             document.querySelector(".modal.right .modal-dialog").style.animation = "slide-out 1.5s forwards"
