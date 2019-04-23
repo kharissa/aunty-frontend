@@ -9,11 +9,11 @@ import Call from './pages/Call.js'
 import Setting from './pages/Setting.js'
 import Navigation from './containers/Navigation.js'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPhoneSlash, faPhone, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell } from '@fortawesome/free-solid-svg-icons';
 import { CameraToasts } from './pages/Camera.js';
 import './App.css';
-library.add(faPhoneSlash, faPhone, faVideo);
 
+library.add(faPhoneSlash, faPhone, faVideo, faPhoneVolume, faMapMarkedAlt, faSlidersH, faBell);
 
 class App extends Component {
   state = {
