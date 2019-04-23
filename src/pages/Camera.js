@@ -69,28 +69,25 @@ class CameraCall extends Component {
   render() {
     const { onConfirm, dataUri } = this.state;
     return (
-      <Row>{
+      <div>{
         onConfirm ?
-          <Col>
-            <img src={`${dataUri}`} height="500" />
-            <p>Submit photo for analysis?</p>
-            <Row className="justify-content-around">
-              <Button color="success" onClick={this.handleSubmit}>Yes</Button>
-              <Button color="warning" onClick={this.handleReject}>No</Button>
-            </Row>
-          </Col>
+          <div style={{ position: 'relative' }} >
+            <img src={`${dataUri}`} height="650" />
+            <Button color="success" onClick={this.handleSubmit} style={{ position: 'absolute', bottom: '20px', left: '80px' }} >Submit</Button>
+            <Button color="danger" onClick={this.handleReject} style={{ position: 'absolute', bottom: '20px', right: '80px' }} >Retake</Button>
+          </div>
           :
-          <Col>
+          <div>
             <Camera
               onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
-              idealResolution={{ width: 480, height: 800 }}
+              idealResolution={{ width: 411, height: 650 }}
               isSilentMode={true}
               imageType={IMAGE_TYPES.JPG}
             />
-          </Col>
+          </div>
       }
         {this.handleRedirect()}
-      </Row>
+      </div>
     );
   }
 }
