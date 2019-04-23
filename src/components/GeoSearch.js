@@ -11,8 +11,8 @@ class GeoSearch extends MapControl {
 
         const searchControl = new GeoSearchControl({
             provider: provider,
-            position: "topleft",
-            style: 'bar'
+            position: "bottomleft",
+            style: 'button'
         });
         return searchControl;
     }

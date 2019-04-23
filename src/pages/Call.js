@@ -37,7 +37,7 @@ export default class Call extends React.Component {
             incomingCall: false,
             callTime: 0,
             endCall: true
-        }) 
+        })
         clearInterval(this.state.timer)
     }
 
@@ -47,7 +47,7 @@ export default class Call extends React.Component {
             onCall: false,
             incomingCall: false,
             callTime: 0
-        }) 
+        })
     }
 
     handleTime = () => {
@@ -73,7 +73,7 @@ export default class Call extends React.Component {
     render() {
         const { incomingCall, onCall } = this.state;
         momentDurationFormatSetup(moment);
-        
+
         return (
           <Container className="mx-0 px-0">
             {incomingCall ? (

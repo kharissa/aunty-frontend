@@ -1,5 +1,5 @@
 import React from 'react';
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
 import Pins from '../components/Pins.js';
 import GeoSearch from '../components/GeoSearch.js';
@@ -7,6 +7,8 @@ import MarkerClusterGroup from 'react-leaflet-markercluster'
 import { renderToStaticMarkup } from "react-dom/server";
 import { divIcon } from 'leaflet';
 import axios from 'axios';
+
+const { BaseLayer, Overlay } = LayersControl
 
 export default class Map extends React.Component {
     constructor(props) {
@@ -20,12 +22,16 @@ export default class Map extends React.Component {
             isOpen: false,
             pins: [],
             itinerary: [],
-            publicPins: [],
+            safePins: [],
+            dangerPins: [],
             privatePins: [],
-        }
+        };
+        this.onClickGeoloc = this.onClickGeoloc.bind(this)
+        this.leafletMap = React.createRef();
     }
 
     componentDidMount() {
+
         const token = localStorage.getItem('token');
 
         axios({
@@ -35,9 +41,23 @@ export default class Map extends React.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then(response => {
-            // this.state.pins.push(response.data.publicPins);
             // console.log(response.data.publicPins);
-            this.setState({ pins: response.data.publicPins });
+
+            let pubPins = response.data.publicPins;
+            let isSafe = [];
+            let isDanger = [];
+
+            pubPins.forEach(pin => {
+                if (pin.is_safe === true) {
+                    isSafe.push(pin)
+                } else {
+                    isDanger.push(pin)
+                }
+            })
+
+            this.setState({ safePins: isSafe, dangerPins: isDanger });
+            this.setState({ privatePins: response.data.privatePins });
+
         }).catch(error => {
             console.log(error)
         })
@@ -45,7 +65,6 @@ export default class Map extends React.Component {
 
     // TODO
     // get itinerary pins
-
 
     handleClick = (e) => {
         const { lat, lng } = e.latlng;
@@ -59,56 +78,88 @@ export default class Map extends React.Component {
         }))
     }
 
+    onClickGeoloc = () => {
+        const { lat, lng } = this.props;
+        this.leafletMap.current.leafletElement.flyTo([lat, lng], 15)
+    }
+
     render() {
         const { lat, lng } = this.props
         const geolocIcon = divIcon({ html: renderToStaticMarkup(<i className=" fa fa-circle" />) });
+
         return (
             <>
                 <LeafletMap
+                    ref={this.leafletMap}
                     center={[lat, lng]}
-                    zoom={13}
-                    maxZoom={20}
-                    attributionControl={true}
-                    zoomControl={false}
-                    doubleClickZoom={true}
-                    scrollWheelZoom={true}
-                    closePopupOnClick={true}
-                    dragging={true}
-                    animate={true}
-                    easeLinearity={0.35}
-                    onclick={this.handleClick}
-                    onZoomend={this.onZoomEvent}
-                    worldCopyJump={true}
-                    tap={true}
-                    className="markercluster-map">
+                    zoom={13} maxZoom={20} zoomControl={false}
+                    attributionControl={true} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    doubleClickZoom={true} scrollWheelZoom={true}
+                    closePopupOnClick={true} worldCopyJump={true} easeLinearity={0.35}
+                    onClick={this.handleClick} >
 
                     <GeoSearch interactive={true} />
-                    <TileLayer url={this.state.mapTilesCarto} />
 
-                    <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                        spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                    <LayersControl position="bottomright">
 
-                        <Pins pins={this.state.pins} />
-                    </MarkerClusterGroup>
+                        <BaseLayer checked name="Base Layer">
+                            <TileLayer url={this.state.mapTilesCarto} />
+                        </BaseLayer>
 
-                    <Marker position={[lat, lng]} icon={geolocIcon}>
-                        <Popup>
-                            <div align="center">
-                                <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />
-                                <b>Wah, this place you bring Aunty so nice!</b>
-                            </div>
-                        </Popup>
-                    </Marker>
+                        <Overlay checked name="Dangerous">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.dangerPins} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
-                    {this.state.clickedMarker.length > 0
-                        ? <Marker className="new-marker" position={this.state.clickedMarker} onclick={this.toggleModal}
-                            icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}></Marker>
-                        : null
-                    }
+                        <Overlay checked name="Itinerary">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.itinerary} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
-                    <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
+                        <Overlay checked name="Safe">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.safePins} />
+                            </MarkerClusterGroup>
+                        </Overlay>
 
+                        <Overlay checked name="Private">
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                                spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
+                                <Pins pins={this.state.privatePins} />
+                            </MarkerClusterGroup>
+                        </Overlay>
+
+
+                        <Marker position={[lat, lng]} icon={geolocIcon}>
+                            <Popup>
+                                <div align="center">
+                                    <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />
+                                    <b>Wah, this place you bring Aunty so nice!</b>
+                                </div>
+                            </Popup>
+                        </Marker>
+
+                        {this.state.clickedMarker.length > 0
+                            ? <Marker opacity='0.7' draggable={true} className="new-marker"
+                                position={this.state.clickedMarker}
+                                onClick={this.toggleModal}
+                                icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}>
+                            </Marker>
+                            : null
+                        }
+
+                        <CreatePin modal={this.state.modal} toggleModal={this.toggleModal} position={this.state.clickedMarker} />
+
+                    </LayersControl>
                 </LeafletMap>
+
+                <button className="go-to-loc" onClick={this.onClickGeoloc}><i className="far fa-dot-circle"></i></button>
+
             </>
         );
     }

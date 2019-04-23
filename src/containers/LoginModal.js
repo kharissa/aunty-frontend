@@ -36,7 +36,7 @@ export default class LoginModal extends React.Component {
 
   render() {
     return (
-      <Modal isOpen={this.props.isOpen} toggle={this.props.toggle} modalClassName="right" fade={false} style={{color:'#000080'}}>
+      <Modal isOpen={this.props.isOpen} toggle={this.props.toggle} modalClassName="right" fade={false} style={{ color: '#000080' }}>
         <ModalHeader toggle={this.props.toggle}>
           <Nav tabs>
             <NavItem>

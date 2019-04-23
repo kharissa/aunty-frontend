@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input, FormText, Col, Row } from 'reactstrap';
 import axios from 'axios';
 
+
 class CreatePin extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +13,7 @@ class CreatePin extends React.Component {
             category: 'none',
             is_public: true,
             modalType: false,
-            newPins: []
+            newPins: [],
         };
     }
 
@@ -64,19 +65,17 @@ class CreatePin extends React.Component {
                 source: 'User'
             }
         }).then(response => {
-            console.log(response)
             if (response.data.status === "success") {
-                console.log('pin created!');
-                console.log('response');
+                // console.log('pin created!');
+                // console.log(response.data.pin);
 
-                // TODO : change this to refresh page with new pin
-                // OR push new pin to props
+                let newPin = [];
+                newPin.push(response.data.pin);
+                this.setState({ newPins: newPin });
+                this.props.toggleModal();
+                window.location.reload()
 
-                // const newPins = [...this.state.newPins];
-                // newPins.push({value: NewPin});
-                // this.setState({ newPins }
 
-                console.log(this.state.newPins);
             } else {
                 console.log('ohnoes.');
             }
@@ -93,8 +92,8 @@ class CreatePin extends React.Component {
 
         return (
             <>
-                <Modal isOpen={this.props.modal} toggle={this.props.toggleModal}>
-                    <ModalHeader className="create-pin-head" toggle={this.toggleModal} close={closeBtn}>
+                <Modal isOpen={this.props.modal} toggle={this.props.toggleModal} modalClassName="right" fade={false} style={{ color: '#000080' }}>
+                    <ModalHeader className="create-pin-head" toggle={this.toggleModal} close={closeBtn} >
                     Create a Pin
                     </ModalHeader>
                     <ModalBody>
