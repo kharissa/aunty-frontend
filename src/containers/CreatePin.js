@@ -65,19 +65,15 @@ class CreatePin extends React.Component {
                 source: 'User'
             }
         }).then(response => {
-            console.log(response)
             if (response.data.status === "success") {
-                console.log('pin created!');
-                console.log('response');
+                // console.log('pin created!');
+                // console.log(response.data.pin);
 
-                // TODO : change this to refresh page with new pin
-                // OR push new pin to props
+                let newPin = [];
+                newPin.push(response.data.pin);
+                this.setState({ newPins: newPin });
+                this.props.toggleModal();
 
-                // const newPins = [...this.state.newPins];
-                // newPins.push({value: NewPin});
-                // this.setState({ newPins }
-
-                console.log(this.state.newPins);
             } else {
                 console.log('ohnoes.');
             }
