@@ -119,7 +119,6 @@ export default class Map extends React.Component {
                 <LeafletMap
                     ref={this.leafletMap}
                     center={[lat, lng]}
-<<<<<<< HEAD
                     zoom={13} maxZoom={20} zoomControl={false}
                     attributionControl={true} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     doubleClickZoom={true} scrollWheelZoom={true}
@@ -162,32 +161,6 @@ export default class Map extends React.Component {
                         </MarkerClusterGroup>
                     </Overlay>
 
-=======
-                    zoom={13}
-                    maxZoom={20}
-                    attributionControl={true}
-                    zoomControl={false}
-                    doubleClickZoom={true}
-                    scrollWheelZoom={true}
-                    closePopupOnClick={true}
-                    dragging={true}
-                    animate={true}
-                    easeLinearity={0.35}
-                    onclick={this.handleClick}
-                    onZoomend={this.onZoomEvent}
-                    worldCopyJump={true}
-                    tap={true}
-                    className="markercluster-map">
-
-                    <GeoSearch interactive={true} />
-                    <TileLayer url={this.state.mapTilesCarto} />
-
-                    <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
-                        spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
-
-                        <Pins pins={this.state.pins} />
-                    </MarkerClusterGroup>
->>>>>>> 83de07b6d88d364545d65afdc3793c5f7efa5d0f
 
                     <Marker position={[lat, lng]} icon={geolocIcon}>
                         <Popup>
@@ -199,16 +172,11 @@ export default class Map extends React.Component {
                     </Marker>
 
                     {this.state.clickedMarker.length > 0
-<<<<<<< HEAD
                         ? <Marker opacity='0.7' draggable={true} className="new-marker"
                             position={this.state.clickedMarker}
                             onClick={this.toggleModal}
                             icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}>
                           </Marker>
-=======
-                        ? <Marker className="new-marker" position={this.state.clickedMarker} onclick={this.toggleModal}
-                            icon={divIcon({ html: renderToStaticMarkup(<i className=" fa fa-plus fa-2x" />) })}></Marker>
->>>>>>> 83de07b6d88d364545d65afdc3793c5f7efa5d0f
                         : null
                     }
 
