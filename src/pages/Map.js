@@ -69,8 +69,18 @@ export default class Map extends React.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then(response => {
+            // SUPER HACKY! DONT DO THIS IN REAL SITUATIONS, FIX YOUR BACKEND!!!! (by Matt)
 
-            this.setState({ itinerary: response.data.map(pin => ({
+            let newData = response.data.map(pin => {
+                let newPin = pin;
+                let latitude = pin.latitude;
+                let longitude = pin.longitude;
+                newPin.latitude = longitude;
+                newPin.longitude = latitude;
+                return newPin
+            })
+            console.log(newData);
+            this.setState({ itinerary: newData.map(pin => ({
                 ...pin,
                 category: 'Itinerary'
             })) });
@@ -79,9 +89,6 @@ export default class Map extends React.Component {
         })
 
     }
-
-    // TODO
-    // get itinerary pins
 
     handleClick = (e) => {
         const { lat, lng } = e.latlng;
