@@ -17,14 +17,6 @@ export default class LoginModal extends React.Component {
     };
   }
 
-  componentDidMount = () => {
-    if (this.props.login) {
-      this.setState({
-        activeTab: '2'
-      })
-    }
-  }
-
   // Change state of active tab in order to switch between tabs
   switch(tab) {
     if (this.state.activeTab !== tab) {
@@ -34,24 +26,44 @@ export default class LoginModal extends React.Component {
     }
   }
 
+  handleLogin = () => {
+    if (this.props.login == true) {
+      this.switch('2')
+    }
+  }
+
   render() {
     return (
-      <Modal isOpen={this.props.isOpen} toggle={this.props.toggle} modalClassName="right" fade={false} style={{ color: '#000080' }}>
+      <Modal
+        isOpen={this.props.isOpen}
+        toggle={this.props.toggle}
+        modalClassName="right"
+        fade={false}
+        style={{ color: "#000080" }}
+      >
         <ModalHeader toggle={this.props.toggle}>
           <Nav tabs>
             <NavItem>
               <NavLink
-                className='Register'
-                className={classnames({ active: this.state.activeTab === '1' })}
-                onClick={() => { this.switch('1'); }}
+                className="Register"
+                className={classnames({
+                  active: this.state.activeTab === "1"
+                })}
+                onClick={() => {
+                  this.switch("1");
+                }}
               >
                 Register
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === '2' })}
-                onClick={() => { this.switch('2'); }}
+                className={classnames({
+                  active: this.state.activeTab === "2"
+                })}
+                onClick={() => {
+                  this.switch("2");
+                }}
               >
                 Login
               </NavLink>
@@ -66,6 +78,7 @@ export default class LoginModal extends React.Component {
             <LoginToasts toggle={this.props.toggle} />
           </TabPane>
         </TabContent>
+        { this.handleLogin() }
       </Modal>
     );
   }

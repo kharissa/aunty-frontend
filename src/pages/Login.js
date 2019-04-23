@@ -2,6 +2,7 @@ import React from "react";
 import LoginModal from '../containers/LoginModal'
 import aunty from '../images/aunty.png';
 import {Row, Col, Button} from 'reactstrap';
+import { Redirect } from "react-router-dom";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class Homepage extends React.Component {
             document.querySelector(".modal.right .modal-dialog").style.animation = "slide-out 1.5s forwards"
             setTimeout(() => {
                 this.setState(prevState => ({
-                    modal: !prevState.modal
+                    modal: !prevState.modal,
+                    login: false
                 }));
             }, 1000);
         } else {
@@ -34,6 +36,12 @@ class Homepage extends React.Component {
           login: true
         });
         this.showModal()
+    }
+
+    handleRedirect() {
+        if (localStorage.getItem('token')) {
+            return <Redirect to="/" />
+        }
     }
 
     render() {
@@ -55,6 +63,7 @@ class Homepage extends React.Component {
                         </div>
                         <LoginModal isOpen={this.state.modal} toggle={this.showModal} login={this.state.login}/>
                     </Col>
+                    { this.handleRedirect() }
                 </div>
         )
     }
