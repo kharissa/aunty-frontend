@@ -68,7 +68,7 @@ export default class Chat extends React.Component {
     // Redirect user to Home page if they are not logged in.
     handleRedirect() {
         if (this.state.loggedIn === false) {
-            return <Redirect to="/" />
+            return <Redirect to="/login" />
         } else if (this.state.call === true) {
             return <Redirect to="/call" />
         }
