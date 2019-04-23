@@ -8,6 +8,7 @@ class Homepage extends React.Component {
       super(props);
       this.state = {
           modal: false,
+          login: false
       };
       this.showModal = this.showModal.bind(this);
   }
@@ -28,6 +29,13 @@ class Homepage extends React.Component {
         }
     }
 
+    showLogin = () => {
+        this.setState({
+          login: true
+        });
+        this.showModal()
+    }
+
     render() {
         return (
                 <div className='Login-page' style={{backgroundColor:'#FFA205', backgroundSize: 'Cover'}}>
@@ -43,9 +51,9 @@ class Homepage extends React.Component {
                             <Button style={{backgroundColor:'#124e78', borderRadius:'25px', width:'40%', margin:'10px'}} onClick={this.showModal}>Register</Button>
                         </div>
                         <div>
-                            <Button style={{backgroundColor:'#124e78', borderRadius:'25px',width:'40%', margin:'10px', marginBottom:'300px'}} onClick={this.showModal}>Login</Button>
+                            <Button style={{backgroundColor:'#124e78', borderRadius:'25px',width:'40%', margin:'10px', marginBottom:'300px'}} onClick={this.showLogin}>Login</Button>
                         </div>
-                        <LoginModal isOpen={this.state.modal} toggle={this.showModal}/>
+                        <LoginModal isOpen={this.state.modal} toggle={this.showModal} login={this.state.login}/>
                     </Col>
                 </div>
         )

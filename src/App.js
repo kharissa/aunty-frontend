@@ -52,7 +52,7 @@ class App extends Component {
               exact
               path="/map"
               component={props => (
-                <Map {...props} lat={props.lat} lng={props.lng} />
+                <Map {...props} lat={this.state.lat} lng={this.state.lng} />
               )}
             />
             <CustomRoute exact path="/camera" component={CameraToasts} />
@@ -64,20 +64,3 @@ class App extends Component {
 }
 
 export default App;
-
-const DefaultContainer = () => (
-  <>
-    <CustomRoute exact path="/" component={Chat} />
-    <CustomRoute exact path="/sos" component={Sos} />
-    <CustomRoute exact path="/setting" component={Setting} />
-    <CustomRoute exact path="/map" component={props => <Map {...props} lat={props.lat} lng={props.lng} />} />
-    <CustomRoute exact path="/camera" component={CameraToasts} />
-  </>
-)
-
-// const NoNavBarContainer = () => (
-//   <div>
-//     <Route exact path="/login" component={Login} />
-//     <Route exact path="/call" component={Call} />
-//   </div>
-// )

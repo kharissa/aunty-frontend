@@ -21,7 +21,7 @@ export default class Navigation extends React.Component {
                         </NavLink>
                     </Col>
                     <Col>
-                        <NavLink xs="2" md="2" to="/chat" >
+                        <NavLink xs="2" md="2" to="/" >
                             <img className='auntyIcon' src={aunty} alt='aunty' height={100} />
                         </NavLink>
                     </Col>
