@@ -264,44 +264,6 @@ code {
   background-color: rgb(255,162,5, 0.6);
 }
 
-/* .markerClusterSmall {
-   border-radius: 20px;
-   font-size: 0.6vw;
-   color: #fff;
-   font-weight: 900;
-   font-family: Open Sans;
-   text-transform: uppercase;
-}
-.markerClusterMedium {
-   border-radius: 40px;
-   font-size: 0.6vw;
-   color: #fff;
-   font-weight: 900;
-   font-family: Open Sans;
-   text-transform: uppercase;
-}
-.markerClusterLarge {
-   border-radius: 70px;
-   font-size: 0.6vw;
-   color: #fff;
-   font-weight: 900;
-   font-family: Open Sans;
-   text-transform: uppercase;
-}
-.markerClusterLargeXL {
-   border-radius: 70px;
-   font-size: 0.6vw;
-   color: #fff;
-   font-weight: 900;
-   font-family: Open Sans;
-   text-transform: uppercase;
-}
-.markerClusterLabel {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-} */
-
 .go-to-loc {
   height: 30px;
   width: 30px;
@@ -363,11 +325,14 @@ code {
   border-radius: 15px;
 }
 
-/*
-.ItineraryCluster {
-  background-color: #17BEBB;
+.cluster-safe div {
+  background-color: rgba(34, 174, 92, 0.6);
 }
 
-.ItineraryCluster div {
-  background-color: #17BEBB;
-} */
+.cluster-itinerary div {
+  background-color: rgba(34, 78, 174, 0.6);
+}
+
+.cluster-private div {
+  background-color: rgba(34, 174, 92, 0.6);
+}
