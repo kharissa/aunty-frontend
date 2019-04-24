@@ -104,18 +104,29 @@ body {
 
 
 /* -----------------Chatbot CSS----------------- */
-/* align user options to the right so that users know that they need to pick an option */
-/* ul {
-list-style-type: none;
-padding: 0;
-margin: 0;
-text-align: right;
-} */
-
+/* optimise chatbot sizing for Pixel 2 device */
 .rsc {
   position:fixed;
   bottom:100px;
-  width:93%
+  width:93%;
+}
+
+.rsc-container {
+  height: 620px;
+}
+
+.rsc-content.sc-gZMcBi.fBGGBn {
+  height: 560px;
+  overflow-y: scroll;
+}
+
+/* align user options to the right so that users know that they need to pick an option */
+.rsc-os-option {
+list-style-type: none;
+padding: 0;
+margin: 3px;
+text-align: right;
+float: right;
 }
 
 .rsc-os-option-element {
@@ -123,6 +134,11 @@ text-align: right;
   padding-right: .6em !important;
   color:white !important;
 } 
+
+/* added bottom margin for aunty's second consecutive message */
+.rsc-ts.rsc-ts-bot.sc-dnqmqq.efROPc {
+  margin-bottom: .4em;
+}
 
 /* users options bubble */
 .cBYVVs {
@@ -145,33 +161,14 @@ background:gray
   display:none;
 }
 
-/* chatbox size */
-html, body { 
-  height:100%; 
-}
-
-/* app footer containing User Typebox */
-/* .hDUXUW {
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  color: white;
-} */
-
 .ijcYgp {
 width: 100%;
 margin-top:2px;
 }
 
-.fBGGBn{
-width:100%;
-height:100%
+.iqYXai {
+  margin: 0;
 }
-
-
-
 
 #edit {
   height: 25px;
@@ -197,8 +194,4 @@ height:100%
 
 .tabs {
   background-color: #FFA205;
-}
-
-.iqYXai {
-  margin: 0;
 }
