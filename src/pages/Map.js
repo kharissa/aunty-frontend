@@ -144,7 +144,7 @@ export default class Map extends React.Component {
             <>
                 <LeafletMap
                     ref={this.leafletMap}
-                    center={[lat, lng]}
+                    center={[3.135002, 101.629931]}
                     zoom={13} maxZoom={20} zoomControl={false}
                     attributionControl={true} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     doubleClickZoom={true} scrollWheelZoom={true}
@@ -187,7 +187,7 @@ export default class Map extends React.Component {
                             </MarkerClusterGroup>
                         </Overlay>
 
-                        <Marker position={[lat, lng]} icon={geolocIcon}>
+                        <Marker position={[3.135002, 101.629931]} icon={geolocIcon}>
                             <Popup>
                                 <div align="center">
                                     <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />
