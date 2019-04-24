@@ -79,7 +79,7 @@ export default class Map extends React.Component {
                 newPin.longitude = latitude;
                 return newPin
             })
-            console.log(newData);
+            // console.log(newData);
             this.setState({ itinerary: newData.map(pin => ({
                 ...pin,
                 category: 'Itinerary'
@@ -87,7 +87,6 @@ export default class Map extends React.Component {
         }).catch(error => {
             console.log(error)
         })
-
     }
 
     handleClick = (e) => {
@@ -104,8 +103,38 @@ export default class Map extends React.Component {
 
     onClickGeoloc = () => {
         const { lat, lng } = this.props;
-        this.leafletMap.current.leafletElement.flyTo([lat, lng], 15)
+        this.leafletMap.current.leafletElement.flyTo([3.135002, 101.629931], 15)
     }
+
+    // createClusterCustomIcon = (cluster) => {
+    //     const count = cluster.getChildCount();
+    //     let size = 'LargeXL';
+
+    //     if (count < 10) {
+    //         size = 'Small';
+    //     }
+    //     else if (count >= 10 && count < 100) {
+    //         size = 'Medium';
+    //     }
+    //     else if (count >= 100 && count < 500) {
+    //         size = 'Large';
+    //     }
+    //     const options = {
+    //         cluster: `markerCluster${size}`,
+    //     };
+
+    //     return this.leafletMap.divIcon({
+    //         html:
+    //             `<div>
+    //     <span class="markerClusterLabel">${count}</span>
+    //   </div>`,
+    //         className: `${options.cluster}`,
+    //     });
+    // };
+
+    // place in <MarkerClusterGroup>
+    // iconCreateFunction={this.createClusterCustomIcon}
+
 
     render() {
         const { lat, lng } = this.props
@@ -115,7 +144,7 @@ export default class Map extends React.Component {
             <>
                 <LeafletMap
                     ref={this.leafletMap}
-                    center={[lat, lng]}
+                    center={[3.135002, 101.629931]}
                     zoom={13} maxZoom={20} zoomControl={false}
                     attributionControl={true} attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     doubleClickZoom={true} scrollWheelZoom={true}
@@ -131,35 +160,34 @@ export default class Map extends React.Component {
                         </BaseLayer>
 
                         <Overlay checked name="Dangerous">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.dangerPins} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Itinerary">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.itinerary} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Safe">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.safePins} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Private">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={100} animate={true}
+                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.privatePins} />
                             </MarkerClusterGroup>
                         </Overlay>
 
-
-                        <Marker position={[lat, lng]} icon={geolocIcon}>
+                        <Marker position={[3.135002, 101.629931]} icon={geolocIcon}>
                             <Popup>
                                 <div align="center">
                                     <img src="https://media.giphy.com/media/1rNWZu4QQqCUaq434T/giphy.gif" width="200px" alt="??" /><br />

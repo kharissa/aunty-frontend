@@ -146,6 +146,7 @@ class CreatePin extends React.Component {
                                         <option value="Hotel">Hotel</option>
                                         <option value="Hospital">Hospital</option>
                                         <option value="Police Presence">Police Presence</option>
+                                        <option value="Embassy">Embassy</option>
                                     </>
                                 }
                                 </Input>
