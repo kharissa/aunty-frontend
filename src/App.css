@@ -140,33 +140,31 @@ float: right;
 }
 
 /* users options bubble */
-.cBYVVs {
-background:gray
-}
-
-/* users chat bubble */
-.iOCYje {
+.rsc-os-option-element.sc-bxivhb.cBYVVs {
   background:gray;
   color:white;
 }
 
-/* aunty follow up bubble */
-.rsc-ts-bubble.sc-bZQynM.ksTzOQ {
-  margin-left: 0px;
+
+/* users chat bubble */
+.rsc-ts-bubble.sc-bZQynM.iOCYje {
+  background:gray;
+  color:white;
 }
+
+/* aunty bubble confirming the time itinerary */
+.rsc-ts-bubble.sc-bZQynM.ksTzOQ, .rsc-ts-bubble.sc-bZQynM.iqYXai {
+  margin: 0;
 
 /* remove chat avatars */
 .cwuCQv, .eijbEu {
   display:none;
 }
 
-.ijcYgp {
+/* container to expannd the chat view */
+.rsc-container.sc-iwsKbI.ijcYgp {
 width: 100%;
 margin-top:2px;
-}
-
-.rsc-ts-bubble.sc-bZQynM.iqYXai {
-  margin-left: 0px;
 }
 
 #edit {
