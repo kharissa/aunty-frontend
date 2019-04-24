@@ -3,7 +3,7 @@ import { Marker, Popup } from 'react-leaflet';
 import { renderToStaticMarkup } from "react-dom/server";
 import { divIcon } from 'leaflet';
 import { Button } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const icons = {
     "Hate Crime": divIcon({ html: renderToStaticMarkup(<i className=" fa fa-angry fa-2x" />) }),
@@ -21,11 +21,6 @@ const icons = {
 
 export default class Pins extends React.Component {
 
-    // handleRedirect = () => {
-    //     console.log('hewwo')
-    //     return <Redirect to="/setting" />
-    // }
-
     render() {
         return(
             <>
@@ -41,7 +36,7 @@ export default class Pins extends React.Component {
                         <br/>
                         { (pin.start_time)
                             ? <p><b>Check in time:</b> {pin.start_time} <br /><br />
-                               </p>
+                                <Button color="success" size="sm"><Link to={{ pathname: "/setting", state: {activeTab: '2'} }} style={{color: '#ffffff'}}>Edit this pin</Link></Button></p>
                             : null }
                     </Popup>
                 </Marker>

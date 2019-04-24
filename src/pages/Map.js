@@ -1,4 +1,5 @@
 import React from 'react';
+import L from 'leaflet';
 import { Map as LeafletMap, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
 import CreatePin from '../containers/CreatePin';
 import Pins from '../components/Pins.js';
@@ -131,6 +132,13 @@ export default class Map extends React.Component {
     //         className: `${options.cluster}`,
     //     });
     // };
+
+    // createItineraryClusterIcon = (cluster) => {
+    //     debugger
+    //     return L.divIcon({
+    //         className: 'ItineraryCluster'
+    //     })
+    // }
 
     // place in <MarkerClusterGroup>
     // iconCreateFunction={this.createClusterCustomIcon}
