@@ -168,6 +168,14 @@ width: 100%;
 margin-top:2px;
 }
 
+.rsc-ts-bubble.sc-bZQynM.kpNwfc {
+  background: gray;
+  color: white;
+  margin:0;
+}
+
+/* ------------end Chatbot CSS----------------- */
+
 #edit {
   height: 25px;
 }
