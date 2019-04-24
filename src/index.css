@@ -362,3 +362,12 @@ code {
   background-color: #124E78;
   border-radius: 15px;
 }
+
+
+.ItineraryCluster {
+  background-color: rgb(255,33,33, 0.6);
+}
+
+.ItineraryCluster div {
+  background-color: rgb(255,33,35, 0.6);
+}

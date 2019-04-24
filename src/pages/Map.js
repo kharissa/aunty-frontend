@@ -132,6 +132,12 @@ export default class Map extends React.Component {
     //     });
     // };
 
+    createItineraryClusterIcon = (cluster) => {
+        return this.leafletMap.divIcon({
+            className: 'ItineraryCluster'
+        })
+    }
+
     // place in <MarkerClusterGroup>
     // iconCreateFunction={this.createClusterCustomIcon}
 

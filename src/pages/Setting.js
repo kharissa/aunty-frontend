@@ -11,7 +11,7 @@ export default class Example extends React.Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            activeTab: '1'
+            activeTab: (props.location.state) ? props.location.state.activeTab : '1'
         };
     }
 
@@ -22,6 +22,7 @@ export default class Example extends React.Component {
             });
         }
     }
+
     render() {
         return (
             <div>
