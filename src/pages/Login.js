@@ -50,12 +50,12 @@ class Homepage extends React.Component {
                         <Row style={{justifyContent:'center', alignSelf:'center', padding: "10px"}}>
                                 <img src={aunty} alt='AuntyKaiKai' className='AuntyKaiKai' style={{height:"250px"}}/>
                         </Row>
-                    <div style={{padding:'40px', color:'#124e78', fontWeight:'bold'}}> 
-                        <span style={{fontSize:'40px'}}>GO GAI GAI </span> <br/> 
-                        <span style={{fontSize:'20px'}}> with Aunty</span> 
+                    <div style={{padding:'40px', color:'#124e78', fontWeight:'bold'}}>
+                        <span style={{fontSize:'40px'}}>GO GAI GAI </span> <br/>
+                        <span style={{fontSize:'20px'}}> with Aunty</span>
                     </div>
-                    <Col style={{padding:'10px', justifyContent:'center'}}> 
-                        <div> 
+                    <Col style={{padding:'10px', justifyContent:'center'}}>
+                        <div>
                             <Button style={{backgroundColor:'#124e78', borderRadius:'25px', width:'40%', margin:'10px'}} onClick={this.showModal}>Register</Button>
                         </div>
                         <div>
