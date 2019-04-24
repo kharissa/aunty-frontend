@@ -107,42 +107,13 @@ export default class Map extends React.Component {
         this.leafletMap.current.leafletElement.flyTo([3.135002, 101.629931], 15)
     }
 
-    // createClusterCustomIcon = (cluster) => {
-    //     const count = cluster.getChildCount();
-    //     let size = 'LargeXL';
-
-    //     if (count < 10) {
-    //         size = 'Small';
-    //     }
-    //     else if (count >= 10 && count < 100) {
-    //         size = 'Medium';
-    //     }
-    //     else if (count >= 100 && count < 500) {
-    //         size = 'Large';
-    //     }
-    //     const options = {
-    //         cluster: `markerCluster${size}`,
-    //     };
-
-    //     return this.leafletMap.divIcon({
-    //         html:
-    //             `<div>
-    //     <span class="markerClusterLabel">${count}</span>
-    //   </div>`,
-    //         className: `${options.cluster}`,
-    //     });
-    // };
-
-    // createItineraryClusterIcon = (cluster) => {
-    //     debugger
-    //     return L.divIcon({
-    //         className: 'ItineraryCluster'
-    //     })
-    // }
-
-    // place in <MarkerClusterGroup>
-    // iconCreateFunction={this.createClusterCustomIcon}
-
+    createClusterCustomIcon = (cluster, cName) => {
+        let childCount = cluster.getChildCount()
+        return new L.DivIcon({
+            html: '<div><span>' + childCount + '</span></div>',
+            className: 'marker-cluster' + ' ' + cName
+        })
+    }
 
     render() {
         const { lat, lng } = this.props
@@ -175,21 +146,24 @@ export default class Map extends React.Component {
                         </Overlay>
 
                         <Overlay checked name="Itinerary">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
+                            <MarkerClusterGroup iconCreateFunction={cluster => this.createClusterCustomIcon(cluster, 'cluster-itinerary')}
+                                showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.itinerary} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Safe">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
+                            <MarkerClusterGroup iconCreateFunction={cluster => this.createClusterCustomIcon(cluster, 'cluster-safe')}
+                            showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.safePins} />
                             </MarkerClusterGroup>
                         </Overlay>
 
                         <Overlay checked name="Private">
-                            <MarkerClusterGroup showCoverageOnHover={true} maxClusterRadius={35} animate={true}
+                            <MarkerClusterGroup iconCreateFunction={cluster => this.createClusterCustomIcon(cluster, 'cluster-private')}
+                                showCoverageOnHover={true} maxClusterRadius={35} animate={true}
                                 spiderLegPolylineOptions={{ weight: 1.5, color: '#d3d3d3', opacity: 0.3 }}>
                                 <Pins pins={this.state.privatePins} />
                             </MarkerClusterGroup>
