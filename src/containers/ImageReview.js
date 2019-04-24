@@ -22,25 +22,25 @@ export default class ImageReview extends React.Component {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(response => {
-            const output = response.data.results;
-            const imageUrl = response.data.imageURL;
-            let properties = Object.entries(output)
+            .then(response => {
+                const output = response.data.results;
+                const imageUrl = response.data.imageURL;
+                let properties = Object.entries(output)
 
-            this.setState({
-              loading: false,
-              properties: properties,
-              imageUrl: imageUrl
-            });
-            localStorage.removeItem('update')
-            localStorage.removeItem('updateImageId')
-        })
-        .catch(error => {
-            console.log(error);
-            this.setState({
-                loading: false,
+                this.setState({
+                    loading: false,
+                    properties: properties,
+                    imageUrl: imageUrl
+                });
+                localStorage.removeItem('update')
+                localStorage.removeItem('updateImageId')
             })
-        })
+            .catch(error => {
+                console.log(error);
+                this.setState({
+                    loading: false,
+                })
+            })
     }
 
     render() {
@@ -59,11 +59,11 @@ export default class ImageReview extends React.Component {
                                 My eye very sharp leh! See what I found:
                                 <ul>
                                     {
-                                        properties.filter(attribute => attribute[1] > 0.59).map((property, index) => 
+                                        properties.filter(attribute => attribute[1] > 0.49).map((property, index) =>
                                             <li key={index}>
                                                 {property[0]}:  {property[1] * 100}%
                                             </li>
-                                           
+
                                         )
                                     }
                                 </ul>
