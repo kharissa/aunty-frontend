@@ -174,8 +174,8 @@ export default class Chat extends React.Component {
         }, {
             id: 'itineraryTime',
             options: [{
-                value: 'Time selected.',
-                label: 'Time selected.',
+                value: 'Confirm lah',
+                label: 'Confirm lah',
                 trigger: '11'
             }]
         }, {

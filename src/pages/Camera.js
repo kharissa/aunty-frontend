@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Button, Row, Col } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import { withToastManager } from 'react-toast-notifications';
+import Aunty from '../images/aunty.png'
+
 
 class CameraCall extends Component {
   state = {
@@ -69,23 +71,44 @@ class CameraCall extends Component {
   render() {
     const { onConfirm, dataUri } = this.state;
     return (
-      <div>{
-        onConfirm ?
-          <div style={{ position: 'relative' }} >
+      <div>
+        {onConfirm ? (
+          <div style={{ position: "relative" }}>
             <img src={`${dataUri}`} height="650" />
-            <Button color="success" onClick={this.handleSubmit} style={{ position: 'absolute', bottom: '20px', left: '80px' }} >Submit</Button>
-            <Button color="danger" onClick={this.handleReject} style={{ position: 'absolute', bottom: '20px', right: '80px' }} >Retake</Button>
+            <Button
+              color="success"
+              onClick={this.handleSubmit}
+              style={{ position: "absolute", bottom: "20px", left: "80px" }}
+            >
+              Submit
+            </Button>
+            <Button
+              color="danger"
+              onClick={this.handleReject}
+              style={{
+                position: "absolute",
+                bottom: "20px",
+                right: "80px"
+              }}
+            >
+              Retake
+            </Button>
           </div>
-          :
+        ) : (
           <div>
             <Camera
-              onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
+              onTakePhoto={dataUri => {
+                this.onTakePhoto(dataUri);
+              }}
               idealResolution={{ width: 411, height: 650 }}
               isSilentMode={true}
               imageType={IMAGE_TYPES.JPG}
             />
+            <div className="aunty-video-screen">
+              <img src={Aunty} />
+            </div>
           </div>
-      }
+        )}
         {this.handleRedirect()}
       </div>
     );
