@@ -103,7 +103,7 @@ export default class Map extends React.Component {
 
     onClickGeoloc = () => {
         const { lat, lng } = this.props;
-        this.leafletMap.current.leafletElement.flyTo([lat, lng], 15)
+        this.leafletMap.current.leafletElement.flyTo([3.135002, 101.629931], 15)
     }
 
     // createClusterCustomIcon = (cluster) => {

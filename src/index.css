@@ -36,7 +36,6 @@ code {
 
 /* leaflet button styling */
 .leaflet-control-geosearch .leaflet-bar-part {
-  border-radius: 4px;
   border-bottom: none;
 }
 
@@ -197,7 +196,6 @@ code {
   left: 0;
   display: block;
   border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
 }
 
 .leaflet-control-geosearch.bar form input {
@@ -212,7 +210,6 @@ code {
 .leaflet-right .leaflet-control-geosearch form {
   right: 28px;
   left: initial;
-  border-radius: 4px 0 0 4px;
   border-left: inherit;
   border-right: none;
 }
@@ -357,7 +354,8 @@ code {
 }
 
 .leaflet-touch .leaflet-bar a:last-child {
- border-radius: none;
+ border-bottom-left-radius: 15px;
+ border-bottom-right-radius: 15px;
 }
 
 .leaflet-bar a:last-child {
