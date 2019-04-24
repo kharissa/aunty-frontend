@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import aunty from '../images/aunty.png';
-import siren from '../images/police_gray.png'
+import siren from '../images/police.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -13,12 +13,12 @@ export default class Navigation extends React.Component {
                 <Navbar fixed="bottom" style={{ backgroundColor: 'orange', }}>
                     <Col xs='2' md="1" style={{ textAlign: 'center' }}>
                         <NavLink to="/call">
-                            <FontAwesomeIcon icon="phone-volume" color='gray' size="2x" />
+                            <FontAwesomeIcon icon="phone-volume" color='black' size="2x" />
                         </NavLink>
                     </Col>
                     <Col xs='2' md="1" style={{ textAlign: 'center' }}>
                         <NavLink to="/map">
-                            <FontAwesomeIcon icon="map-marked-alt" color='gray' size="2x" />
+                            <FontAwesomeIcon icon="map-marked-alt" color='black' size="2x" />
                         </NavLink>
                     </Col>
 
@@ -31,7 +31,7 @@ export default class Navigation extends React.Component {
                     </Col>
                     <Col xs='3' md="1" style={{ textAlign: 'center' }}>
                         <NavLink to="/setting" >
-                            <FontAwesomeIcon icon="sliders-h" color='gray' size="2x" />
+                            <FontAwesomeIcon icon="sliders-h" color='black' size="2x" />
                         </NavLink>
                     </Col>
                     <Col xs='2' md="1" style={{ justifyContent: 'left' }}>
