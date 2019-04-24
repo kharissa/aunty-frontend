@@ -9,33 +9,44 @@ class Homepage extends React.Component {
       super(props);
       this.state = {
           modal: false,
-          login: false
+          login: false,
+          register: false
       };
-      this.showModal = this.showModal.bind(this);
   }
 
     showModal = () => {
+        this.setState(() => ({
+            modal: true
+        }));
+    }
+    
+    hideModal = () => {
         // This is a hacky solution to apply slide-out animation to a specific motion (close out of a reactstrap modal). Although it works, it is not recommended. We can remove this if we only want slide-in motion.
-        if (this.state.modal) {
-            document.querySelector(".modal.right .modal-dialog").style.animation = "slide-out 1.5s forwards"
-            setTimeout(() => {
-                this.setState(prevState => ({
-                    modal: !prevState.modal,
-                    login: false
-                }));
-            }, 1000);
-        } else {
-            this.setState(prevState => ({
-                modal: !prevState.modal
+        document.querySelector(".modal.right .modal-dialog").style.animation = "slide-out 1.5s forwards"
+        setTimeout(() => {
+            this.setState(() => ({
+                modal: false,
+                login: false,
+                register: false,
             }));
-        }
+        }, 1000);
+        
     }
 
     showLogin = () => {
         this.setState({
-          login: true
+          login: true,
+          register: false
         });
-        this.showModal()
+        this.showModal();
+    }
+
+    showRegister = () => {
+        this.setState({
+            register: true,
+            login: false
+        })
+        this.showModal();
     }
 
     handleRedirect() {
@@ -56,12 +67,12 @@ class Homepage extends React.Component {
                     </div>
                     <Col style={{padding:'10px', justifyContent:'center'}}>
                         <div>
-                            <Button style={{backgroundColor:'#124e78', borderRadius:'25px', width:'40%', margin:'10px'}} onClick={this.showModal}>Register</Button>
+                            <Button style={{backgroundColor:'#124e78', borderRadius:'25px', width:'40%', margin:'10px'}} onClick={this.showRegister}>Register</Button>
                         </div>
                         <div>
                             <Button style={{backgroundColor:'#124e78', borderRadius:'25px',width:'40%', margin:'10px', marginBottom:'300px'}} onClick={this.showLogin}>Login</Button>
                         </div>
-                        <LoginModal isOpen={this.state.modal} toggle={this.showModal} login={this.state.login}/>
+                        <LoginModal isOpen={this.state.modal} show={this.showModal} login={this.state.login} hide={this.hideModal} register={this.state.register} showLogin={this.showLogin} showRegister={this.showRegister}/>
                     </Col>
                     { this.handleRedirect() }
                 </div>

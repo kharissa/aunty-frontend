@@ -11,10 +11,6 @@ const LoginToasts = withToastManager(Login);
 export default class LoginModal extends React.Component {
   constructor(props) {
     super(props);
-    this.switch = this.switch.bind(this);
-    this.state = {
-      activeTab: '1'
-    };
   }
 
   // Change state of active tab in order to switch between tabs
@@ -26,11 +22,17 @@ export default class LoginModal extends React.Component {
     }
   }
 
-  handleLogin = () => {
-    if (this.props.login == true) {
-      this.switch('2')
-    }
-  }
+  // handleLogin = () => {
+  //   if (this.props.login == true) {
+  //     this.switch('2')
+  //   }
+  // }
+
+  // handleRegister = () => {
+  //   if (this.props.register == true) {
+  //     this.switch('1')
+  //   }
+  // }
 
   render() {
     return (
@@ -41,16 +43,16 @@ export default class LoginModal extends React.Component {
         fade={false}
         style={{ color: "#000080" }}
       >
-        <ModalHeader toggle={this.props.toggle}>
+        <ModalHeader toggle={this.props.hide}>
           <Nav tabs>
             <NavItem>
               <NavLink
                 className="Register"
                 className={classnames({
-                  active: this.state.activeTab === "1"
+                  active: this.props.register
                 })}
                 onClick={() => {
-                  this.switch("1");
+                  this.props.showRegister();
                 }}
               >
                 Register
@@ -59,10 +61,10 @@ export default class LoginModal extends React.Component {
             <NavItem>
               <NavLink
                 className={classnames({
-                  active: this.state.activeTab === "2"
+                  active: this.props.login
                 })}
                 onClick={() => {
-                  this.switch("2");
+                  this.props.showLogin();
                 }}
               >
                 Login
@@ -70,15 +72,16 @@ export default class LoginModal extends React.Component {
             </NavItem>
           </Nav>
         </ModalHeader>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent activeTab={this.props.login ? "2" : "1"}>
           <TabPane tabId="1">
-            <RegisterToasts toggle={this.props.toggle} />
+            <RegisterToasts toggle={this.props.showRegister} />
           </TabPane>
           <TabPane tabId="2">
-            <LoginToasts toggle={this.props.toggle} />
+            <LoginToasts toggle={this.props.showLogin} />
           </TabPane>
         </TabContent>
-        { this.handleLogin() }
+        {/* { this.handleLogin() }
+        { this.handleRegister() } */}
       </Modal>
     );
   }
